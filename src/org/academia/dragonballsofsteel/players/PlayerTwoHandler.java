@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class PlayerTwoHandler implements KeyboardHandler{
 
     public PlayerTwoHandler() {
-        
+
     }
 
     @Override
