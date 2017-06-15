@@ -1,6 +1,10 @@
 # GroupProject
 
-Simple Fighting game with a draganball theme, using a SimpleGrafics Lib.
+Collection of games, using a SimpleGrafics Lib.
+
+DragonBallsofSteel
+SineperElite 2.0
+Noughts and Crosses
 
 ## To DO:
 

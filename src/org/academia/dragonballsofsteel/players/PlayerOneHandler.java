@@ -1,6 +1,6 @@
 package org.academia.dragonballsofsteel.players;
 
-import org.academia.dragonballsofsteel.SkinType;
+import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -11,20 +11,20 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  * Handles Player 1 keyboard keys
  */
 
-public class PlayerOneHandler implements KeyboardHandler {
+public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
 
     private Picture image;
     private int speed;
-    private SkinType skin;
+    private SkinTypeVegeta skin;
     private Player player;
 
     public PlayerOneHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(660, 290, SkinType.VegetaFrenteEsquerda.getPath());
+        image = new Picture(660, 290, SkinTypeVegeta.VegetaStartLeft.getPath());
         image.draw();
         this.speed = speed;
-        this.skin = SkinType.VegetaFrenteEsquerda;
+        this.skin = SkinTypeVegeta.VegetaStartLeft;
         this.player = player;
 
         //Inicialize Key Events
@@ -47,6 +47,7 @@ public class PlayerOneHandler implements KeyboardHandler {
 
         //Inicialize Keyboard
         Keyboard k = new Keyboard(this);
+
 
         k.addEventListener(w);
         k.addEventListener(a);

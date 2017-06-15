@@ -16,7 +16,7 @@ public class Player {
     private boolean defeated;
     private int posx;
     private int posy;
-    private PlayerOneHandler handler;
+    private PlayerHandler handler;
 
     /**
      *
