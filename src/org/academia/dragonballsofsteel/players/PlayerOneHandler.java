@@ -16,6 +16,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
     private Picture image;
     private int speed;
     private SkinTypeVegeta skin;
+    private boolean isAirBorn = false;
     private Player player;
 
     public PlayerOneHandler(int speed, Player player) {
@@ -45,14 +46,39 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
         d.setKey(KeyboardEvent.KEY_D);
         d.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent qPressed = new KeyboardEvent();
+        qPressed.setKey(KeyboardEvent.KEY_Q);
+        qPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent qReleased = new KeyboardEvent();
+        qReleased.setKey(KeyboardEvent.KEY_Q);
+        qReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent ePressed = new KeyboardEvent();
+        ePressed.setKey(KeyboardEvent.KEY_E);
+        ePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent eReleased = new KeyboardEvent();
+        eReleased.setKey(KeyboardEvent.KEY_E);
+        eReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
         //Inicialize Keyboard
         Keyboard k = new Keyboard(this);
 
-
+        //Movement Keys event Add
         k.addEventListener(w);
         k.addEventListener(a);
         k.addEventListener(s);
         k.addEventListener(d);
+
+        //punch Key Add
+        k.addEventListener(qPressed);
+        k.addEventListener(qReleased);
+
+        //Def Key Add
+        k.addEventListener(ePressed);
+        k.addEventListener(eReleased);
+
     }
 
     @Override
@@ -61,7 +87,9 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
                 if (checkBounderies(keyboardEvent)) {
+                   image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
                     image.translate(0, -speed);
+                    isAirBorn = true;
                 }
                 break;
             case KeyboardEvent.KEY_A:
@@ -72,6 +100,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
             case KeyboardEvent.KEY_S:
                 if (checkBounderies(keyboardEvent)) {
                     image.translate(0, speed);
+                    if(!checkBounderies(keyboardEvent)){
+                        isAirBorn =false;
+                        image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+                    }
                 }
                 break;
             case KeyboardEvent.KEY_D:
@@ -79,7 +111,13 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
                     image.translate(speed, 0);
                 }
                 break;
-
+            case KeyboardEvent.KEY_Q:
+                //TODO: Code for punch action
+                image.load(SkinTypeVegeta.VegetaPunchLeft.getPath());
+                break;
+            case KeyboardEvent.KEY_E:
+                //TODO: Code for Deff
+                break;
         }
 
     }
@@ -87,6 +125,20 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
+
+        switch (keyboardEvent.getKey()){
+            case KeyboardEvent.KEY_Q:
+                //TODO:COde for when punch ends
+                if(isAirBorn){
+                    image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+                }else {
+                 image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+                }
+                break;
+            case KeyboardEvent.KEY_E:
+                //TODO: Code for when def ends
+                break;
+        }
     }
 
 
