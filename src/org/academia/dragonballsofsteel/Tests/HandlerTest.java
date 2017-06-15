@@ -15,7 +15,11 @@ public class HandlerTest {
         back.draw();
 
         //Player1
-        Player test = new Player(PlayerType.PLAYERONE);
+        Player player = new Player(PlayerType.PLAYERONE);
+
+        //Player2
+        Player player1 = new Player(PlayerType.PLAYERTWO);
+
     }
 
 }

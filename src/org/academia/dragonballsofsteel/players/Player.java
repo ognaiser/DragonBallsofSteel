@@ -26,7 +26,7 @@ public class Player {
         if (playerType == PlayerType.PLAYERONE) {
             handler = new PlayerOneHandler(10, this);
         }else {
-            handler = new PlayerTwoHandler();
+            handler = new PlayerTwoHandler(10,this);
         }
 
         this.posx = handler.getPosx();

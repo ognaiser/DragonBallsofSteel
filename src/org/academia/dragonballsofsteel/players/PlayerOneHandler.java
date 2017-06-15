@@ -104,11 +104,15 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
                         isAirBorn =false;
                         image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
                     }
+                    System.out.println("X: "+ image.getX());
+                    System.out.println("Y: "+ image.getY());
                 }
                 break;
             case KeyboardEvent.KEY_D:
                 if (checkBounderies(keyboardEvent)) {
                     image.translate(speed, 0);
+                    System.out.println("X: "+ image.getX());
+                    System.out.println("Y: "+ image.getY());
                 }
                 break;
             case KeyboardEvent.KEY_Q:
