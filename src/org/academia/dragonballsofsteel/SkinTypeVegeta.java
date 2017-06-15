@@ -1,7 +1,7 @@
 package org.academia.dragonballsofsteel;
 
 /**
- * Path to all of the skins
+ * Path to all of the skins to Vegeta
  */
 
 public enum SkinTypeVegeta {
@@ -16,7 +16,7 @@ public enum SkinTypeVegeta {
     VegetaPunchLeft("Resources/vegeta/vegeta_murro_2_esquerda.png"),
     VegetaPunchRight("Resources/vegeta/vegeta_murro_2_direita.png"),
     VegetaFallRight("Resources/vegeta/vegeta_cai_2_direita.png"),
-    VegeteFallLeft("Resources/vegeta/vegeta_cai_2_esquerda.png"),
+    VegetaFallLeft("Resources/vegeta/vegeta_cai_2_esquerda.png"),
     VegetaDeadRigh("Resources/vegeta/vegeta_cai_3_direita.png"),
     VegetaDeadLeft("Resources/vegeta/vegeta_cai_3_esquerda.png");
 
