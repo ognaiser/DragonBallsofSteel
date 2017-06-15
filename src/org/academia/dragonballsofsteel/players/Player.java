@@ -14,8 +14,8 @@ public class Player {
     private int punchPower = 20;
     private int kickPower = 20;
     private boolean defeated;
-    protected static int posx;
-    protected static int posy;
+    protected int posx;
+    protected int posy;
     private PlayerHandlers handler;
 
     public Player(int posx, int posy, PlayerHandlers handler) {
