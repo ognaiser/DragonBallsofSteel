@@ -13,7 +13,7 @@ public class HandlerTest {
         back.draw();
 
         //Player1
-        PlayerOneHandler Playertest = new PlayerOneHandler(660,290, 10);
+        PlayerOneHandler Playertest = new PlayerOneHandler( 10);
 
     }
 
