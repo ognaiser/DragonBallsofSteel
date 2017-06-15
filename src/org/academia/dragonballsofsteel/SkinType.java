@@ -5,7 +5,7 @@ package org.academia.dragonballsofsteel;
  */
 
 public enum SkinType {
-    VegetaFrenteEsquerda("Resources/vegeta_frente_esquerda.png"),
+    VegetaFrenteEsquerda("Resources/vegeta/vegeta_start_direita.png"),
     Back("Resources/back.png");
 
     private String path;
