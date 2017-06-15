@@ -166,6 +166,11 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 break;
             case KeyboardEvent.KEY_E:
                 //TODO: Code for Deff
+                if (isRight){
+                    image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
+                }else {
+                    image.load(SkinTypeVegeta.VegetaDefRight.getPath());
+                }
                 break;
 
         }
@@ -201,6 +206,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
             case KeyboardEvent.KEY_E:
                 //TODO: Code for when def ends
+                sideMoveSkinSetter();
                 break;
         }
     }

@@ -167,6 +167,11 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 break;
             case KeyboardEvent.KEY_L:
                 //TODO: Code for Deff
+                if (isRight){
+                    image.load(SkinTypeGoku.GokuDefLeft.getPath());
+                }else {
+                    image.load(SkinTypeGoku.GokuDefRight.getPath());
+                }
                 break;
 
         }
@@ -202,6 +207,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
             case KeyboardEvent.KEY_L:
                 //TODO: Code for when def ends
+                sideMoveSkinSetter();
                 break;
         }
     }
