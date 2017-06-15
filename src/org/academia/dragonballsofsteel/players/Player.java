@@ -16,7 +16,7 @@ public class Player {
     private boolean defeated;
     private int posx;
     private int posy;
-    private PlayerHandlers handler;
+    private PlayerOneHandler handler;
 
     /**
      *
@@ -24,10 +24,11 @@ public class Player {
      * @param posy set position on Y Axis
      * @param handler defines which keyboard to use
      */
-    public Player(int posx, int posy, PlayerHandlers handler) {
-        this.posx = posx;
-        this.posy = posy;
+    public Player() {
         //TODO: inicialize handler here!
+        handler = new PlayerOneHandler(10, this);
+        this.posx = handler.getPosx();
+        this.posy = handler.getPosy();
     }
 
     /**
