@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.Tests;
 
 import org.academia.dragonballsofsteel.SkinType;
+import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerOneHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -13,8 +14,7 @@ public class HandlerTest {
         back.draw();
 
         //Player1
-        PlayerOneHandler Playertest = new PlayerOneHandler(660,290, 10);
-
+        Player test = new Player();
     }
 
 }

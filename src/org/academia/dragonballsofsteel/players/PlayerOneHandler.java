@@ -16,14 +16,16 @@ public class PlayerOneHandler implements KeyboardHandler {
     private Picture image;
     private int speed;
     private SkinType skin;
+    private Player player;
 
-    public PlayerOneHandler(int posx, int posy, int speed) {
+    public PlayerOneHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(posx, posy, SkinType.VegetaFrenteEsquerda.getPath());
+        image = new Picture(660, 290, SkinType.VegetaFrenteEsquerda.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinType.VegetaFrenteEsquerda;
+        this.player = player;
 
         //Inicialize Key Events
 
