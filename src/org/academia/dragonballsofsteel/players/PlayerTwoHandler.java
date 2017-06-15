@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  * Handles Player 2 keyboard keys
  */
 
-public class PlayerTwoHandler implements KeyboardHandler{
+public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
     public PlayerTwoHandler() {
 
@@ -21,5 +21,15 @@ public class PlayerTwoHandler implements KeyboardHandler{
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
+    }
+
+    @Override
+    public int getPosx() {
+        return 0;
+    }
+
+    @Override
+    public int getPosy() {
+        return 0;
     }
 }
