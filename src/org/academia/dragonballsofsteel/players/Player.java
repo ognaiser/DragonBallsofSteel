@@ -161,4 +161,9 @@ public class Player {
         return handler.getPosy();
     }
 
+
+    public void setColisionChecker(PlayerColissionChecker checker){
+        handler.setColisonCheker(checker);
+    }
+
 }

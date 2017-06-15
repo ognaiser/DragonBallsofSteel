@@ -19,6 +19,8 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     private SkinTypeGoku skin;
     private boolean isAirBorn = false;
     private Player player;
+    private PlayerColissionChecker checker;
+    private boolean isRight = false;
 
     public PlayerTwoHandler(int speed, Player player) {
 
@@ -88,54 +90,116 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 if (checkBounderies(keyboardEvent)) {
-                    image.load(SkinTypeGoku.GokuFlyRight.getPath());
+                    if (isRight) {
+                        image.load(SkinTypeGoku.GokuFlyLeft.getPath());
+                        isAirBorn = true;
+                    } else {
+                        image.load(SkinTypeGoku.GokuFlyRight.getPath());
+                        isAirBorn = true;
+                    }
                     image.translate(0, -speed);
-                    isAirBorn = true;
                 }
                 break;
+
             case KeyboardEvent.KEY_LEFT:
+
                 if (checkBounderies(keyboardEvent)) {
+
+                    if (image.getX() < checker.getPlayerOneX()) {
+                        isRight = false;
+                    } else {
+                        isRight = true;
+                    }
+
                     image.translate(-speed, 0);
+
+                    sideMoveSkinSetter();
+
                 }
                 break;
+
             case KeyboardEvent.KEY_DOWN:
                 if (checkBounderies(keyboardEvent)) {
-                    image.translate(0, speed);
-                    if(!checkBounderies(keyboardEvent)){
-                        isAirBorn =false;
-                        image.load(SkinTypeGoku.GokuGroundRight.getPath());
+                    if (isRight) {
+                        image.translate(0, speed);
+                        if (!checkBounderies(keyboardEvent)) {
+                            isAirBorn = false;
+                            image.load(SkinTypeGoku.GokuGroundLeft.getPath());
+                        } else {
+                            image.load(SkinTypeGoku.GokuFlyLeft.getPath());
+                        }
+                    } else {
+                        image.translate(0, speed);
+                        if (!checkBounderies(keyboardEvent)) {
+                            isAirBorn = false;
+                            image.load(SkinTypeGoku.GokuGroundRight.getPath());
+                        } else {
+                            image.load(SkinTypeGoku.GokuFlyRight.getPath());
+                        }
                     }
                 }
                 break;
+
             case KeyboardEvent.KEY_RIGHT:
+
                 if (checkBounderies(keyboardEvent)) {
+
+                    if (image.getX() > checker.getPlayerOneX()) {
+                        isRight = true;
+                    } else {
+                        isRight = false;
+                    }
+
                     image.translate(speed, 0);
+
+                    sideMoveSkinSetter();
                 }
+
                 break;
+
             case KeyboardEvent.KEY_K:
                 //TODO: Code for punch action
-                image.load(SkinTypeGoku.GokuPunchRight.getPath());
+                if (isRight) {
+                    image.load(SkinTypeGoku.GokuPunchLeft.getPath());
+                } else {
+                    image.load(SkinTypeGoku.GokuPunchRight.getPath());
+                }
                 break;
             case KeyboardEvent.KEY_L:
                 //TODO: Code for Deff
                 break;
+
         }
 
+    }
+
+    private void sideMoveSkinSetter() {
+
+        if (isRight) {
+            if (isAirBorn) {
+                image.load(SkinTypeGoku.GokuFlyLeft.getPath());
+            } else {
+                image.load(SkinTypeGoku.GokuGroundLeft.getPath());
+            }
+        } else {
+            if (isAirBorn) {
+                image.load(SkinTypeGoku.GokuFlyRight.getPath());
+            } else {
+                image.load(SkinTypeGoku.GokuGroundRight.getPath());
+            }
+        }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
 
-        switch (keyboardEvent.getKey()){
+        switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_K:
                 //TODO:COde for when punch ends
-                if(isAirBorn){
-                    image.load(SkinTypeGoku.GokuFlyRight.getPath());
-                }else {
-                    image.load(SkinTypeGoku.GokuGroundRight.getPath());
-                }
+                sideMoveSkinSetter();
                 break;
+
             case KeyboardEvent.KEY_L:
                 //TODO: Code for when def ends
                 break;
@@ -147,22 +211,22 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                if (image.getY() - speed < 0){
+                if (image.getY() - speed < 0) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_LEFT:
-                if (image.getX() - speed < 0){
+                if (image.getX() - speed < 0) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_DOWN:
-                if (image.getY() + speed > 300){
+                if (image.getY() + speed > 290) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                if (image.getX() + speed > 760){
+                if (image.getX() + speed > 760) {
                     return false;
                 }
                 break;
@@ -170,13 +234,17 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         return true;
     }
-
     public int getPosx() {
         return image.getX();
     }
 
 
     public int getPosy() {
-        return image.getMaxY();
+        return image.getY();
+    }
+
+    @Override
+    public void setColisonCheker(PlayerColissionChecker cheker) {
+        this.checker = cheker;
     }
 }

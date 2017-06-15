@@ -14,6 +14,7 @@ public class PlayerColissionChecker {
         return playerOne.getPosx();
     }
 
+
     public int getPlayerOneY() {
         return playerOne.getPosy();
     }

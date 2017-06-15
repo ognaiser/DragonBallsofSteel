@@ -6,4 +6,6 @@ public interface PlayerHandler {
 
     int getPosy();
 
+    void setColisonCheker(PlayerColissionChecker cheker);
+
 }

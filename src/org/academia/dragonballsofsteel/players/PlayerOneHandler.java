@@ -11,13 +11,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  * Handles Player 1 keyboard keys
  */
 
-public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
+public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
     private Picture image;
     private int speed;
     private SkinTypeVegeta skin;
     private boolean isAirBorn = false;
     private Player player;
+    private boolean isRight = true;
+    private PlayerColissionChecker checker;
 
     public PlayerOneHandler(int speed, Player player) {
 
@@ -87,58 +89,116 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
                 if (checkBounderies(keyboardEvent)) {
-                   image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+                    if (isRight) {
+                        image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+                        isAirBorn = true;
+                    } else {
+                        image.load(SkinTypeVegeta.VegetaFlyRight.getPath());
+                        isAirBorn = true;
+                    }
                     image.translate(0, -speed);
-                    isAirBorn = true;
                 }
                 break;
+
             case KeyboardEvent.KEY_A:
+
                 if (checkBounderies(keyboardEvent)) {
+
+                    if (image.getX() < checker.getPlayerTwoX()) {
+                        isRight = false;
+                    } else {
+                        isRight = true;
+                    }
+
                     image.translate(-speed, 0);
+
+                    sideMoveSkinSetter();
+
                 }
                 break;
+
             case KeyboardEvent.KEY_S:
                 if (checkBounderies(keyboardEvent)) {
-                    image.translate(0, speed);
-                    if(!checkBounderies(keyboardEvent)){
-                        isAirBorn =false;
-                        image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+                    if (isRight) {
+                        image.translate(0, speed);
+                        if (!checkBounderies(keyboardEvent)) {
+                            isAirBorn = false;
+                            image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+                        } else {
+                            image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+                        }
+                    } else {
+                        image.translate(0, speed);
+                        if (!checkBounderies(keyboardEvent)) {
+                            isAirBorn = false;
+                            image.load(SkinTypeVegeta.VegetaGroundRight.getPath());
+                        } else {
+                            image.load(SkinTypeVegeta.VegetaFlyRight.getPath());
+                        }
+
                     }
-                    System.out.println("X: "+ image.getX());
-                    System.out.println("Y: "+ image.getY());
                 }
                 break;
+
             case KeyboardEvent.KEY_D:
                 if (checkBounderies(keyboardEvent)) {
+
+                    if (image.getX() > checker.getPlayerTwoX()) {
+                        isRight = true;
+                    } else {
+                        isRight = false;
+                    }
+
                     image.translate(speed, 0);
-                    System.out.println("X: "+ image.getX());
-                    System.out.println("Y: "+ image.getY());
+
+                    sideMoveSkinSetter();
                 }
+
                 break;
+
             case KeyboardEvent.KEY_Q:
                 //TODO: Code for punch action
-                image.load(SkinTypeVegeta.VegetaPunchLeft.getPath());
+                if (isRight) {
+                    image.load(SkinTypeVegeta.VegetaPunchLeft.getPath());
+                } else {
+                    image.load(SkinTypeVegeta.VegetaPunchRight.getPath());
+                }
                 break;
             case KeyboardEvent.KEY_E:
                 //TODO: Code for Deff
                 break;
+
         }
 
+    }
+
+    private void sideMoveSkinSetter() {
+
+        if (isRight) {
+            if (isAirBorn) {
+                image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+            } else {
+                image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+            }
+        } else {
+            if (isAirBorn) {
+                image.load(SkinTypeVegeta.VegetaFlyRight.getPath());
+            } else {
+                image.load(SkinTypeVegeta.VegetaGroundRight.getPath());
+            }
+        }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
 
-        switch (keyboardEvent.getKey()){
+        switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_Q:
                 //TODO:COde for when punch ends
-                if(isAirBorn){
-                    image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
-                }else {
-                 image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
-                }
+                    sideMoveSkinSetter();
                 break;
+
             case KeyboardEvent.KEY_E:
                 //TODO: Code for when def ends
                 break;
@@ -150,22 +210,22 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
-                if (image.getY() - speed < 0){
+                if (image.getY() - speed < 0) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                if (image.getX() - speed < 0){
+                if (image.getX() - speed < 0) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_S:
-                if (image.getY() + speed > 300){
+                if (image.getY() + speed > 290) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                if (image.getX() + speed > 760){
+                if (image.getX() + speed > 760) {
                     return false;
                 }
                 break;
@@ -178,8 +238,13 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler{
         return image.getX();
     }
 
-
     public int getPosy() {
-        return image.getMaxY();
+        return image.getY();
     }
+
+    @Override
+    public void setColisonCheker(PlayerColissionChecker cheker) {
+        this.checker = cheker;
+    }
+
 }

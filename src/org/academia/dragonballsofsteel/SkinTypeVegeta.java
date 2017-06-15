@@ -18,7 +18,9 @@ public enum SkinTypeVegeta {
     VegetaFallRight("Resources/vegeta/vegeta_cai_2_direita.png"),
     VegetaFallLeft("Resources/vegeta/vegeta_cai_2_esquerda.png"),
     VegetaDeadRigh("Resources/vegeta/vegeta_cai_3_direita.png"),
-    VegetaDeadLeft("Resources/vegeta/vegeta_cai_3_esquerda.png");
+    VegetaDeadLeft("Resources/vegeta/vegeta_cai_3_esquerda.png"),
+    VegetaHitLeft("Resources/vegeta/vegeta_cai_2_direita.png"),
+    VegetaHitRight("Resources/vegeta/vegeta_cai_2_esquerda.png");
 
 
     private String path;

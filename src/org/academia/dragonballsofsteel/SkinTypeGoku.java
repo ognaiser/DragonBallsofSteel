@@ -18,7 +18,9 @@ public enum SkinTypeGoku {
     GokuFallRight("Resources/goku/goku_cai_1_direita.png"),
     GokuFallLeft("Resources/goku/goku_cai_1_esquerda.png"),
     GokuDeadRigh("Resources/goku/goku_cai_3_direita.png"),
-    GokuDeadLeft("Resources/goku/goku_cai_3_esquerda.png");
+    GokuDeadLeft("Resources/goku/goku_cai_3_esquerda.png"),
+    GokuHitLeft("Resources/goku/goku_cai_2_direita.png"),
+    GokuHitRight("Resources/goku/goku_cai_2_esquerda.png");
 
 
     private String path;
