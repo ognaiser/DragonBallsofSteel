@@ -1,7 +1,9 @@
 package org.academia.main.Tests;
 
+import org.academia.dragonballsofsteel.Game;
 import org.academia.dragonballsofsteel.SkinTypeExtra;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
+import org.academia.dragonballsofsteel.Tests.HandlerTest;
 import org.academia.main.SkinMenus;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -15,7 +17,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class MenuTest implements KeyboardHandler {
 
     public int i = 0;
-    public Picture[] sel = new Picture[7];
+    public Picture[] sel = new Picture[3];
+    public Picture menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
 
     public MenuTest() {
 
@@ -24,22 +27,13 @@ public class MenuTest implements KeyboardHandler {
         a.draw();
         Picture b = new Picture(300, 300, SkinTypeVegeta.VegetaDefLeft.getPath());
         Picture c = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
-        Picture d = new Picture(300, 300, SkinTypeVegeta.VegetaFlyLeft.getPath());
-        Picture e = new Picture(300, 300, SkinTypeVegeta.VegetaGroundLeft.getPath());
-        Picture f = new Picture(300, 300, SkinTypeVegeta.VegetaPunchLeft.getPath());
-        Picture g = new Picture(300, 300, SkinTypeVegeta.VegetaStartLeft.getPath());
 
-        Picture menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
         menu.draw();
 
 
         sel[0] = a;
         sel[1] = b;
         sel[2] = c;
-        sel[3] = d;
-        sel[4] = e;
-        sel[5] = f;
-        sel[6] = g;
 
         Keyboard k = new Keyboard(this);
 
@@ -72,6 +66,8 @@ public class MenuTest implements KeyboardHandler {
                     i++;
                     sel[i-1].delete();
                     sel[i].draw();
+                    menu.delete();
+                    menu.draw();
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
@@ -79,10 +75,13 @@ public class MenuTest implements KeyboardHandler {
                     i--;
                     sel[i+1].delete();
                     sel[i].draw();
+                    menu.delete();
+                    menu.draw();
                 }
                 break;
             case KeyboardEvent.KEY_SPACE:
-                System.out.println("PIMBA!");
+                Game game = new Game();
+                game.init();
                 break;
 
         }
