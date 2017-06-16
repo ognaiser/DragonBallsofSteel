@@ -12,14 +12,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
+    protected boolean isGameOver = false;
 
     public void init(){
+
+        //Todo: Get Instruction Screen
 
         //BackGround
         Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
         back.draw();
-
-        System.out.println(back.getWidth() + " " + back.getWidth());
 
         //Game Start
         start();
@@ -36,6 +37,17 @@ public class Game {
         PlayerColissionChecker checker = new PlayerColissionChecker(player,player1);
         player.setColisionChecker(checker);
         player1.setColisionChecker(checker);
+
+        while (!isGameOver){
+
+
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
+        }
+
     }
 
 }

@@ -1,45 +1,42 @@
-package org.academia.main.Tests;
+package org.academia.main;
 
-import org.academia.dragonballsofsteel.Game;
-import org.academia.dragonballsofsteel.SkinTypeExtra;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
-import org.academia.dragonballsofsteel.Tests.HandlerTest;
-import org.academia.main.SkinMenus;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-/**
- * Created by codecadet on 15/06/2017.
- */
-public class MenuTest implements KeyboardHandler {
+public class MainKeyHandler implements KeyboardHandler {
 
-    public int i = 0;
-    public Picture[] sel = new Picture[3];
-    public Picture menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
-    public Keyboard k = new Keyboard(this);
-    public KeyboardEvent left = new KeyboardEvent();
-    public KeyboardEvent right = new KeyboardEvent();
-    public KeyboardEvent space = new KeyboardEvent();
+    protected boolean isGameStarted;
+    protected int i = 0;
+    protected Picture[] sel = new Picture[3];
+    protected Picture menu;
+    protected Keyboard k = new Keyboard(this);
+    protected KeyboardEvent left = new KeyboardEvent();
+    protected KeyboardEvent right = new KeyboardEvent();
+    protected KeyboardEvent space = new KeyboardEvent();
 
-    public MenuTest() {
+    public MainKeyHandler() {
 
+        //Picture initialization
 
         Picture a = new Picture(185, 265, SkinMenus.DragonBalls.getPath());
         a.draw();
         Picture b = new Picture(300, 300, SkinTypeVegeta.VegetaDefLeft.getPath());
         Picture c = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
 
+        //BackGround Picture
+        menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
         menu.draw();
 
-
+        //Picture Array initialization
         sel[0] = a;
         sel[1] = b;
         sel[2] = c;
 
-
+        //Events initialization
         left.setKey(KeyboardEvent.KEY_LEFT);
         left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -53,8 +50,26 @@ public class MenuTest implements KeyboardHandler {
         k.addEventListener(left);
         k.addEventListener(space);
 
+
     }
 
+    protected void menuScreenInit() {
+        sel[0].draw();
+        menu.draw();
+        i = 0;
+        isGameStarted = false;
+
+        k.addEventListener(right);
+        k.addEventListener(left);
+        k.addEventListener(space);
+
+    }
+
+    protected void removeListners(){
+        k.removeEventListener(left);
+        k.removeEventListener(right);
+        k.removeEventListener(space);
+    }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
@@ -78,13 +93,9 @@ public class MenuTest implements KeyboardHandler {
                 }
                 break;
             case KeyboardEvent.KEY_SPACE:
-                Game game = new Game();
+                isGameStarted = true;
                 menu.delete();
                 sel[i].delete();
-                k.removeEventListener(left);
-                k.removeEventListener(right);
-                k.removeEventListener(space);
-                game.init();
                 break;
 
         }
@@ -94,5 +105,4 @@ public class MenuTest implements KeyboardHandler {
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
-
 }
