@@ -3,6 +3,7 @@ package org.academia.dragonballsofsteel;
 import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerColissionChecker;
 import org.academia.dragonballsofsteel.players.PlayerType;
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -13,9 +14,12 @@ public class Game {
 
 
     public void init(){
+
         //BackGround
         Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
         back.draw();
+
+        System.out.println(back.getWidth() + " " + back.getWidth());
 
         //Game Start
         start();

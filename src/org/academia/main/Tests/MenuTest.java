@@ -19,6 +19,10 @@ public class MenuTest implements KeyboardHandler {
     public int i = 0;
     public Picture[] sel = new Picture[3];
     public Picture menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
+    public Keyboard k = new Keyboard(this);
+    public KeyboardEvent left = new KeyboardEvent();
+    public KeyboardEvent right = new KeyboardEvent();
+    public KeyboardEvent space = new KeyboardEvent();
 
     public MenuTest() {
 
@@ -35,25 +39,19 @@ public class MenuTest implements KeyboardHandler {
         sel[1] = b;
         sel[2] = c;
 
-        Keyboard k = new Keyboard(this);
 
-        KeyboardEvent left = new KeyboardEvent();
         left.setKey(KeyboardEvent.KEY_LEFT);
         left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent right = new KeyboardEvent();
         right.setKey(KeyboardEvent.KEY_RIGHT);
         right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-
-        KeyboardEvent space = new KeyboardEvent();
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         k.addEventListener(right);
         k.addEventListener(left);
         k.addEventListener(space);
-
 
     }
 
@@ -81,6 +79,11 @@ public class MenuTest implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_SPACE:
                 Game game = new Game();
+                menu.delete();
+                sel[i].delete();
+                k.removeEventListener(left);
+                k.removeEventListener(right);
+                k.removeEventListener(space);
                 game.init();
                 break;
 
@@ -91,4 +94,5 @@ public class MenuTest implements KeyboardHandler {
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
+
 }
