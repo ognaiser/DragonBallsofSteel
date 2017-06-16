@@ -1,7 +1,6 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.SkinTypeGoku;
-import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

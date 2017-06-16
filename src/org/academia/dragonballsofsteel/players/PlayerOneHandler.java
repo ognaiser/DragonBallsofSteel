@@ -13,6 +13,17 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
+    /**
+     * Each handler has a:
+     * -Image (Picture)
+     * -Speed (int)
+     * -Skin (SkinTypeVegeta)
+     * -AirBorn State (Boolean)
+     * -Player (Player)
+     * -Is in Right side state (Boolean)
+     * -Collision Checker (ColissionChecker)
+     */
+
     private Picture image;
     private int speed;
     private SkinTypeVegeta skin;
@@ -20,6 +31,14 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private Player player;
     private boolean isRight = true;
     private PlayerColissionChecker checker;
+
+    /**
+     *
+     * Constructer for Player 1
+     *
+     * @param speed
+     * @param player
+     */
 
     public PlayerOneHandler(int speed, Player player) {
 
@@ -31,7 +50,6 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         this.player = player;
 
         //Inicialize Key Events
-
         KeyboardEvent w = new KeyboardEvent();
         w.setKey(KeyboardEvent.KEY_W);
         w.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -83,6 +101,11 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
     }
 
+    /**
+     * KeyPressedEvents
+     *
+     * @param keyboardEvent
+     */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
@@ -166,9 +189,9 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 break;
             case KeyboardEvent.KEY_E:
                 //TODO: Code for Deff
-                if (isRight){
+                if (isRight) {
                     image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
-                }else {
+                } else {
                     image.load(SkinTypeVegeta.VegetaDefRight.getPath());
                 }
                 break;
@@ -177,23 +200,12 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
     }
 
-    private void sideMoveSkinSetter() {
-
-        if (isRight) {
-            if (isAirBorn) {
-                image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
-            } else {
-                image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
-            }
-        } else {
-            if (isAirBorn) {
-                image.load(SkinTypeVegeta.VegetaFlyRight.getPath());
-            } else {
-                image.load(SkinTypeVegeta.VegetaGroundRight.getPath());
-            }
-        }
-    }
-
+    /**
+     *
+     * KeyReleased Events
+     *
+     * @param keyboardEvent
+     */
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
@@ -201,7 +213,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_Q:
                 //TODO:COde for when punch ends
-                    sideMoveSkinSetter();
+                sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_E:
@@ -211,7 +223,38 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         }
     }
 
+    /**
+     * Decides witch Skin to load depending on state
+     */
+    private void sideMoveSkinSetter() {
 
+        if (isRight) {
+
+            if (isAirBorn) {
+                image.load(SkinTypeVegeta.VegetaFlyLeft.getPath());
+            } else {
+                image.load(SkinTypeVegeta.VegetaGroundLeft.getPath());
+            }
+
+        } else {
+
+            if (isAirBorn) {
+                image.load(SkinTypeVegeta.VegetaFlyRight.getPath());
+            } else {
+                image.load(SkinTypeVegeta.VegetaGroundRight.getPath());
+            }
+
+        }
+
+    }
+
+    /**
+     *
+     * Check if you can move in a direction
+     *
+     * @param keyboardEvent
+     * @return
+     */
     private boolean checkBounderies(KeyboardEvent keyboardEvent) {
 
         switch (keyboardEvent.getKey()) {
@@ -240,6 +283,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return true;
     }
 
+
+    //Getters
     public int getPosx() {
         return image.getX();
     }
@@ -248,6 +293,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return image.getY();
     }
 
+    //Setters
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
         this.checker = cheker;

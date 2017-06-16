@@ -4,15 +4,10 @@ Collection of games, using a SimpleGrafics Lib.
 
 DragonBallsofSteel
 SineperElite 2.0
-Noughts and Crosses
+And MORE!!
 
-## To DO:
 
-### Get a Master working with core functionality.
-
-### Make branches to add features.
-
-### Git branch info (work on master till core fucn is ok):
+### Git branch commands info :
 	- git branch nomedobranch    --Create a new Branch
 	- git checkout nomedobranch  --Go to the new Branch
 	- git add .				   --Add files to the branch you are in 

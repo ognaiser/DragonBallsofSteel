@@ -11,9 +11,6 @@ public class HandlerTest {
 
     public static void main(String[] args) {
 
-        //TODO: Bug FIx when just one moves they dont update
-
-
         //BackGround
         Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
         back.draw();

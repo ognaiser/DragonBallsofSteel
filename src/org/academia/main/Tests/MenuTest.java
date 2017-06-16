@@ -2,6 +2,7 @@ package org.academia.main.Tests;
 
 import org.academia.dragonballsofsteel.SkinTypeExtra;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
+import org.academia.main.SkinMenus;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -18,16 +19,18 @@ public class MenuTest implements KeyboardHandler {
 
     public MenuTest() {
 
-        Picture menu = new Picture(0, 0, SkinTypeExtra.Arcade_Menu.getPath());
-        menu.draw();
 
-        Picture a = new Picture(300, 300, SkinTypeVegeta.VegetaDeadLeft.getPath());
+        Picture a = new Picture(185, 265, SkinMenus.DragonBalls.getPath());
+        a.draw();
         Picture b = new Picture(300, 300, SkinTypeVegeta.VegetaDefLeft.getPath());
         Picture c = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
         Picture d = new Picture(300, 300, SkinTypeVegeta.VegetaFlyLeft.getPath());
         Picture e = new Picture(300, 300, SkinTypeVegeta.VegetaGroundLeft.getPath());
         Picture f = new Picture(300, 300, SkinTypeVegeta.VegetaPunchLeft.getPath());
         Picture g = new Picture(300, 300, SkinTypeVegeta.VegetaStartLeft.getPath());
+
+        Picture menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
+        menu.draw();
 
 
         sel[0] = a;
