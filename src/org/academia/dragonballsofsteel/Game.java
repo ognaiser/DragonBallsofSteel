@@ -52,7 +52,7 @@ public class Game {
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
                 if (checker.fightingRange() && (!player1.isKeyPressed() && player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
-                    player1.takingDamage(50);
+                    player1.takingDamage(player.punch());
                     System.out.println("Goku : " + player1.getHealth());
                     player.setKeyPressed();
                 }
@@ -62,6 +62,24 @@ public class Game {
                     player.blockAttack(checker.fightingRange());
                     System.out.println(player.getEnergy());
                     player.setKeyPressed();
+            }
+
+            if(player.getKey().getKey() == KeyboardEvent.KEY_X && player.isKeyPressed()){
+                if (checker.fightingRange() && (!player1.isKeyPressed() && player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
+                    player1.takingDamage(player.kick());
+                    System.out.println("Goku : " + player1.getHealth());
+                    player.setKeyPressed();
+                }
+            }
+
+            if(player.getKey().getKey() == KeyboardEvent.KEY_F){
+                player.burstOfEnergy();
+            }
+
+            if(player.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()){
+                player.blockAttack(checker.fightingRange());
+                System.out.println(player.getEnergy());
+                player.setKeyPressed();
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()){
@@ -76,12 +94,22 @@ public class Game {
                     player1.blockAttack(checker.fightingRange());
                     player1.setKeyPressed();
             }
+
+            if(player.isDefeated() || player1.isDefeated()){
+                Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
+                back.draw();
+                isGameOver = true;
+            }
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
             }
         }
 
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+        }
     }
 
 }

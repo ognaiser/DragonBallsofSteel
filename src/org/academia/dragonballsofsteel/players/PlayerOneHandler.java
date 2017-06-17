@@ -86,6 +86,22 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         eReleased.setKey(KeyboardEvent.KEY_E);
         eReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
+        KeyboardEvent fPressed = new KeyboardEvent();
+        fPressed.setKey(KeyboardEvent.KEY_F);
+        fPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent fReleased = new KeyboardEvent();
+        fReleased.setKey(KeyboardEvent.KEY_F);
+        fReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent xPressed = new KeyboardEvent();
+        xPressed.setKey(KeyboardEvent.KEY_X);
+        xPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent xReleased = new KeyboardEvent();
+        xReleased.setKey(KeyboardEvent.KEY_X);
+        xReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
         //Inicialize Keyboard
         Keyboard k = new Keyboard(this);
 
@@ -102,6 +118,16 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         //Def Key Add
         k.addEventListener(ePressed);
         k.addEventListener(eReleased);
+
+        //kick Key Add
+        k.addEventListener(xPressed);
+        k.addEventListener(xReleased);
+
+        //burstEnergy Key Add
+        k.addEventListener(fPressed);
+        k.addEventListener(fReleased);
+
+
 
     }
 
@@ -200,7 +226,21 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 } else {
                     image.load(SkinTypeVegeta.VegetaDefRight.getPath());
                 }
+                break;/*
+            case KeyboardEvent.KEY_X:
+                //TODO: Code for Kick
+                if (isRight) {
+                    image.load(SkinTypeVegeta.);
+                } else {
+                    image.load(SkinTypeVegeta.VegetaDefRight.getPath());
+                }
                 break;
+            case KeyboardEvent.KEY_F:
+                //TODO: Code for Deff
+                image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
+                break;
+*/
+
 
         }
 
