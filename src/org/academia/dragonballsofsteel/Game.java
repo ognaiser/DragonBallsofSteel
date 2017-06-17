@@ -73,27 +73,41 @@ public class Game {
                 }
             }
 
-            if(player.getKey().getKey() == KeyboardEvent.KEY_F){
+            if(player.getKey().getKey() == KeyboardEvent.KEY_F && player.isKeyPressed()){
                 player.burstOfEnergy();
             }
 
-            if(player.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()){
-                player.blockAttack(checker.fightingRange());
-                System.out.println(player.getEnergy());
+            if(player.getKey().getKey() == KeyboardEvent.KEY_A && player.getPreviousKey().getKey() == KeyboardEvent.KEY_F &&
+                    player.isKeyPressed()){
+                if(player.teleport()){
+                    player.setPos(player1.getPosx() + player1.getWith() + 5, player1.getPosy());
+                }
                 player.setKeyPressed();
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()){
                 if (checker.fightingRange() && (player.isKeyPressed() && player.getKey().getKey() != KeyboardEvent.KEY_E)) {
-                    player.takingDamage(50);
+                    player.takingDamage(player1.punch());
                     System.out.println("Vegeta : " + player.getHealth());
                     player1.setKeyPressed();
                 }
             }
 
-            if(player1.getKey().getKey() == KeyboardEvent.KEY_L && player1.isKeyPressed()){
-                    player1.blockAttack(checker.fightingRange());
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_P && player1.isKeyPressed()){
+                if (checker.fightingRange() && (player.isKeyPressed() && player.getKey().getKey() != KeyboardEvent.KEY_E)) {
+                    player.takingDamage(player1.kick());
+                    System.out.println("Vegeta : " + player.getHealth());
                     player1.setKeyPressed();
+                }
+            }
+
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.isKeyPressed()){
+                player1.burstOfEnergy();
+            }
+
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_L && player1.isKeyPressed()){
+                player1.blockAttack(checker.fightingRange());
+                player1.setKeyPressed();
             }
 
             if(player.isDefeated() || player1.isDefeated()){

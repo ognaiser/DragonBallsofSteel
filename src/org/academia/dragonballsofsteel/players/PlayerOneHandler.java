@@ -33,6 +33,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private boolean isRight = true;
     private PlayerColissionChecker checker;
     private KeyboardEvent lastKey;
+    private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
 
     /**
@@ -51,7 +52,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         this.speed = speed;
         this.skin = SkinTypeVegeta.VegetaStartLeft;
         this.player = player;
-       lastKey = new KeyboardEvent();
+        lastKey = new KeyboardEvent();
+        previousKey = new KeyboardEvent();
 
         //Inicialize Key Events
         KeyboardEvent w = new KeyboardEvent();
@@ -138,7 +140,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
      */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
+        previousKey = lastKey;
         lastKey = keyboardEvent;
         isKeyPressed = true;
         switch (keyboardEvent.getKey()) {
@@ -236,7 +238,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 }
                 break;
             case KeyboardEvent.KEY_F:
-                //TODO: Code for Deff
+                //TODO: Code for Burst
                 image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
                 break;
 */
@@ -266,6 +268,16 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 //TODO: Code for when def ends
                 sideMoveSkinSetter();
                 break;
+/*
+            case KeyboardEvent.KEY_X:
+                //TODO: Code for when kick ends
+                sideMoveSkinSetter();
+                break;
+
+            case KeyboardEvent.KEY_F:
+                //TODO: Code for when burst ends
+                sideMoveSkinSetter();
+                break;*/
         }
     }
 
@@ -366,12 +378,23 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return lastKey;
     }
 
+    public KeyboardEvent getPreviousKey() {
+        return previousKey;
+    }
+
     public boolean isKeyPressed(){
         return isKeyPressed;
     }
 
     public void setKeyPressed(){
         isKeyPressed = false;
+    }
+
+    public void setPos(int x, int y){
+        image.delete();
+        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+        sideMoveSkinSetter();
+        image.draw();
     }
 
     //Setters

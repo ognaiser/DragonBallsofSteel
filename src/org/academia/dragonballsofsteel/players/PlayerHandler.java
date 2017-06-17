@@ -16,9 +16,13 @@ public interface PlayerHandler {
 
     KeyboardEvent getLastKey();
 
+    KeyboardEvent getPreviousKey();
+
     boolean isKeyPressed();
 
     void setKeyPressed();
+
+    void setPos(int x, int y);
 
     void setColisonCheker(PlayerColissionChecker cheker);
 

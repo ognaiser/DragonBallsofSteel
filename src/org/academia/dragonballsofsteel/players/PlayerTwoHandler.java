@@ -2,6 +2,7 @@ package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.Game;
 import org.academia.dragonballsofsteel.SkinTypeGoku;
+import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -22,6 +23,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     private PlayerColissionChecker checker;
     private boolean isRight = false;
     private KeyboardEvent lastKey;
+    private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
 
     public PlayerTwoHandler(int speed, Player player) {
@@ -33,7 +35,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         this.skin = SkinTypeGoku.GokuStartRight;
         this.player = player;
         lastKey = new KeyboardEvent();
-
+        previousKey = new KeyboardEvent();
 
         //Inicialize Key Events
 
@@ -69,6 +71,22 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         lReleased.setKey(KeyboardEvent.KEY_L);
         lReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
+        KeyboardEvent pPressed = new KeyboardEvent();
+        pPressed.setKey(KeyboardEvent.KEY_P);
+        pPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent pReleased = new KeyboardEvent();
+        pReleased.setKey(KeyboardEvent.KEY_P);
+        pReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent oPressed = new KeyboardEvent();
+        oPressed.setKey(KeyboardEvent.KEY_O);
+        oPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent oReleased = new KeyboardEvent();
+        oReleased.setKey(KeyboardEvent.KEY_O);
+        oReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
         //Inicialize Keyboard
         Keyboard k = new Keyboard(this);
 
@@ -85,12 +103,21 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         //Def Key Add
         k.addEventListener(lPressed);
         k.addEventListener(lReleased);
+        /*
+        //Kick Key Add
+        k.addEventListener(pPressed);
+        k.addEventListener(pReleased);
+
+        //Burst Key Add
+        k.addEventListener(oPressed);
+        k.addEventListener(oReleased);
+         */
 
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
+        previousKey = lastKey;
         lastKey = keyboardEvent;
         isKeyPressed = true;
         switch (keyboardEvent.getKey()) {
@@ -178,8 +205,19 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }else {
                     image.load(SkinTypeGoku.GokuDefRight.getPath());
                 }
+                break;/*
+            case KeyboardEvent.KEY_P:
+                //TODO: Code for Kick
+                if (isRight){
+                    image.load(SkinTypeGoku);
+                }else {
+                    image.load(SkinTypeGoku);
+                }
                 break;
-
+            case KeyboardEvent.KEY_O:
+                //TODO: Code for BurstEnergy
+                image.load(SkinTypeGoku.Goku);
+                break;*/
         }
 
     }
@@ -215,6 +253,16 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 //TODO: Code for when def ends
                 sideMoveSkinSetter();
                 break;
+/*
+            case KeyboardEvent.KEY_P:
+                //TODO: Code for when kick ends
+                sideMoveSkinSetter();
+                break;
+
+            case KeyboardEvent.KEY_O:
+                //TODO: Code for when burst ends
+                sideMoveSkinSetter();
+                break;*/
         }
     }
 
@@ -291,6 +339,16 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         isKeyPressed = false;
     }
 
+    public KeyboardEvent getPreviousKey() {
+        return previousKey;
+    }
+
+    public void setPos(int x, int y){
+        image.delete();
+        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+        sideMoveSkinSetter();
+        image.draw();
+    }
 
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
