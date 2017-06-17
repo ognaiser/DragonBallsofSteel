@@ -92,7 +92,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         lastKey = keyboardEvent;
-
+        isKeyPressed = true;
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 if (checkBounderies(keyboardEvent)) {
