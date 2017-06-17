@@ -7,8 +7,10 @@ public class SniperGame {
     //Todo: crate a gameObject Factory, MouseHadler ;
 
     Picture background;
-    protected boolean isGameOver = false;
-    public static final int apparenceTime = 2000;
+    private boolean isGameOver = false;
+    private int timePassed = 60000;
+    private Player player;
+
 
     public void init(){
 
@@ -16,18 +18,31 @@ public class SniperGame {
         background = new Picture(0,0, "Resources/sniper-scenario2-sample.jpg");
         background.draw();
 
+        player = new Player();
+
+
         start();
     }
 
     public void start(){
 
-
-
         while (!isGameOver){
+
+
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
             }
+
+            timePassed -= 100;
+            checkGameOver();
+
+        }
+    }
+
+    public void checkGameOver() {
+        if(timePassed == 0){
+            isGameOver = true;
         }
     }
 }
