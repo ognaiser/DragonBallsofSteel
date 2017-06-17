@@ -1,4 +1,7 @@
-package org.academia.sniper;
+package org.academia.sniper.Test;
+
+import org.academia.sniper.MouseHandler;
+import org.academia.sniper.SniperGame;
 
 /**
  * Created by mario on 17/06/2017.
@@ -6,6 +9,8 @@ package org.academia.sniper;
 public class SniperTest {
 
     public static void main(String[] args) {
+
+        MouseHandlerTEst m = new MouseHandlerTEst();
 
         SniperGame sniperGame = new SniperGame();
 

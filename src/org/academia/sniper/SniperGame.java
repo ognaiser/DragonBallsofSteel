@@ -13,7 +13,7 @@ public class SniperGame {
     public void init() {
 
         //Background
-        background = new Picture(0, 0, "Resources/sniper-scenario2-sample.jpg");
+        background = new Picture(0, 0, "Resources/Sniper_BG.jpg");
         background.draw();
 
         player = new Player();
@@ -39,6 +39,7 @@ public class SniperGame {
     public void checkGameOver() {
         if (timePassed == 0) {
             isGameOver = true;
+            System.out.println("Game Over");
         }
     }
 }
