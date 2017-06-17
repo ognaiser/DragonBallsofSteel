@@ -87,7 +87,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        lastKey.setKey(keyboardEvent.getKey());
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:

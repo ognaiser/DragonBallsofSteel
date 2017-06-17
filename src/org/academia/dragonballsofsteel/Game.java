@@ -46,13 +46,6 @@ public class Game {
 
         while (!isGameOver){
 
-            if(player.getKey().getKey() == KeyboardEvent.KEY_Q){
-                player1.takingDamage(50);
-            }
-
-            if(player.getKey().getKey() == KeyboardEvent.KEY_Q){
-                player1.takingDamage(50);
-            }
 
             try {
                 Thread.sleep(100);
