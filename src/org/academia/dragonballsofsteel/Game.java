@@ -31,7 +31,6 @@ public class Game {
 
         MouseHandlerTest m = new MouseHandlerTest();
 
-        //Todo fix background
 
         //Game Start
         start();
