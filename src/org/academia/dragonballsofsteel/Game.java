@@ -4,6 +4,7 @@ import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerColissionChecker;
 import org.academia.dragonballsofsteel.players.PlayerType;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -13,6 +14,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     protected boolean isGameOver = false;
+    public static final int bottomBounderi = 290;
+    public static final int rightBounderi = 760;
+
 
     public void init(){
 
@@ -21,6 +25,8 @@ public class Game {
         //BackGround
         Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
         back.draw();
+
+        //Todo fix background
 
         //Game Start
         start();
@@ -40,7 +46,13 @@ public class Game {
 
         while (!isGameOver){
 
+            if(player.getKey().getKey() == KeyboardEvent.KEY_Q){
+                player1.takingDamage(50);
+            }
 
+            if(player.getKey().getKey() == KeyboardEvent.KEY_Q){
+                player1.takingDamage(50);
+            }
 
             try {
                 Thread.sleep(100);

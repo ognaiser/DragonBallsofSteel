@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.PlayerHandlers;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 /**
  * Game object to be inicializied by the game
@@ -161,9 +162,24 @@ public class Player {
         return handler.getPosy();
     }
 
+    public int getWith(){
+        return handler.getWith();
+    }
+
+    public int getHeight(){
+        return handler.getHeight();
+    }
+
+    public int getSpeed(){
+        return handler.getSpeed();
+    }
 
     public void setColisionChecker(PlayerColissionChecker checker){
         handler.setColisonCheker(checker);
+    }
+
+    public KeyboardEvent getKey(){
+        return handler.getLastKey();
     }
 
 }

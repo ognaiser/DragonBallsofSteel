@@ -1,5 +1,6 @@
 package org.academia.dragonballsofsteel.players;
 
+import org.academia.dragonballsofsteel.Game;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -31,6 +32,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private Player player;
     private boolean isRight = true;
     private PlayerColissionChecker checker;
+    private KeyboardEvent lastKey;
 
     /**
      *
@@ -108,6 +110,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
      */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        lastKey.setKey(keyboardEvent.getKey());
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
@@ -267,22 +271,29 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 if (image.getX() - speed < 0) {
                     return false;
                 }
+                if (checker.checkPlayerCollision(keyboardEvent)){
+                    return false;
+                }
                 break;
             case KeyboardEvent.KEY_S:
-                if (image.getY() + speed > 290) {
+                if (image.getY() + speed > Game.bottomBounderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                if (image.getX() + speed > 760) {
+                if (image.getX() + speed > Game.rightBounderi) {
                     return false;
+                }
+                if (checker.checkPlayerCollision(keyboardEvent)){
+                   return false;
                 }
                 break;
         }
 
+
+
         return true;
     }
-
 
     //Getters
     public int getPosx() {
@@ -292,6 +303,27 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public int getPosy() {
         return image.getY();
     }
+
+    @Override
+    public int getWith() {
+        return image.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return image.getHeight();
+    }
+
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public KeyboardEvent getLastKey() {
+        return lastKey;
+    }
+
 
     //Setters
     @Override

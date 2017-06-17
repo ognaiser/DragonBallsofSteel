@@ -20,6 +20,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     private Player player;
     private PlayerColissionChecker checker;
     private boolean isRight = false;
+    public KeyboardEvent lastKey;
 
     public PlayerTwoHandler(int speed, Player player) {
 
@@ -85,6 +86,8 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        lastKey.setKey(keyboardEvent.getKey());
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
@@ -224,6 +227,9 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 if (image.getX() - speed < 0) {
                     return false;
                 }
+                if (checker.checkPlayerCollision(keyboardEvent)){
+                    return false;
+                }
                 break;
             case KeyboardEvent.KEY_DOWN:
                 if (image.getY() + speed > 290) {
@@ -232,6 +238,9 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 if (image.getX() + speed > 760) {
+                    return false;
+                }
+                if (checker.checkPlayerCollision(keyboardEvent)){
                     return false;
                 }
                 break;
@@ -246,6 +255,26 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
     public int getPosy() {
         return image.getY();
+    }
+
+    @Override
+    public int getWith() {
+        return image.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return image.getHeight();
+    }
+
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public KeyboardEvent getLastKey() {
+        return lastKey;
     }
 
     @Override
