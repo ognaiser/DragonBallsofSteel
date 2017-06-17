@@ -1,10 +1,10 @@
 package org.academia.sniper;
 
-public abstract class GameObjects implements Clickable {
+public abstract class GameObject implements Clickable {
 
     private int timeLeft;
 
-    public GameObjects(int timeLeft) {
+    public GameObject(int timeLeft) {
         this.timeLeft = timeLeft;
     }
 
