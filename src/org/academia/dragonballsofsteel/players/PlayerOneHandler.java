@@ -46,7 +46,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public PlayerOneHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(660, 290, SkinTypeVegeta.VegetaStartLeft.getPath());
+        image = new Picture(397, Game.bottomBounderi, SkinTypeVegeta.VegetaStartLeft.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinTypeVegeta.VegetaStartLeft;
@@ -265,12 +265,12 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
-                if (image.getY() - speed < 0) {
+                if (image.getY() - speed < Game.topBonderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                if (image.getX() - speed < 0) {
+                if (image.getX() - speed < Game.leftBonderi) {
                     return false;
                 }
                 if (checker.checkPlayerCollision(keyboardEvent)){

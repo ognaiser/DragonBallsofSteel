@@ -104,6 +104,14 @@ public class PlayerColissionChecker {
             }
         }
 
+        if((playerTwo.getPosx() > (playerOne.getPosx() + playerOne.getWith()) &&
+                (Math.abs(playerTwo.getPosx() - (playerOne.getPosx() + playerOne.getWith())) <= 10))  ||
+                (playerOne.getPosx() > (playerTwo.getPosx() + playerTwo.getWith()) &&
+                        (Math.abs(playerOne.getPosx() - (playerTwo.getPosx() + playerTwo.getWith())) <= 10))){
+            if(checkY()) {
+                return true;
+            }
+        }
         return false;
     }
 }

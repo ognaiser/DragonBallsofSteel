@@ -1,7 +1,7 @@
 package org.academia.dragonballsofsteel;
 
 public enum  SkinTypeExtra {
-    Back("Resources/back.png"),
+    Back("Resources/Background_DB.jpg"),
     BackCity("Resources/backcity.png");
 
     private String path;

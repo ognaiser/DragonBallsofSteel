@@ -1,5 +1,6 @@
 package org.academia.dragonballsofsteel.players;
 
+import org.academia.dragonballsofsteel.Game;
 import org.academia.dragonballsofsteel.SkinTypeGoku;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -26,7 +27,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     public PlayerTwoHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(160, 290, SkinTypeGoku.GokuStartRight.getPath());
+        image = new Picture(885, Game.bottomBounderi, SkinTypeGoku.GokuStartRight.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinTypeGoku.GokuStartRight;
@@ -222,12 +223,12 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                if (image.getY() - speed < 0) {
+                if (image.getY() - speed < Game.topBonderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_LEFT:
-                if (image.getX() - speed < 0) {
+                if (image.getX() - speed < Game.leftBonderi) {
                     return false;
                 }
                 if (checker.checkPlayerCollision(keyboardEvent)){
@@ -235,12 +236,12 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }
                 break;
             case KeyboardEvent.KEY_DOWN:
-                if (image.getY() + speed > 290) {
+                if (image.getY() + speed > Game.bottomBounderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                if (image.getX() + speed > 760) {
+                if (image.getX() + speed > Game.rightBounderi) {
                     return false;
                 }
                 if (checker.checkPlayerCollision(keyboardEvent)){
