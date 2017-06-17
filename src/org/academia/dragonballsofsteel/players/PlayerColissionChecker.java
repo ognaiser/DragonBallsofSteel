@@ -4,6 +4,9 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 public class PlayerColissionChecker {
 
+    //todo get a timer
+
+
     private Player playerOne;
     private Player playerTwo;
 
@@ -90,6 +93,15 @@ public class PlayerColissionChecker {
         if ((playerTwo.getPosy() + playerTwo.getHeight() >= playerOne.getPosy()) && playerTwo.getPosy() + playerTwo.getHeight() <= playerOne.getPosy() + playerOne.getHeight() ) {
             return true;
         }
+        return false;
+    }
+
+    public boolean fightingRange(){
+
+        if(playerOne.getPosx() > playerTwo.getPosx() && (playerOne.getPosx()) - (playerTwo.getPosx() + playerTwo.getWith()) <= 10){
+            return true;
+        }
+
         return false;
     }
 }

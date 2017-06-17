@@ -20,7 +20,8 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     private Player player;
     private PlayerColissionChecker checker;
     private boolean isRight = false;
-    public KeyboardEvent lastKey;
+    private KeyboardEvent lastKey;
+    private boolean isKeyPressed = false;
 
     public PlayerTwoHandler(int speed, Player player) {
 
@@ -30,6 +31,8 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         this.speed = speed;
         this.skin = SkinTypeGoku.GokuStartRight;
         this.player = player;
+        lastKey = new KeyboardEvent();
+
 
         //Inicialize Key Events
 
@@ -87,6 +90,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+        lastKey = keyboardEvent;
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
@@ -275,6 +279,17 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     public KeyboardEvent getLastKey() {
         return lastKey;
     }
+
+    @Override
+    public boolean isKeyPressed() {
+        return isKeyPressed;
+    }
+
+    @Override
+    public void setKeyPressed() {
+        isKeyPressed = false;
+    }
+
 
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {

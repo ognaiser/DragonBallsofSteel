@@ -16,6 +16,10 @@ public interface PlayerHandler {
 
     KeyboardEvent getLastKey();
 
+    boolean isKeyPressed();
+
+    void setKeyPressed();
+
     void setColisonCheker(PlayerColissionChecker cheker);
 
 }

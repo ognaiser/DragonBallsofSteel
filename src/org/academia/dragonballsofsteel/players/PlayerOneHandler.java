@@ -33,6 +33,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private boolean isRight = true;
     private PlayerColissionChecker checker;
     private KeyboardEvent lastKey;
+    private boolean isKeyPressed = false;
 
     /**
      *
@@ -50,6 +51,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         this.speed = speed;
         this.skin = SkinTypeVegeta.VegetaStartLeft;
         this.player = player;
+       lastKey = new KeyboardEvent();
 
         //Inicialize Key Events
         KeyboardEvent w = new KeyboardEvent();
@@ -111,7 +113,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-
+        lastKey = keyboardEvent;
+        isKeyPressed = true;
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
                 if (checkBounderies(keyboardEvent)) {
@@ -323,6 +326,13 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return lastKey;
     }
 
+    public boolean isKeyPressed(){
+        return isKeyPressed;
+    }
+
+    public void setKeyPressed(){
+        isKeyPressed = false;
+    }
 
     //Setters
     @Override

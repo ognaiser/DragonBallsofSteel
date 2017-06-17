@@ -182,4 +182,12 @@ public class Player {
         return handler.getLastKey();
     }
 
+    public boolean isKeyPressed(){
+        return handler.isKeyPressed();
+    }
+
+    public void setKeyPressed(){
+        handler.setKeyPressed();
+    }
+
 }

@@ -46,6 +46,14 @@ public class Game {
 
         while (!isGameOver){
 
+            if(player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
+                if (checker.fightingRange()) {
+                    player1.takingDamage(50);
+                    System.out.println(player1.getHealth());
+                    player.setKeyPressed();
+                }
+            }
+
 
             try {
                 Thread.sleep(100);
