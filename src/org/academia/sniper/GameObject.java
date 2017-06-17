@@ -8,6 +8,7 @@ public abstract class GameObject implements Clickable {
         this.timeLeft = timeLeft;
     }
 
+
     public void countDown(int time){
         timeLeft-= time;
     }
