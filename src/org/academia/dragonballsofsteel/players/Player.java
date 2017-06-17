@@ -106,12 +106,15 @@ public class Player {
      *
      * @return
      */
-    public int blockAttack() {
-        if (energy < 10) {
-            return -1;
+    public boolean blockAttack(boolean incomingAttack) {
+        if(incomingAttack) {
+            if (energy < 10) {
+                return false;
+            }
+            energy -= 2;
+            return true;
         }
-        energy -= 2;
-        return 0;
+        return true;
     }
 
     /**

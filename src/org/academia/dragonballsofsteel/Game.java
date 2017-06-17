@@ -47,14 +47,30 @@ public class Game {
         while (!isGameOver){
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
-                if (checker.fightingRange()) {
+                if (checker.fightingRange()){ //&& !player1.blockAttack(checker.fightingRange()) && (player1.getKey().getKey() != KeyboardEvent.KEY_L && player1.isKeyPressed())) {
                     player1.takingDamage(50);
-                    System.out.println(player1.getHealth());
+                    System.out.println("Goku : " + player1.getHealth());
                     player.setKeyPressed();
                 }
             }
 
+            if(player.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()){
+                    player.blockAttack(checker.fightingRange());
+                    player.setKeyPressed();
+            }
 
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
+                if (checker.fightingRange()){// && !player.blockAttack(checker.fightingRange()) && (player.getKey().getKey() != KeyboardEvent.KEY_L && player.isKeyPressed())) {
+                    player.takingDamage(50);
+                    System.out.println("Vegeta : " + player.getHealth());
+                    player1.setKeyPressed();
+                }
+            }
+
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()){
+                    player1.blockAttack(checker.fightingRange());
+                    player1.setKeyPressed();
+            }
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

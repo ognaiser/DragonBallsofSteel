@@ -98,8 +98,10 @@ public class PlayerColissionChecker {
 
     public boolean fightingRange(){
 
-        if(playerOne.getPosx() > playerTwo.getPosx() && (playerOne.getPosx()) - (playerTwo.getPosx() + playerTwo.getWith()) <= 10){
-            return true;
+        if(Math.abs(playerTwo.getPosx() - (playerOne.getPosx() + playerOne.getWith())) <= 10  || Math.abs(playerOne.getPosx() - (playerTwo.getPosx() + playerTwo.getWith())) <= 10){
+            if(checkY()) {
+                return true;
+            }
         }
 
         return false;
