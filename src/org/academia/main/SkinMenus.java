@@ -11,7 +11,8 @@ public enum SkinMenus {
     hacking_5("Resources/hacking_5.jpg"),
     hacking_end("Resources/hacking_end.png"),
     galo_main("Resources/MAIN_GALO.jpg"),
-    car_menu("Resources/car_menu.jpg");
+    car_menu("Resources/car_menu.jpg"),
+    galo_back("Resources/scenario-galo.png");
 
 
 
