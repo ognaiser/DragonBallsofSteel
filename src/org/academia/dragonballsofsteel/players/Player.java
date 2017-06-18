@@ -247,4 +247,8 @@ public class Player {
         handler.setKeyPressed();
     }
 
+    public void clean(){
+        handler.clean();
+    }
+
 }

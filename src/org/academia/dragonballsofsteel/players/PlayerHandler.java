@@ -30,4 +30,6 @@ public interface PlayerHandler {
 
     void setColisonCheker(PlayerColissionChecker cheker);
 
+    void clean();
+
 }
