@@ -11,7 +11,7 @@ public class MainKeyHandler implements KeyboardHandler {
 
     private boolean isGameStarted;
     private int i = 0;
-    private Picture[] sel = new Picture[3];
+    private Picture[] sel = new Picture[4];
     private Picture menu;
     private Keyboard k = new Keyboard(this);
     private KeyboardEvent space = new KeyboardEvent();
@@ -23,10 +23,11 @@ public class MainKeyHandler implements KeyboardHandler {
 
         //Picture initialization
 
-        Picture screenOne = new Picture(185, 265, SkinMenus.DragonBalls.getPath());
+        Picture screenOne = new Picture(188, 255, SkinMenus.DragonBalls.getPath());
         screenOne.draw();
         Picture screenTwo = new Picture(188, 256, SkinMenus.SnipeMenu.getPath());
         Picture screenThree = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
+        Picture screenFour = new Picture(185,265, SkinTypeVegeta.VegetaGroundLeft.getPath());
 
         //BackGround Picture
         menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
@@ -36,6 +37,7 @@ public class MainKeyHandler implements KeyboardHandler {
         sel[0] = screenOne;
         sel[1] = screenTwo;
         sel[2] = screenThree;
+        sel[3] = screenFour;
 
 
         //Events initialization
@@ -51,6 +53,8 @@ public class MainKeyHandler implements KeyboardHandler {
         k.addEventListener(right);
         k.addEventListener(left);
         k.addEventListener(space);
+
+        //Easter Eggs Listener
 
         KeyboardEvent c = new KeyboardEvent();
         c.setKey(KeyboardEvent.KEY_C);
@@ -77,7 +81,6 @@ public class MainKeyHandler implements KeyboardHandler {
         n.setKey(KeyboardEvent.KEY_N);
         n.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-
         k.addEventListener(c);
         k.addEventListener(a);
         k.addEventListener(r);
@@ -87,14 +90,10 @@ public class MainKeyHandler implements KeyboardHandler {
         k.addEventListener(i);
         k.addEventListener(n);
 
-
-
-
-
-
     }
 
     protected void menuScreenInit() {
+
         sel[0].draw();
         menu.draw();
         i = 0;
@@ -116,12 +115,14 @@ public class MainKeyHandler implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
-                if (i < sel.length - 1) {
-                    i++;
-                    sel[i - 1].delete();
-                    sel[i].draw();
-                    menu.delete();
-                    menu.draw();
+                if(count != 11){
+                    if (i < sel.length - 2) {
+                        desingMenu();
+                    }
+                }else {
+                    if (i < sel.length - 1) {
+                        desingMenu();
+                    }
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
@@ -164,6 +165,14 @@ public class MainKeyHandler implements KeyboardHandler {
                 break;
 
         }
+    }
+
+    private void desingMenu(){
+                i++;
+                sel[i - 1].delete();
+                sel[i].draw();
+                menu.delete();
+                menu.draw();
     }
 
     @Override

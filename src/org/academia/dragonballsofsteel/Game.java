@@ -14,19 +14,23 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
-    //TODO: Fix attack BUGS!!!! (WHAT HAVE YOU DONE RUBEN!!!) (They are not taking damage or you delete the souts)
+    //TODO: Fix attack BUGS!!!! (WHAT HAVE YOU DONE RUBEN!!!) (They are not taking damage or you delete the souts) **
     //TODO: fix bug when going up skin doesn't t Change Direction (not sure if it was working before may be YOUR FAULT THO!)
     //TODO: get thing when you go down or up you go to the side
     //TODO: get a health Display
 
+    //** After some bug testing i think the bg only hapens when players are on the ground
+
     //I fix start skins and you have new skins on all of the enums including start and ending screens and kick and charge animations both directions and you have hit animations if you want!
     //I also got you kamehameha skins!
+    //Did some changes to backgorund image
 
     protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
     public static final int rightBounderi = 1118;
     public static final int topBonderi = 146;
     public static final int leftBonderi = 143;
+    Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
 
 
     public void init(){
@@ -34,7 +38,6 @@ public class Game {
         //Todo: Get Instruction Screen
 
         //BackGround
-        Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
         back.draw();
 
         MouseHandlerTest m = new MouseHandlerTest();
@@ -118,7 +121,6 @@ public class Game {
             }
 
             if(player.isDefeated() || player1.isDefeated()){
-                Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
                 back.draw();
                 isGameOver = true;
             }
@@ -128,10 +130,14 @@ public class Game {
             }
         }
 
+
+
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
         }
+
+        back.delete();
     }
 
 }
