@@ -24,8 +24,14 @@ public interface PlayerHandler {
 
     boolean facingRight();
 
-    void setPos(int x, int y);
+    void moveInDirection(int xPos, boolean direction) throws InterruptedException;
+
+    void setSkin(boolean direction);
+
+    void setPos(int x, int y, boolean direction);
 
     void setColisonCheker(PlayerColissionChecker cheker);
+
+    void clean();
 
 }

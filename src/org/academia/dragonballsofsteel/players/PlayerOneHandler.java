@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.Game;
+import org.academia.dragonballsofsteel.SkinTypeGoku;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -36,6 +37,20 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
     private Keyboard k;
+    //Events
+    private KeyboardEvent fReleased;
+    private KeyboardEvent w;
+    private KeyboardEvent a;
+    private KeyboardEvent s;
+    private KeyboardEvent d;
+    private KeyboardEvent qPressed;
+    private KeyboardEvent qReleased;
+    private KeyboardEvent ePressed;
+    private KeyboardEvent eReleased;
+    private KeyboardEvent fPressed;
+    private KeyboardEvent xPressed;
+    private KeyboardEvent xReleased;
+
 
     /**
      *
@@ -57,51 +72,52 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         previousKey = new KeyboardEvent();
 
         //Inicialize Key Events
-        KeyboardEvent w = new KeyboardEvent();
+
+        w = new KeyboardEvent();
         w.setKey(KeyboardEvent.KEY_W);
         w.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent a = new KeyboardEvent();
+        a = new KeyboardEvent();
         a.setKey(KeyboardEvent.KEY_A);
         a.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent s = new KeyboardEvent();
+        s = new KeyboardEvent();
         s.setKey(KeyboardEvent.KEY_S);
         s.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent d = new KeyboardEvent();
+        d = new KeyboardEvent();
         d.setKey(KeyboardEvent.KEY_D);
         d.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent qPressed = new KeyboardEvent();
+        qPressed = new KeyboardEvent();
         qPressed.setKey(KeyboardEvent.KEY_Q);
         qPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent qReleased = new KeyboardEvent();
+        qReleased = new KeyboardEvent();
         qReleased.setKey(KeyboardEvent.KEY_Q);
         qReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent ePressed = new KeyboardEvent();
+        ePressed = new KeyboardEvent();
         ePressed.setKey(KeyboardEvent.KEY_E);
         ePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent eReleased = new KeyboardEvent();
+        eReleased = new KeyboardEvent();
         eReleased.setKey(KeyboardEvent.KEY_E);
         eReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent fPressed = new KeyboardEvent();
+        fPressed = new KeyboardEvent();
         fPressed.setKey(KeyboardEvent.KEY_F);
         fPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent fReleased = new KeyboardEvent();
+        fReleased = new KeyboardEvent();
         fReleased.setKey(KeyboardEvent.KEY_F);
         fReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent xPressed = new KeyboardEvent();
+        xPressed = new KeyboardEvent();
         xPressed.setKey(KeyboardEvent.KEY_X);
         xPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent xReleased = new KeyboardEvent();
+        xReleased = new KeyboardEvent();
         xReleased.setKey(KeyboardEvent.KEY_X);
         xReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
@@ -397,15 +413,74 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         isKeyPressed = false;
     }
 
-    public void setPos(int x, int y){
-        image.delete();
-        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
-        image.draw();
-        sideMoveSkinSetter();
+    @Override
+    public void setSkin(boolean direction){
+        if(direction) {
+            image.load(SkinTypeVegeta.VegetaHitRight.getPath());
+        } else {
+            image.load(SkinTypeVegeta.VegetaHitLeft.getPath());
+        }
     }
 
-    public void deleteHandlers(){
+    @Override
+    public void setPos(int x, int y, boolean direction){
+        image.delete();
+        if(direction) {
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+            image.draw();
+        } else{
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyRight.getPath());
+            image.draw();
+        }
+        sideMoveSkinSetter();
+        image.draw();
+    }
 
+    @Override
+    public void moveInDirection(int xPos, boolean direction) throws InterruptedException {
+        if(direction) {
+            boolean dir = (xPos < image.getX()) ? true : false;
+            image.delete();
+            int x = image.getX();
+            int xMove = x + 100;
+            int xLess = x - 100;
+            int y = image.getY();
+            if (dir) {
+                while (x < xMove) {
+                    x++;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+
+            } else {
+                while (x > xLess) {
+                    x--;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeVegeta.VegetaFallRight.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+            }
+        }
+
+    }
+
+    public void clean(){
+        image.delete();
+        k.removeEventListener(w);
+        k.removeEventListener(a);
+        k.removeEventListener(s);
+        k.removeEventListener(d);
+        k.removeEventListener(qPressed);
+        k.removeEventListener(qReleased);
+        k.removeEventListener(ePressed);
+        k.removeEventListener(eReleased);
+        k.removeEventListener(fPressed);
+        k.removeEventListener(fReleased);
+        k.removeEventListener(xPressed);
+        k.removeEventListener(xReleased);
     }
 
     //Setters
