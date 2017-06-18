@@ -5,9 +5,9 @@ import java.util.LinkedList;
 
 public class SniperGame {
 
-    Picture background;
+    private Picture background;
     private boolean isGameOver = false;
-    private int timePassed = 60000;
+    private int gameTime = 60000;
     private Player player;
     private final int numberMaxOfEnemiesOnField = 4;
     private GameObjectFactory factory;
@@ -38,14 +38,14 @@ public class SniperGame {
 
             }
 
-            timePassed -= 100;
+            gameTime -= 100;
             checkGameOver();
 
         }
     }
 
     public void checkGameOver() {
-        if (timePassed == 0) {
+        if (gameTime == 0) {
             isGameOver = true;
             System.out.println("Game Over");
         }

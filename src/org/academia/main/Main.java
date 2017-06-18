@@ -65,7 +65,7 @@ public class Main {
         text1.draw();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
 
@@ -75,7 +75,7 @@ public class Main {
 
         //2 Part
 
-        Picture hacking = new Picture(188,255,SkinMenus.hacking_1.getPath());
+        Picture hacking = new Picture(185,255,SkinMenus.hacking_1.getPath());
         hacking.draw();
         handler.menu.draw();
 

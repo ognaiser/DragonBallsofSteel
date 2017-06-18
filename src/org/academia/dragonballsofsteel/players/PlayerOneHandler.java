@@ -385,6 +385,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return previousKey;
     }
 
+    public boolean facingRight(){
+        return isRight;
+    }
+
     public boolean isKeyPressed(){
         return isKeyPressed;
     }

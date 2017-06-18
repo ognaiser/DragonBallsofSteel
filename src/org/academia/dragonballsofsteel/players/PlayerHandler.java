@@ -22,6 +22,8 @@ public interface PlayerHandler {
 
     void setKeyPressed();
 
+    boolean facingRight();
+
     void setPos(int x, int y);
 
     void setColisonCheker(PlayerColissionChecker cheker);
