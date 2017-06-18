@@ -13,6 +13,7 @@ public class Player {
     private int energy = 100;
     private int punchPower = 20;
     private int kickPower = 20;
+    private int hitCounter;
     private boolean defeated;
     private int posx;
     private int posy;
@@ -38,13 +39,18 @@ public class Player {
      *
      * @param damage ill reduce players Health
      */
-    public void takingDamage(int damage) {
+    public boolean takingDamage(int damage) {
+        if(hitCounter > 2){
+            hitCounter = 0;
+            return true;
+        }
         if (health - damage < 0) {
             health = 0;
             defeated = true;
-            return;
+            return false;
         }
         health = health - damage;
+        return
     }
 
     /**

@@ -45,6 +45,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private KeyboardEvent qPressed;
     private KeyboardEvent qReleased;
     private KeyboardEvent ePressed;
+    private KeyboardEvent eReleased;
+    private KeyboardEvent fPressed;
+    private KeyboardEvent xPressed;
+    private KeyboardEvent xReleased;
 
 
     /**
@@ -96,11 +100,11 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         ePressed.setKey(KeyboardEvent.KEY_E);
         ePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent eReleased = new KeyboardEvent();
+        eReleased = new KeyboardEvent();
         eReleased.setKey(KeyboardEvent.KEY_E);
         eReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent fPressed = new KeyboardEvent();
+        fPressed = new KeyboardEvent();
         fPressed.setKey(KeyboardEvent.KEY_F);
         fPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -108,11 +112,11 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         fReleased.setKey(KeyboardEvent.KEY_F);
         fReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent xPressed = new KeyboardEvent();
+        xPressed = new KeyboardEvent();
         xPressed.setKey(KeyboardEvent.KEY_X);
         xPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent xReleased = new KeyboardEvent();
+        xReleased = new KeyboardEvent();
         xReleased.setKey(KeyboardEvent.KEY_X);
         xReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
@@ -434,8 +438,17 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public void clean(){
         image.delete();
         k.removeEventListener(w);
+        k.removeEventListener(a);
+        k.removeEventListener(s);
+        k.removeEventListener(d);
         k.removeEventListener(qPressed);
         k.removeEventListener(qReleased);
+        k.removeEventListener(ePressed);
+        k.removeEventListener(eReleased);
+        k.removeEventListener(fPressed);
+        k.removeEventListener(fReleased);
+        k.removeEventListener(xPressed);
+        k.removeEventListener(xReleased);
     }
 
     //Setters
