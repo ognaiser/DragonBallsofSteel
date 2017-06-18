@@ -9,7 +9,9 @@ public enum SkinMenus {
     hacking_3("Resources/hacking_3.jpg"),
     hacking_4("Resources/hacking_4.jpg"),
     hacking_5("Resources/hacking_5.jpg"),
-    hacking_end("Resources/hacking_end.png");
+    hacking_end("Resources/hacking_end.png"),
+    galo_main("Resources/MAIN_GALO.jpg"),
+    car_menu("Resources/car_menu.jpg");
 
 
 

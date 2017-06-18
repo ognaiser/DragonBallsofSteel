@@ -231,7 +231,6 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 break;
 
             case KeyboardEvent.KEY_Q:
-                //TODO: Code for punch action
                 if (isRight) {
                     image.load(SkinTypeVegeta.VegetaPunchLeft.getPath());
                 } else {
@@ -239,7 +238,6 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 }
                 break;
             case KeyboardEvent.KEY_E:
-                //TODO: Code for Deff
                 if (isRight) {
                     image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
                 } else {
@@ -247,7 +245,6 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 }
                 break;
             case KeyboardEvent.KEY_X:
-                //TODO: Code for Kick
                 if (isRight) {
                     image.load(SkinTypeVegeta.VegetaKickLeft.getPath());
                 } else {
@@ -255,7 +252,6 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 }
                 break;
             case KeyboardEvent.KEY_F:
-                //TODO: Code for Burst
                 image.load(SkinTypeVegeta.VegetaCharge.getPath());
                 break;
 
@@ -277,24 +273,20 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_Q:
-                //TODO:COde for when punch ends
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_E:
-                //TODO: Code for when def ends
                 lastKey = new KeyboardEvent();
                 lastKey.setKey(KeyboardEvent.KEY_3);
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_X:
-                //TODO: Code for when kick ends
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_F:
-                //TODO: Code for when burst ends
                 sideMoveSkinSetter();
                 break;
         }

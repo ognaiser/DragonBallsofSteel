@@ -193,7 +193,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 break;
 
             case KeyboardEvent.KEY_K:
-                //TODO: Code for punch action
                 if (isRight) {
                     image.load(SkinTypeGoku.GokuPunchLeft.getPath());
                 } else {
@@ -201,7 +200,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }
                 break;
             case KeyboardEvent.KEY_L:
-                //TODO: Code for Deff
                 if (isRight){
                     image.load(SkinTypeGoku.GokuDefLeft.getPath());
                 }else {
@@ -209,7 +207,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }
                 break;
             case KeyboardEvent.KEY_P:
-                //TODO: Code for Kick
                 if (isRight){
                     image.load(SkinTypeGoku.GokuKickLeft.getPath());
                 }else {
@@ -217,7 +214,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }
                 break;
             case KeyboardEvent.KEY_O:
-                //TODO: Code for BurstEnergy
                 image.load(SkinTypeGoku.GokuCharge.getPath());
                 break;
         }
@@ -247,24 +243,20 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_K:
-                //TODO:COde for when punch ends
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_L:
-                //TODO: Code for when def ends
                 lastKey = new KeyboardEvent();
                 lastKey.setKey(KeyboardEvent.KEY_3);
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_P:
-                //TODO: Code for when kick ends
                 sideMoveSkinSetter();
                 break;
 
             case KeyboardEvent.KEY_O:
-                //TODO: Code for when burst ends
                 sideMoveSkinSetter();
                 break;
         }

@@ -7,8 +7,6 @@ public class Enemy extends GameObject {
     private Picture picture;
     private int scoreAwarded = 10;
 
-    // TODO create enemy enum
-
     public Enemy(int x, int y) {
         super(x,y);
 
