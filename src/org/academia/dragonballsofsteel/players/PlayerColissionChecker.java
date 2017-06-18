@@ -59,34 +59,42 @@ public class PlayerColissionChecker {
     }
 
     private boolean checkXRight(){
-        if ((playerTwo.getPosx() + playerTwo.getWith() + playerTwo.getSpeed()/2 >= playerOne.getPosx()) && playerTwo.getPosx() + playerTwo.getWith() + playerTwo.getSpeed()/2 <= playerOne.getPosx() + playerOne.getWith() ) {
+        if ((playerTwo.getPosx() + playerTwo.getWidth() - 10 + playerTwo.getSpeed()/2 >= playerOne.getPosx()) &&
+                playerTwo.getPosx() + playerTwo.getWidth() - 10 + playerTwo.getSpeed()/2 <= playerOne.getPosx() + playerOne.getWidth() ) {
             return true;
         }
         return false;
     }
 
     private boolean checkXLeft(){
-        if ((playerTwo.getPosx()  - playerTwo.getSpeed()/2 >= playerOne.getPosx()) && playerTwo.getPosx() - playerTwo.getSpeed()/2 <= playerOne.getPosx() + playerOne.getWith() ) {
+        if ((playerTwo.getPosx()  - playerTwo.getSpeed()/2 >= playerOne.getPosx()) && playerTwo.getPosx() - playerTwo.getSpeed()/2 <= playerOne.getPosx() + playerOne.getWidth() ) {
             return true;
         }
         return false;
     }
 
     private boolean checkXRightPlayerOne(){
-        if ((playerOne.getPosx() + playerOne.getWith() + playerOne.getSpeed()/2 >= playerTwo.getPosx()) && playerOne.getPosx() + playerOne.getWith() + playerOne.getSpeed()/2 <= playerTwo.getPosx() + playerTwo.getWith() ) {
+        if ((playerOne.getPosx() + playerOne.getWidth() - 10 + playerOne.getSpeed()/2 >= playerTwo.getPosx()) &&
+                playerOne.getPosx() + playerOne.getWidth() - 10 + playerOne.getSpeed()/2 <= playerTwo.getPosx() + playerTwo.getWidth() ) {
             return true;
         }
         return false;
     }
 
     private boolean checkXLeftPlayerOne(){
-        if ((playerOne.getPosx()  - playerOne.getSpeed()/2 >= playerTwo.getPosx()) && playerOne.getPosx() - playerOne.getSpeed()/2 <= playerTwo.getPosx() + playerTwo.getWith() ) {
+        if ((playerOne.getPosx()  - playerOne.getSpeed()/2 >= playerTwo.getPosx()) && playerOne.getPosx() - playerOne.getSpeed()/2 <= playerTwo.getPosx() + playerTwo.getWidth() ) {
             return true;
         }
         return false;
     }
 
     private boolean checkY() {
+        if (playerOne.getPosy() >= playerTwo.getPosy() && playerOne.getPosy() <= playerTwo.getPosy() + playerTwo.getHeight()) {
+            return true;
+        }
+        if ((playerOne.getPosy() + playerOne.getHeight() >= playerTwo.getPosy()) && playerOne.getPosy() + playerOne.getHeight() <= playerTwo.getPosy() + playerTwo.getHeight() ) {
+            return true;
+        }
         if (playerTwo.getPosy() >= playerOne.getPosy() && playerTwo.getPosy() <= playerOne.getPosy() + playerOne.getHeight()) {
             return true;
         }
@@ -97,8 +105,7 @@ public class PlayerColissionChecker {
     }
 
     public boolean fightingRange(){
-
-        if(Math.abs(playerTwo.getPosx() - (playerOne.getPosx() + playerOne.getWith())) <= 10  || Math.abs(playerOne.getPosx() - (playerTwo.getPosx() + playerTwo.getWith())) <= 10){
+        if(Math.abs(playerTwo.getPosx() - (playerOne.getPosx() + playerOne.getWidth())) <= 8  || Math.abs(playerOne.getPosx() - (playerTwo.getPosx() + playerTwo.getWidth())) <= 8){
             if(checkY()) {
                 return true;
             }

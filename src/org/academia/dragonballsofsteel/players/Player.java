@@ -1,6 +1,5 @@
 package org.academia.dragonballsofsteel.players;
 
-import org.academia.dragonballsofsteel.PlayerHandlers;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 /**
@@ -118,7 +117,7 @@ public class Player {
     }
 
     /**
-     * Block and counterattack ate the cost of energy
+     * Block and counterattack at the cost of energy
      *
      * @return
      */
@@ -128,6 +127,14 @@ public class Player {
         }
         energy -= 5;
         return 0;
+    }
+
+    public boolean teleport() {
+        if(energy < 10){
+            return false;
+        }
+        energy -= 10;
+        return true;
     }
 
     /**
@@ -157,22 +164,47 @@ public class Player {
         return energy;
     }
 
+    /**
+     * Return position on X Axis
+     *
+     * @return
+     */
     public int getPosx() {
         return handler.getPosx();
     }
 
+    /**
+     * Return position on Y Axis
+     *
+     * @return
+     */
     public int getPosy() {
         return handler.getPosy();
     }
 
-    public int getWith(){
-        return handler.getWith();
+    /**
+     * Return the width of the Player Picture
+     *
+     * @return
+     */
+    public int getWidth(){
+        return handler.getWidth();
     }
 
+    /**
+     * Return the height of the Player Picture
+     *
+     * @return
+     */
     public int getHeight(){
         return handler.getHeight();
     }
 
+    /**
+     * Return the amount of pixels the Picture can move
+     *
+     * @return
+     */
     public int getSpeed(){
         return handler.getSpeed();
     }
@@ -183,6 +215,14 @@ public class Player {
 
     public KeyboardEvent getKey(){
         return handler.getLastKey();
+    }
+
+    public KeyboardEvent getPreviousKey() {
+        return handler.getPreviousKey();
+    }
+
+    public void setPos(int x, int y){
+        handler.setPos(x, y);
     }
 
     public boolean isKeyPressed(){

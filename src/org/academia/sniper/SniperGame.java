@@ -1,37 +1,41 @@
 package org.academia.sniper;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import java.util.LinkedList;
 
 public class SniperGame {
-
-    //Todo: crate a gameObject Factory, MouseHadler ;
 
     Picture background;
     private boolean isGameOver = false;
     private int timePassed = 60000;
     private Player player;
+    private final int numberMaxOfEnemiesOnField = 4;
+    private GameObjectFactory factory;
+    private LinkedList<GameObject> enemies;
 
-
-    public void init(){
+    public void init() {
 
         //Background
-        background = new Picture(0,0, "Resources/sniper-scenario2-sample.jpg");
+        background = new Picture(0, 0, "Resources/Sniper_BG.jpg");
         background.draw();
 
         player = new Player();
-
+        factory = new GameObjectFactory();
+        enemies = new LinkedList<>();
 
         start();
     }
 
-    public void start(){
+    public void start() {
 
-        while (!isGameOver){
+        enemies.add(factory.createObject());
 
+        while (!isGameOver) {
 
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
+
             }
 
             timePassed -= 100;
@@ -41,8 +45,9 @@ public class SniperGame {
     }
 
     public void checkGameOver() {
-        if(timePassed == 0){
+        if (timePassed == 0) {
             isGameOver = true;
+            System.out.println("Game Over");
         }
     }
 }
