@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.PlayerHandlers;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 /**
  * Game object to be inicializied by the game
@@ -105,16 +106,19 @@ public class Player {
      *
      * @return
      */
-    public int blockAttack() {
-        if (energy < 10) {
-            return -1;
+    public boolean blockAttack(boolean incomingAttack) {
+        if(incomingAttack) {
+            if (energy < 10) {
+                return false;
+            }
+            energy -= 2;
+            return true;
         }
-        energy -= 2;
-        return 0;
+        return true;
     }
 
     /**
-     * Block and counterattack ate the cost of energy
+     * Block and counterattack at the cost of energy
      *
      * @return
      */
@@ -124,6 +128,14 @@ public class Player {
         }
         energy -= 5;
         return 0;
+    }
+
+    public boolean teleport() {
+        if(energy < 10){
+            return false;
+        }
+        energy -= 10;
+        return true;
     }
 
     /**
@@ -161,9 +173,40 @@ public class Player {
         return handler.getPosy();
     }
 
+    public int getWith(){
+        return handler.getWith();
+    }
+
+    public int getHeight(){
+        return handler.getHeight();
+    }
+
+    public int getSpeed(){
+        return handler.getSpeed();
+    }
 
     public void setColisionChecker(PlayerColissionChecker checker){
         handler.setColisonCheker(checker);
+    }
+
+    public KeyboardEvent getKey(){
+        return handler.getLastKey();
+    }
+
+    public KeyboardEvent getPreviousKey() {
+        return handler.getPreviousKey();
+    }
+
+    public void setPos(int x, int y){
+        handler.setPos(x, y);
+    }
+
+    public boolean isKeyPressed(){
+        return handler.isKeyPressed();
+    }
+
+    public void setKeyPressed(){
+        handler.setKeyPressed();
     }
 
 }

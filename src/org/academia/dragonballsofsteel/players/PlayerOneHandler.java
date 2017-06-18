@@ -1,5 +1,6 @@
 package org.academia.dragonballsofsteel.players;
 
+import org.academia.dragonballsofsteel.Game;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -31,6 +32,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private Player player;
     private boolean isRight = true;
     private PlayerColissionChecker checker;
+    private KeyboardEvent lastKey;
+    private KeyboardEvent previousKey;
+    private boolean isKeyPressed = false;
+    private Keyboard k;
 
     /**
      *
@@ -43,11 +48,13 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public PlayerOneHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(660, 290, SkinTypeVegeta.VegetaStartLeft.getPath());
+        image = new Picture(397, Game.bottomBounderi, SkinTypeVegeta.VegetaStartRight.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinTypeVegeta.VegetaStartLeft;
         this.player = player;
+        lastKey = new KeyboardEvent();
+        previousKey = new KeyboardEvent();
 
         //Inicialize Key Events
         KeyboardEvent w = new KeyboardEvent();
@@ -82,8 +89,24 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         eReleased.setKey(KeyboardEvent.KEY_E);
         eReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
+        KeyboardEvent fPressed = new KeyboardEvent();
+        fPressed.setKey(KeyboardEvent.KEY_F);
+        fPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent fReleased = new KeyboardEvent();
+        fReleased.setKey(KeyboardEvent.KEY_F);
+        fReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent xPressed = new KeyboardEvent();
+        xPressed.setKey(KeyboardEvent.KEY_X);
+        xPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent xReleased = new KeyboardEvent();
+        xReleased.setKey(KeyboardEvent.KEY_X);
+        xReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
         //Inicialize Keyboard
-        Keyboard k = new Keyboard(this);
+        k = new Keyboard(this);
 
         //Movement Keys event Add
         k.addEventListener(w);
@@ -99,6 +122,16 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         k.addEventListener(ePressed);
         k.addEventListener(eReleased);
 
+        //kick Key Add
+        k.addEventListener(xPressed);
+        k.addEventListener(xReleased);
+
+        //burstEnergy Key Add
+        k.addEventListener(fPressed);
+        k.addEventListener(fReleased);
+
+
+
     }
 
     /**
@@ -108,7 +141,9 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
      */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
+        previousKey = lastKey;
+        lastKey = keyboardEvent;
+        isKeyPressed = true;
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
                 if (checkBounderies(keyboardEvent)) {
@@ -194,7 +229,21 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 } else {
                     image.load(SkinTypeVegeta.VegetaDefRight.getPath());
                 }
+                break;/*
+            case KeyboardEvent.KEY_X:
+                //TODO: Code for Kick
+                if (isRight) {
+                    image.load(SkinTypeVegeta.);
+                } else {
+                    image.load(SkinTypeVegeta.VegetaDefRight.getPath());
+                }
                 break;
+            case KeyboardEvent.KEY_F:
+                //TODO: Code for Burst
+                image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
+                break;
+*/
+
 
         }
 
@@ -220,6 +269,16 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 //TODO: Code for when def ends
                 sideMoveSkinSetter();
                 break;
+/*
+            case KeyboardEvent.KEY_X:
+                //TODO: Code for when kick ends
+                sideMoveSkinSetter();
+                break;
+
+            case KeyboardEvent.KEY_F:
+                //TODO: Code for when burst ends
+                sideMoveSkinSetter();
+                break;*/
         }
     }
 
@@ -259,30 +318,37 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_W:
-                if (image.getY() - speed < 0) {
+                if (image.getY() - speed < Game.topBonderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                if (image.getX() - speed < 0) {
+                if (image.getX() - speed < Game.leftBonderi) {
+                    return false;
+                }
+                if (checker.checkPlayerCollision(keyboardEvent)){
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_S:
-                if (image.getY() + speed > 290) {
+                if (image.getY() + speed > Game.bottomBounderi) {
                     return false;
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                if (image.getX() + speed > 760) {
+                if (image.getX() + speed > Game.rightBounderi) {
                     return false;
+                }
+                if (checker.checkPlayerCollision(keyboardEvent)){
+                   return false;
                 }
                 break;
         }
 
+
+
         return true;
     }
-
 
     //Getters
     public int getPosx() {
@@ -291,6 +357,49 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
     public int getPosy() {
         return image.getY();
+    }
+
+    @Override
+    public int getWith() {
+        return image.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return image.getHeight();
+    }
+
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public KeyboardEvent getLastKey() {
+        return lastKey;
+    }
+
+    public KeyboardEvent getPreviousKey() {
+        return previousKey;
+    }
+
+    public boolean isKeyPressed(){
+        return isKeyPressed;
+    }
+
+    public void setKeyPressed(){
+        isKeyPressed = false;
+    }
+
+    public void setPos(int x, int y){
+        image.delete();
+        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+        image.draw();
+        sideMoveSkinSetter();
+    }
+
+    public void deleteHandlers(){
+
     }
 
     //Setters

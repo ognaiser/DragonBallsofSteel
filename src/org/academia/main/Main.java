@@ -1,15 +1,40 @@
 package org.academia.main;
 
-import org.academia.main.Tests.MenuTest;
+import org.academia.dragonballsofsteel.Game;
 
-/**
- * Created by codecadet on 15/06/2017.
- */
 public class Main {
 
-    public static void main(String[] args) {
 
-        MenuTest m = new MenuTest();
+    public static void main(String[] args) throws InterruptedException {
+
+        MainKeyHandler handler = new MainKeyHandler();
+
+
+        while (true) {
+
+            if (handler.isGameStarted()) {
+
+                switch (handler.getI()){
+                    case 0:
+                        handler.removeListners();
+                        Game game = new Game();
+                        game.init();
+                        handler.menuScreenInit();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+
+            Thread.sleep(100);
+        }
 
     }
+
 }
