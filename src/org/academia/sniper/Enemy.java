@@ -9,14 +9,18 @@ public class Enemy extends GameObject {
 
     // TODO create enemy enum
 
-    public Enemy(int X, int Y) {
-        super(2000);
-        picture = new Picture(X,Y, "Resources/kim-enemy.png");
+    public Enemy(int x, int y) {
+        super(x,y);
+
+        picture = new Picture(x,y, "Resources/enemy.png");
         picture.draw();
+
     }
 
     @Override
     public int clicked() {
+        super.setCliked();
+        picture.delete();
         return scoreAwarded;
     }
 }

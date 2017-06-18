@@ -9,11 +9,14 @@ public class SniperGame {
     private boolean isGameOver = false;
     private int gameTime = 60000;
     private Player player;
-    private final int numberMaxOfEnemiesOnField = 4;
     private GameObjectFactory factory;
-    private LinkedList<GameObject> enemies;
+    private GameObject[] enemies;
+    private int round;
+    private MouseController mouse;
 
     public void init() {
+
+        round = 0;
 
         //Background
         background = new Picture(0, 0, "Resources/Sniper_BG.jpg");
@@ -21,16 +24,20 @@ public class SniperGame {
 
         player = new Player();
         factory = new GameObjectFactory();
-        enemies = new LinkedList<>();
+        enemies = new GameObject[4];
+
 
         start();
     }
 
-    public void start() {
+    private void start() {
 
-        enemies.add(factory.createObject());
+        enemies = factory.createObject(round);
+        mouse = new MouseController(enemies,player);
 
         while (!isGameOver) {
+
+
 
             try {
                 Thread.sleep(100);
@@ -38,16 +45,30 @@ public class SniperGame {
 
             }
 
+            checkRound();
             gameTime -= 100;
             checkGameOver();
 
         }
     }
 
-    public void checkGameOver() {
+    private void checkRound(){
+
+        for (int i = 0; i < enemies.length; i++) {
+            if (!enemies[i].isCLiked()){
+                return;
+            }
+        }
+
+        round++;
+        enemies = factory.createObject(round);
+
+    }
+
+    private void checkGameOver() {
         if (gameTime == 0) {
             isGameOver = true;
-            System.out.println("Game Over");
+            System.out.println("Game Over! Score: " + player.getScore());
         }
     }
 }
