@@ -25,6 +25,20 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     private KeyboardEvent lastKey;
     private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
+    private KeyboardEvent w = new KeyboardEvent();
+    private KeyboardEvent a = new KeyboardEvent();
+    private KeyboardEvent s = new KeyboardEvent();
+    private KeyboardEvent d = new KeyboardEvent();
+    private KeyboardEvent kPressed = new KeyboardEvent();
+    private KeyboardEvent kReleased = new KeyboardEvent();
+    private KeyboardEvent lPressed = new KeyboardEvent();
+    private KeyboardEvent lReleased = new KeyboardEvent();
+    private KeyboardEvent pPressed = new KeyboardEvent();
+    private KeyboardEvent pReleased = new KeyboardEvent();
+    private KeyboardEvent oPressed = new KeyboardEvent();
+    private KeyboardEvent oReleased = new KeyboardEvent();
+    private Keyboard k;
+
 
     public PlayerTwoHandler(int speed, Player player) {
 
@@ -39,56 +53,44 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         //Inicialize Key Events
 
-        KeyboardEvent w = new KeyboardEvent();
         w.setKey(KeyboardEvent.KEY_UP);
         w.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent a = new KeyboardEvent();
         a.setKey(KeyboardEvent.KEY_LEFT);
         a.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent s = new KeyboardEvent();
         s.setKey(KeyboardEvent.KEY_DOWN);
         s.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent d = new KeyboardEvent();
         d.setKey(KeyboardEvent.KEY_RIGHT);
         d.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent kPressed = new KeyboardEvent();
         kPressed.setKey(KeyboardEvent.KEY_K);
         kPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent kReleased = new KeyboardEvent();
         kReleased.setKey(KeyboardEvent.KEY_K);
         kReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent lPressed = new KeyboardEvent();
         lPressed.setKey(KeyboardEvent.KEY_L);
         lPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent lReleased = new KeyboardEvent();
         lReleased.setKey(KeyboardEvent.KEY_L);
         lReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent pPressed = new KeyboardEvent();
         pPressed.setKey(KeyboardEvent.KEY_P);
         pPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent pReleased = new KeyboardEvent();
         pReleased.setKey(KeyboardEvent.KEY_P);
         pReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent oPressed = new KeyboardEvent();
         oPressed.setKey(KeyboardEvent.KEY_O);
         oPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent oReleased = new KeyboardEvent();
         oReleased.setKey(KeyboardEvent.KEY_O);
         oReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
         //Inicialize Keyboard
-        Keyboard k = new Keyboard(this);
+        k = new Keyboard(this);
 
         //Movement Keys event Add
         k.addEventListener(w);
@@ -374,5 +376,21 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
         this.checker = cheker;
+    }
+
+    public void clean(){
+        image.delete();
+        k.removeEventListener(w);
+        k.removeEventListener(a);
+        k.removeEventListener(s);
+        k.removeEventListener(d);
+        k.removeEventListener(kPressed);
+        k.removeEventListener(kReleased);
+        k.removeEventListener(lPressed);
+        k.removeEventListener(lReleased);
+        k.removeEventListener(oPressed);
+        k.removeEventListener(oReleased);
+        k.removeEventListener(pPressed);
+        k.removeEventListener(pReleased);
     }
 }
