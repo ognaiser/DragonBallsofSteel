@@ -6,8 +6,6 @@ public class Enemy extends GameObject {
 
     private Picture picture;
     private int scoreAwarded = 10;
-    private int X;
-    private int Y;
 
     // TODO create enemy enum
 

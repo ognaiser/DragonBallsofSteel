@@ -221,6 +221,10 @@ public class Player {
         return handler.getPreviousKey();
     }
 
+    public boolean facingRight(){
+        return handler.facingRight();
+    }
+
     public void setPos(int x, int y){
         handler.setPos(x, y);
     }

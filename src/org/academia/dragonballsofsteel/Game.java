@@ -59,10 +59,16 @@ public class Game {
         while (!isGameOver){
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
+
                 if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
-                    player1.takingDamage(player.punch());
-                    System.out.println("Goku : " + player1.getHealth());
-                    player.setKeyPressed();
+
+                    if((player.getPosx() > player1.getPosx() && player.facingRight()) ||
+                            (player.getPosx() < player1.getPosx() && !player.facingRight())) {
+
+                        player1.takingDamage(player.punch());
+                        System.out.println("Goku : " + player1.getHealth());
+                        player.setKeyPressed();
+                    }
                 }
             }
 
@@ -72,10 +78,16 @@ public class Game {
             }
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_X && player.isKeyPressed()){
+
                 if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
-                    player1.takingDamage(player.kick());
-                    System.out.println("Goku : " + player1.getHealth());
-                    player.setKeyPressed();
+
+                    if((player.getPosx() > player1.getPosx() && player.facingRight()) ||
+                            (player.getPosx() < player1.getPosx() && !player.facingRight())) {
+
+                        player1.takingDamage(player.kick());
+                        System.out.println("Goku : " + player1.getHealth());
+                        player.setKeyPressed();
+                    }
                 }
             }
 
@@ -94,17 +106,28 @@ public class Game {
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()){
                 if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
-                    player.takingDamage(player1.punch());
-                    System.out.println("Vegeta : " + player.getHealth());
-                    player1.setKeyPressed();
+
+                    if((player1.getPosx() > player.getPosx() && player1.facingRight()) ||
+                            (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
+
+                        player.takingDamage(player1.punch());
+                        System.out.println("Vegeta : " + player.getHealth());
+                        player1.setKeyPressed();
+                    }
                 }
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_P && player1.isKeyPressed()){
+
                 if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
-                    player.takingDamage(player1.kick());
-                    System.out.println("Vegeta : " + player.getHealth());
-                    player1.setKeyPressed();
+
+                    if((player1.getPosx() > player.getPosx() && player1.facingRight()) ||
+                            (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
+
+                        player.takingDamage(player1.kick());
+                        System.out.println("Vegeta : " + player.getHealth());
+                        player1.setKeyPressed();
+                    }
                 }
             }
 

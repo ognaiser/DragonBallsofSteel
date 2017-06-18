@@ -341,6 +341,11 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         isKeyPressed = false;
     }
 
+    @Override
+    public boolean facingRight(){
+        return isRight;
+    }
+
     public KeyboardEvent getPreviousKey() {
         return previousKey;
     }
