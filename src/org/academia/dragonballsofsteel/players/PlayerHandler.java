@@ -24,6 +24,8 @@ public interface PlayerHandler {
 
     boolean facingRight();
 
+    void setSpeed(int amount);
+
     void moveInDirection(int xPos, boolean direction) throws InterruptedException;
 
     void setSkin(boolean direction);

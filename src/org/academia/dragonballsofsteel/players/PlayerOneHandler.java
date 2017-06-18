@@ -24,6 +24,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
      * -Player (Player)
      * -Is in Right side state (Boolean)
      * -Collision Checker (ColissionChecker)
+     * -The last key pressed
+     * -The previous key pressed
+     * -If a key is being pressed
+     * -Set of keys that the player will use
      */
 
     private Picture image;
@@ -360,51 +364,89 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         return true;
     }
 
-    //Getters
+    /**
+     *
+     * @return the position X of the image
+     */
     public int getPosx() {
         return image.getX();
     }
 
+    /**
+     *
+     * @return the position Y of the image
+     */
     public int getPosy() {
         return image.getY();
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public int getWidth() {
         return image.getWidth();
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public int getHeight() {
         return image.getHeight();
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public int getSpeed() {
         return speed;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public KeyboardEvent getLastKey() {
         return lastKey;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
     public KeyboardEvent getPreviousKey() {
         return previousKey;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
     public boolean facingRight(){
         return isRight;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
     public boolean isKeyPressed(){
         return isKeyPressed;
     }
 
-    public void setKeyPressed(){
-        isKeyPressed = false;
-    }
-
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void setSkin(boolean direction){
         if(direction) {
@@ -414,6 +456,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         }
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void setPos(int x, int y, boolean direction){
         image.delete();
@@ -428,6 +474,26 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         image.draw();
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public void setSpeed(int amount){
+        if(amount == 0){
+            speed = 10;
+            return;
+        }
+        if(speed > 20){
+            return;
+        }
+        speed = speed + amount;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void moveInDirection(int xPos, boolean direction) throws InterruptedException {
         if(direction) {
@@ -471,6 +537,11 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
     public void clean(){
         image.delete();
         k.removeEventListener(w);
@@ -487,10 +558,22 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         k.removeEventListener(xReleased);
     }
 
-    //Setters
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
         this.checker = cheker;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public void setKeyPressed(){
+        isKeyPressed = false;
     }
 
 }

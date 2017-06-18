@@ -89,7 +89,7 @@ public class Player {
      * Recharge energy. It will improve punch and kick power
      */
     public void burstOfEnergy() {
-        energy += 2;
+        energy += 5;
         if (energy > 150) {
             punchPower = 30;
             kickPower = 30;
@@ -105,6 +105,11 @@ public class Player {
      * @return
      */
     public int attackCombo() {
+        if (energy < 10) {
+            return 0;
+        }
+        energy -= 10;
+
         return punchPower + kickPower;
     }
 
@@ -243,6 +248,10 @@ public class Player {
 
     public void moveInDirection(int xPox, boolean direction) throws InterruptedException {
         handler.moveInDirection(xPox, direction);
+    }
+
+    public void setSpeed(int amount){
+        handler.setSpeed(amount);
     }
 
     public boolean isKeyPressed(){

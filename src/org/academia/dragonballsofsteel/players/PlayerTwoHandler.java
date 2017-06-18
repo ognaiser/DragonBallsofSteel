@@ -408,6 +408,18 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     }
 
     @Override
+    public void setSpeed(int amount){
+        if(amount == 0){
+            speed = 10;
+            return;
+        }
+        if(speed > 20){
+            return;
+        }
+        speed = speed + amount;
+    }
+
+    @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
         this.checker = cheker;
     }
