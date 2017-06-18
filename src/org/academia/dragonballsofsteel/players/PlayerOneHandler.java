@@ -267,6 +267,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
 
             case KeyboardEvent.KEY_E:
                 //TODO: Code for when def ends
+                lastKey = new KeyboardEvent();
+                lastKey.setKey(KeyboardEvent.KEY_3);
                 sideMoveSkinSetter();
                 break;
 
@@ -360,7 +362,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     }
 
     @Override
-    public int getWith() {
+    public int getWidth() {
         return image.getWidth();
     }
 

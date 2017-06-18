@@ -59,7 +59,7 @@ public class Game {
         while (!isGameOver){
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()){
-                if (checker.fightingRange() && (!player1.isKeyPressed() && player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
+                if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
                     player1.takingDamage(player.punch());
                     System.out.println("Goku : " + player1.getHealth());
                     player.setKeyPressed();
@@ -68,12 +68,11 @@ public class Game {
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()){
                     player.blockAttack(checker.fightingRange());
-                    System.out.println(player.getEnergy());
                     player.setKeyPressed();
             }
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_X && player.isKeyPressed()){
-                if (checker.fightingRange() && (!player1.isKeyPressed() && player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
+                if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
                     player1.takingDamage(player.kick());
                     System.out.println("Goku : " + player1.getHealth());
                     player.setKeyPressed();
@@ -82,18 +81,19 @@ public class Game {
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_F && player.isKeyPressed()){
                 player.burstOfEnergy();
+                player.setKeyPressed();
             }
 
             if(player.getKey().getKey() == KeyboardEvent.KEY_A && player.getPreviousKey().getKey() == KeyboardEvent.KEY_F &&
                     player.isKeyPressed()){
                 if(player.teleport()){
-                    player.setPos(player1.getPosx() + player1.getWith() + 5, player1.getPosy());
+                    player.setPos(player1.getPosx() + player1.getWidth() + 5, player1.getPosy());
                 }
                 player.setKeyPressed();
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()){
-                if (checker.fightingRange() && (player.isKeyPressed() && player.getKey().getKey() != KeyboardEvent.KEY_E)) {
+                if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
                     player.takingDamage(player1.punch());
                     System.out.println("Vegeta : " + player.getHealth());
                     player1.setKeyPressed();
@@ -101,7 +101,7 @@ public class Game {
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_P && player1.isKeyPressed()){
-                if (checker.fightingRange() && (player.isKeyPressed() && player.getKey().getKey() != KeyboardEvent.KEY_E)) {
+                if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
                     player.takingDamage(player1.kick());
                     System.out.println("Vegeta : " + player.getHealth());
                     player1.setKeyPressed();
@@ -110,6 +110,7 @@ public class Game {
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.isKeyPressed()){
                 player1.burstOfEnergy();
+                player1.setKeyPressed();
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_L && player1.isKeyPressed()){
@@ -120,7 +121,7 @@ public class Game {
             if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_P &&
                     player1.isKeyPressed()){
                 if(player1.teleport()){
-                    player1.setPos(player.getPosx() + player.getWith() + 5, player.getPosy());
+                    player1.setPos(player.getPosx() + player.getWidth() + 5, player.getPosy());
                 }
                 player1.setKeyPressed();
             }
@@ -130,7 +131,7 @@ public class Game {
                 isGameOver = true;
             }
             try {
-                Thread.sleep(100);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
             }
         }

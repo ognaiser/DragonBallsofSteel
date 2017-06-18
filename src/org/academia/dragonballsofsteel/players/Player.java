@@ -1,6 +1,5 @@
 package org.academia.dragonballsofsteel.players;
 
-import org.academia.dragonballsofsteel.PlayerHandlers;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 /**
@@ -165,22 +164,47 @@ public class Player {
         return energy;
     }
 
+    /**
+     * Return position on X Axis
+     *
+     * @return
+     */
     public int getPosx() {
         return handler.getPosx();
     }
 
+    /**
+     * Return position on Y Axis
+     *
+     * @return
+     */
     public int getPosy() {
         return handler.getPosy();
     }
 
-    public int getWith(){
-        return handler.getWith();
+    /**
+     * Return the width of the Player Picture
+     *
+     * @return
+     */
+    public int getWidth(){
+        return handler.getWidth();
     }
 
+    /**
+     * Return the height of the Player Picture
+     *
+     * @return
+     */
     public int getHeight(){
         return handler.getHeight();
     }
 
+    /**
+     * Return the amount of pixels the Picture can move
+     *
+     * @return
+     */
     public int getSpeed(){
         return handler.getSpeed();
     }

@@ -8,7 +8,7 @@ public interface PlayerHandler {
 
     int getPosy();
 
-    int getWith();
+    int getWidth();
 
     int getHeight();
 
