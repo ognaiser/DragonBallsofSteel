@@ -9,7 +9,7 @@ public class SniperGame {
 
     private Picture background;
     private boolean isGameOver = false;
-    private int gameTime = 1000;
+    private int gameTime = 60000;
     private Player player;
     private GameObjectFactory factory;
     private GameObject[] enemies;

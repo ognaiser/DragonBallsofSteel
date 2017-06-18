@@ -53,6 +53,7 @@ public class Main {
 
 
         handler.unlocked = true;
+        handler.sel[handler.getI()].delete();
 
         //1 part
 
@@ -76,7 +77,6 @@ public class Main {
         } catch (InterruptedException e) {
         }
 
-        back.delete();
         text.delete();
         text1.delete();
 
@@ -138,7 +138,11 @@ public class Main {
         } catch (InterruptedException e) {
         }
 
+
+        back.delete();
+
         hacking.delete();
+
 
         handler.sel[handler.getI()].draw();
         handler.menu.draw();
