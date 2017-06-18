@@ -350,9 +350,23 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         return previousKey;
     }
 
-    public void setPos(int x, int y){
+    @Override
+    public void setSkin(boolean direction){
+        if(direction) {
+            image.load(SkinTypeGoku.GokuHitRight.getPath());
+        } else {
+            image.load(SkinTypeGoku.GokuHitLeft.getPath());
+        }
+    }
+
+    public void setPos(int x, int y, boolean direction){
         image.delete();
-        image = new Picture(x, y, SkinTypeGoku.GokuFlyLeft.getPath());
+        if(direction) {
+            image = new Picture(x, y, SkinTypeGoku.GokuFlyRight.getPath());
+        }
+        else{
+            image = new Picture(x, y, SkinTypeGoku.GokuFlyLeft.getPath());
+        }
         sideMoveSkinSetter();
         image.draw();
     }

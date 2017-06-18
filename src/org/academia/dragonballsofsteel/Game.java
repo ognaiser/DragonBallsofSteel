@@ -66,6 +66,7 @@ public class Game {
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
                         player1.takingDamage(player.punch());
+                        player1.setSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
                     }
@@ -85,6 +86,7 @@ public class Game {
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
                         player1.takingDamage(player.kick());
+                        player1.setSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
                     }
@@ -96,12 +98,30 @@ public class Game {
                 player.setKeyPressed();
             }
 
+            //rever teleport!!!!!!!!!!!!!
+
             if(player.getKey().getKey() == KeyboardEvent.KEY_A && player.getPreviousKey().getKey() == KeyboardEvent.KEY_F &&
                     player.isKeyPressed()){
-                if(player.teleport()){
-                    player.setPos(player1.getPosx() + player1.getWidth() + 5, player1.getPosy());
+                if(player.teleport() && player.getPosx() < player1.getPosx()){
+                    if(player1.getPosx() + player1.getWidth() + 5 + player.getWidth() <= rightBounderi) {
+                        player.setPos(player1.getPosx() + player1.getWidth() + 5, player1.getPosy(), player1.facingRight());
+                    }
+                }
+                if(player1.teleport() && player.getPosx() > player1.getPosx()){
+                    if(player1.getPosx() - 5 - player.getWidth() >= leftBonderi) {
+                        player.setPos(player1.getPosx() - player.getWidth() - 5, player1.getPosy(), player1.facingRight());
+                    }
                 }
                 player.setKeyPressed();
+            }
+
+            if(player.getKey().getKey() == KeyboardEvent.KEY_W && player.isKeyPressed() && (player.getPosy() - player1.getPosy() - player1.getHeight() <= 10) && Math.abs(player.getPosx() - player1.getPosx()) < 10){
+                if(player1.facingRight()) {
+                    player.setPos(player1.getPosx() - player.getWidth() - 5, player1.getPosy(), player1.facingRight());
+                }
+                else{
+                    player.setPos(player1.getPosx() + player1.getWidth() + 5, player1.getPosy(), player1.facingRight());
+                }
             }
 
             if(player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()){
@@ -111,6 +131,7 @@ public class Game {
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
                         player.takingDamage(player1.punch());
+                        player.setSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();
                     }
@@ -125,6 +146,7 @@ public class Game {
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
                         player.takingDamage(player1.kick());
+                        player.setSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();
                     }
@@ -141,17 +163,38 @@ public class Game {
                 player1.setKeyPressed();
             }
 
-            if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_P &&
+            //rever teleport!!!!!!!!!!!!!!!
+
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_RIGHT &&
                     player1.isKeyPressed()){
-                if(player1.teleport()){
-                    player1.setPos(player.getPosx() + player.getWidth() + 5, player.getPosy());
+                if(player1.teleport() && player1.getPosx() < player.getPosx()){
+                    if(player.getPosx() + player.getWidth() + 5 + player1.getWidth() <= rightBounderi) {
+                        player1.setPos(player.getPosx() + player.getWidth() + 5, player.getPosy(), player.facingRight());
+                    }
+                }
+                if(player1.teleport() && player1.getPosx() > player.getPosx()){
+                    if(player.getPosx() - 5 - player1.getWidth() >= leftBonderi) {
+                        player1.setPos(player.getPosx() - player1.getWidth() - 5, player.getPosy(), player.facingRight());
+                    }
                 }
                 player1.setKeyPressed();
+            }
+
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_W && player1.isKeyPressed() && (player1.getPosy() - player.getPosy() - player.getHeight() <= 10) && Math.abs(player1.getPosx() - player.getPosx()) < 10){
+                if(player.facingRight()) {
+                    player1.setPos(player.getPosx() - player1.getWidth() - 5, player.getPosy(), true);
+                }
+                else{
+                    player1.setPos(player.getPosx() + player.getWidth() + 5, player.getPosy(), false);
+                }
             }
 
             if(player.isDefeated() || player1.isDefeated()){
                 back.draw();
                 isGameOver = true;
+
+
+
             }
             try {
                 Thread.sleep(200);
@@ -166,6 +209,7 @@ public class Game {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
         }
+
 
         back.delete();
     }

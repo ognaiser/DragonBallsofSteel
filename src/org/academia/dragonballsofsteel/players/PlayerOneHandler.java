@@ -36,6 +36,16 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
     private Keyboard k;
+    //Events
+    private KeyboardEvent fReleased;
+    private KeyboardEvent w;
+    private KeyboardEvent a;
+    private KeyboardEvent s;
+    private KeyboardEvent d;
+    private KeyboardEvent qPressed;
+    private KeyboardEvent qReleased;
+    private KeyboardEvent ePressed;
+
 
     /**
      *
@@ -57,31 +67,32 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         previousKey = new KeyboardEvent();
 
         //Inicialize Key Events
-        KeyboardEvent w = new KeyboardEvent();
+
+        w = new KeyboardEvent();
         w.setKey(KeyboardEvent.KEY_W);
         w.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent a = new KeyboardEvent();
+        a = new KeyboardEvent();
         a.setKey(KeyboardEvent.KEY_A);
         a.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent s = new KeyboardEvent();
+        s = new KeyboardEvent();
         s.setKey(KeyboardEvent.KEY_S);
         s.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent d = new KeyboardEvent();
+        d = new KeyboardEvent();
         d.setKey(KeyboardEvent.KEY_D);
         d.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent qPressed = new KeyboardEvent();
+        qPressed = new KeyboardEvent();
         qPressed.setKey(KeyboardEvent.KEY_Q);
         qPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent qReleased = new KeyboardEvent();
+        qReleased = new KeyboardEvent();
         qReleased.setKey(KeyboardEvent.KEY_Q);
         qReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
-        KeyboardEvent ePressed = new KeyboardEvent();
+        ePressed = new KeyboardEvent();
         ePressed.setKey(KeyboardEvent.KEY_E);
         ePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -93,7 +104,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         fPressed.setKey(KeyboardEvent.KEY_F);
         fPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent fReleased = new KeyboardEvent();
+        fReleased = new KeyboardEvent();
         fReleased.setKey(KeyboardEvent.KEY_F);
         fReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
@@ -397,15 +408,34 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         isKeyPressed = false;
     }
 
-    public void setPos(int x, int y){
-        image.delete();
-        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
-        image.draw();
-        sideMoveSkinSetter();
+    @Override
+    public void setSkin(boolean direction){
+        if(direction) {
+            image.load(SkinTypeVegeta.VegetaHitRight.getPath());
+        } else {
+            image.load(SkinTypeVegeta.VegetaHitLeft.getPath());
+        }
     }
 
-    public void deleteHandlers(){
+    @Override
+    public void setPos(int x, int y, boolean direction){
+        image.delete();
+        if(direction) {
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+            image.draw();
+        } else{
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyRight.getPath());
+            image.draw();
+        }
+        sideMoveSkinSetter();
+        image.draw();
+    }
 
+    public void clean(){
+        image.delete();
+        k.removeEventListener(w);
+        k.removeEventListener(qPressed);
+        k.removeEventListener(qReleased);
     }
 
     //Setters

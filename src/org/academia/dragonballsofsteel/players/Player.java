@@ -225,8 +225,12 @@ public class Player {
         return handler.facingRight();
     }
 
-    public void setPos(int x, int y){
-        handler.setPos(x, y);
+    public void setSkin(boolean direction){
+        handler.setSkin(direction);
+    }
+
+    public void setPos(int x, int y, boolean direction){
+        handler.setPos(x, y, direction);
     }
 
     public boolean isKeyPressed(){
