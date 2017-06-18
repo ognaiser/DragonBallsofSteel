@@ -229,20 +229,20 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 } else {
                     image.load(SkinTypeVegeta.VegetaDefRight.getPath());
                 }
-                break;/*
+                break;
             case KeyboardEvent.KEY_X:
                 //TODO: Code for Kick
                 if (isRight) {
-                    image.load(SkinTypeVegeta.);
+                    image.load(SkinTypeVegeta.VegetaKickLeft.getPath());
                 } else {
-                    image.load(SkinTypeVegeta.VegetaDefRight.getPath());
+                    image.load(SkinTypeVegeta.VegetaKickRight.getPath());
                 }
                 break;
             case KeyboardEvent.KEY_F:
                 //TODO: Code for Burst
-                image.load(SkinTypeVegeta.VegetaDefLeft.getPath());
+                image.load(SkinTypeVegeta.VegetaCharge.getPath());
                 break;
-*/
+
 
 
         }
@@ -269,7 +269,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
                 //TODO: Code for when def ends
                 sideMoveSkinSetter();
                 break;
-/*
+
             case KeyboardEvent.KEY_X:
                 //TODO: Code for when kick ends
                 sideMoveSkinSetter();
@@ -278,7 +278,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
             case KeyboardEvent.KEY_F:
                 //TODO: Code for when burst ends
                 sideMoveSkinSetter();
-                break;*/
+                break;
         }
     }
 

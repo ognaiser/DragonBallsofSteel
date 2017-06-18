@@ -103,7 +103,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         //Def Key Add
         k.addEventListener(lPressed);
         k.addEventListener(lReleased);
-        /*
+
         //Kick Key Add
         k.addEventListener(pPressed);
         k.addEventListener(pReleased);
@@ -111,7 +111,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         //Burst Key Add
         k.addEventListener(oPressed);
         k.addEventListener(oReleased);
-         */
+
 
     }
 
@@ -205,19 +205,19 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 }else {
                     image.load(SkinTypeGoku.GokuDefRight.getPath());
                 }
-                break;/*
+                break;
             case KeyboardEvent.KEY_P:
                 //TODO: Code for Kick
                 if (isRight){
-                    image.load(SkinTypeGoku);
+                    image.load(SkinTypeGoku.GokuKickLeft.getPath());
                 }else {
-                    image.load(SkinTypeGoku);
+                    image.load(SkinTypeGoku.GokuKickRight.getPath());
                 }
                 break;
             case KeyboardEvent.KEY_O:
                 //TODO: Code for BurstEnergy
-                image.load(SkinTypeGoku.Goku);
-                break;*/
+                image.load(SkinTypeGoku.GokuCharge.getPath());
+                break;
         }
 
     }
@@ -253,7 +253,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
                 //TODO: Code for when def ends
                 sideMoveSkinSetter();
                 break;
-/*
+
             case KeyboardEvent.KEY_P:
                 //TODO: Code for when kick ends
                 sideMoveSkinSetter();
@@ -262,7 +262,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
             case KeyboardEvent.KEY_O:
                 //TODO: Code for when burst ends
                 sideMoveSkinSetter();
-                break;*/
+                break;
         }
     }
 
@@ -345,7 +345,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
     public void setPos(int x, int y){
         image.delete();
-        image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
+        image = new Picture(x, y, SkinTypeGoku.GokuFlyLeft.getPath());
         sideMoveSkinSetter();
         image.draw();
     }

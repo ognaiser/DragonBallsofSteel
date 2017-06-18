@@ -117,6 +117,14 @@ public class Game {
                 player1.setKeyPressed();
             }
 
+            if(player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_P &&
+                    player1.isKeyPressed()){
+                if(player1.teleport()){
+                    player1.setPos(player.getPosx() + player.getWith() + 5, player.getPosy());
+                }
+                player1.setKeyPressed();
+            }
+
             if(player.isDefeated() || player1.isDefeated()){
                 back.draw();
                 isGameOver = true;
