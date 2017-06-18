@@ -1,11 +1,15 @@
 package org.academia.main;
 
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 
 public class MainKeyHandler implements KeyboardHandler {
 
@@ -233,6 +237,82 @@ public class MainKeyHandler implements KeyboardHandler {
     }
 
     private void easterUnlock(){
+        Rectangle back = new Rectangle(188,255,188+510,255+312);
+        back.setColor(Color.BLACK);
+        back.fill();
+        menu.draw();
+        Text text = new Text(239,307,"Hacking <Academia de Codigo_>");
+        text.setColor(Color.GREEN);
+        text.draw();
+        Text text1 = new Text(259,307,"Trying to steal CarCrash2!");
+        text.setColor(Color.GREEN);
+        text.draw();
+        try {
+            Thread.sleep(600);
+        } catch (InterruptedException e) {
+        }
+
+        back.delete();
+        text.delete();
+        text1.delete();
+
+        Picture hacking = new Picture(188,255,SkinMenus.hacking_1.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+
+        hacking.load(SkinMenus.hacking_2.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+
+        hacking.load(SkinMenus.hacking_3.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+
+        hacking.load(SkinMenus.hacking_4.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+
+        hacking.load(SkinMenus.hacking_5.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+
+        hacking.load(SkinMenus.hacking_end.getPath());
+        hacking.draw();
+        menu.draw();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
+
+        menu.draw();
+        sel[i].draw();
+
         System.out.println("unlocked");
     }
 
