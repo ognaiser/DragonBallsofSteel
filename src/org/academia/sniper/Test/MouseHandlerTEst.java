@@ -10,29 +10,6 @@ public class MouseHandlerTEst implements MouseHandler {
 
     public MouseHandlerTEst() {
 
-        /**
-         *
-         * Fix Windows ALL FULL OPEN
-         * Fix Right Window blue is showing
-         *
-         * Left:
-         * 1- 1302 x  188 Y
-         * 2- 191 X 256 Y
-         * 3- 245 x 325 Y
-         * 4- 365 X 399 Y
-         * 5- 302 X 466 Y
-         *
-         * Middle:
-         * 1- 552 X 238 Y
-         * 2- 657 X 299 Y
-         * 3- 553 X 356 Y
-         * 4- 505 X 420 Y
-         * 5- 657 X 481 Y
-         *
-         * Right:
-         * 1-1027 X 348 Y
-         */
-
         Mouse m = new Mouse(this);
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
 

@@ -14,6 +14,14 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
+    //TODO: Fix attack BUGS!!!! (WHAT HAVE YOU DONE RUBEN!!!) (They are not taking damage or you delete the souts)
+    //TODO: fix bug when going up skin doesn't t Change Direction (not sure if it was working before may be YOUR FAULT THO!)
+    //TODO: get thing when you go down or up you go to the side
+    //TODO: get a health Display
+
+    //I fix start skins and you have new skins on all of the enums including start and ending screens and kick and charge animations both directions and you have hit animations if you want!
+    //I also got you kamehameha skins!
+
     protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
     public static final int rightBounderi = 1118;

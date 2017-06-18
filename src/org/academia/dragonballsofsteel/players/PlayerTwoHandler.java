@@ -29,7 +29,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     public PlayerTwoHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(885, Game.bottomBounderi, SkinTypeGoku.GokuStartRight.getPath());
+        image = new Picture(885, Game.bottomBounderi, SkinTypeGoku.GokuStartLeft.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinTypeGoku.GokuStartRight;

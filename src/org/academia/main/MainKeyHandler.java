@@ -9,32 +9,34 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class MainKeyHandler implements KeyboardHandler {
 
-    protected boolean isGameStarted;
-    protected int i = 0;
-    protected Picture[] sel = new Picture[3];
-    protected Picture menu;
-    protected Keyboard k = new Keyboard(this);
-    protected KeyboardEvent left = new KeyboardEvent();
-    protected KeyboardEvent right = new KeyboardEvent();
-    protected KeyboardEvent space = new KeyboardEvent();
+    private boolean isGameStarted;
+    private int i = 0;
+    private Picture[] sel = new Picture[3];
+    private Picture menu;
+    private Keyboard k = new Keyboard(this);
+    private KeyboardEvent space = new KeyboardEvent();
+    private KeyboardEvent left = new KeyboardEvent();
+    private KeyboardEvent right = new KeyboardEvent();
+    private int count = 0;
 
     public MainKeyHandler() {
 
         //Picture initialization
 
-        Picture a = new Picture(185, 265, SkinMenus.DragonBalls.getPath());
-        a.draw();
-        Picture b = new Picture(300, 300, SkinTypeVegeta.VegetaDefLeft.getPath());
-        Picture c = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
+        Picture screenOne = new Picture(185, 265, SkinMenus.DragonBalls.getPath());
+        screenOne.draw();
+        Picture screenTwo = new Picture(188, 256, SkinMenus.SnipeMenu.getPath());
+        Picture screenThree = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
 
         //BackGround Picture
         menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
         menu.draw();
 
         //Picture Array initialization
-        sel[0] = a;
-        sel[1] = b;
-        sel[2] = c;
+        sel[0] = screenOne;
+        sel[1] = screenTwo;
+        sel[2] = screenThree;
+
 
         //Events initialization
         left.setKey(KeyboardEvent.KEY_LEFT);
@@ -49,6 +51,45 @@ public class MainKeyHandler implements KeyboardHandler {
         k.addEventListener(right);
         k.addEventListener(left);
         k.addEventListener(space);
+
+        KeyboardEvent c = new KeyboardEvent();
+        c.setKey(KeyboardEvent.KEY_C);
+        c.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent a = new KeyboardEvent();
+        a.setKey(KeyboardEvent.KEY_A);
+        a.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent r = new KeyboardEvent();
+        r.setKey(KeyboardEvent.KEY_R);
+        r.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent b = new KeyboardEvent();
+        b.setKey(KeyboardEvent.KEY_B);
+        b.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent s = new KeyboardEvent();
+        s.setKey(KeyboardEvent.KEY_S);
+        s.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent h = new KeyboardEvent();
+        h.setKey(KeyboardEvent.KEY_H);
+        h.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent i = new KeyboardEvent();
+        i.setKey(KeyboardEvent.KEY_I);
+        i.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent n = new KeyboardEvent();
+        n.setKey(KeyboardEvent.KEY_N);
+        n.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+
+        k.addEventListener(c);
+        k.addEventListener(a);
+        k.addEventListener(r);
+        k.addEventListener(b);
+        k.addEventListener(s);
+        k.addEventListener(h);
+        k.addEventListener(i);
+        k.addEventListener(n);
+
+
+
+
 
 
     }
@@ -65,7 +106,7 @@ public class MainKeyHandler implements KeyboardHandler {
 
     }
 
-    protected void removeListners(){
+    protected void removeListners() {
         k.removeEventListener(left);
         k.removeEventListener(right);
         k.removeEventListener(space);
@@ -77,7 +118,7 @@ public class MainKeyHandler implements KeyboardHandler {
             case KeyboardEvent.KEY_LEFT:
                 if (i < sel.length - 1) {
                     i++;
-                    sel[i-1].delete();
+                    sel[i - 1].delete();
                     sel[i].draw();
                     menu.delete();
                     menu.draw();
@@ -86,7 +127,7 @@ public class MainKeyHandler implements KeyboardHandler {
             case KeyboardEvent.KEY_RIGHT:
                 if (i > 0) {
                     i--;
-                    sel[i+1].delete();
+                    sel[i + 1].delete();
                     sel[i].draw();
                     menu.delete();
                     menu.draw();
@@ -97,6 +138,30 @@ public class MainKeyHandler implements KeyboardHandler {
                 menu.delete();
                 sel[i].delete();
                 break;
+            case KeyboardEvent.KEY_C:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_A:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_R:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_B:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_S:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_H:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_I:
+                checkEasterEgg(keyboardEvent);
+                break;
+            case KeyboardEvent.KEY_N:
+                checkEasterEgg(keyboardEvent);
+                break;
 
         }
     }
@@ -105,4 +170,61 @@ public class MainKeyHandler implements KeyboardHandler {
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
+
+    public boolean isGameStarted() {
+        return isGameStarted;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+
+    private void checkEasterEgg(KeyboardEvent keyboardEvent){
+
+        if(count == 0 && keyboardEvent.getKey() == KeyboardEvent.KEY_C){
+            count ++;
+            System.out.println("1");
+        }else if(count == 1 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
+            count ++;
+            System.out.println("2");
+        }else if(count == 2 && keyboardEvent.getKey() == KeyboardEvent.KEY_R){
+            count ++;
+            System.out.println("3");
+        }else if(count == 3 && keyboardEvent.getKey() == KeyboardEvent.KEY_B){
+            count ++;
+            System.out.println("4");
+        }else if(count == 4 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
+            count ++;
+            System.out.println("5");
+        }else if(count == 5 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            count ++;
+            System.out.println("6");
+        }else if(count == 6 && keyboardEvent.getKey() == KeyboardEvent.KEY_H){
+            count ++;
+            System.out.println("7");
+        }else if(count == 7 && keyboardEvent.getKey() == KeyboardEvent.KEY_I){
+            count ++;
+            System.out.println("8");
+        }else if(count == 8 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
+            count ++;
+            System.out.println("9");
+        }else if(count == 9 && keyboardEvent.getKey() == KeyboardEvent.KEY_N){
+            count ++;
+            System.out.println("1");
+        }else if(count == 10 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            count ++;
+            System.out.println("1");
+            easterUnlock();
+        }else if (count != 11) {
+            count = 0;
+        }
+
+
+    }
+
+    private void easterUnlock(){
+        System.out.println("unlocked");
+    }
+
 }

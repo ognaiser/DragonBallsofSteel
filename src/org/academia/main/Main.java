@@ -12,9 +12,9 @@ public class Main {
 
         while (true) {
 
-            if (handler.isGameStarted) {
+            if (handler.isGameStarted()) {
 
-                switch (handler.i){
+                switch (handler.getI()){
                     case 0:
                         handler.removeListners();
                         Game game = new Game();

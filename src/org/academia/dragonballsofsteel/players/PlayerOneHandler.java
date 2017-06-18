@@ -47,7 +47,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public PlayerOneHandler(int speed, Player player) {
 
         //Inicialize Properties
-        image = new Picture(397, Game.bottomBounderi, SkinTypeVegeta.VegetaStartLeft.getPath());
+        image = new Picture(397, Game.bottomBounderi, SkinTypeVegeta.VegetaStartRight.getPath());
         image.draw();
         this.speed = speed;
         this.skin = SkinTypeVegeta.VegetaStartLeft;
