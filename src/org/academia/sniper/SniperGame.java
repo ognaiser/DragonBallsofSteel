@@ -1,18 +1,21 @@
 package org.academia.sniper;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import java.util.LinkedList;
+
 
 public class SniperGame {
 
     private Picture background;
     private boolean isGameOver = false;
-    private int gameTime = 60000;
+    private int gameTime = 1000;
     private Player player;
     private GameObjectFactory factory;
     private GameObject[] enemies;
     private int round;
     private MouseController mouse;
+    private Text text;
 
     public void init() {
 
@@ -34,8 +37,13 @@ public class SniperGame {
 
         enemies = factory.createObject(round);
         mouse = new MouseController(enemies,player);
+        text = new Text(900, 100, "Score: " + player.getScore());
+        text.grow(50,50);
+        text.draw();
 
         while (!isGameOver) {
+
+            text.setText("Score: " + player.getScore());
 
 
 
@@ -69,8 +77,13 @@ public class SniperGame {
     private void checkGameOver() {
         if (gameTime == 0) {
             isGameOver = true;
-            System.out.println("Game Over! Score: " + player.getScore());
             mouse.removeListners();
+            
+            text.delete(); // Delete score from left side
+            text = new Text(640, 390, "Final score: " + player.getScore());
+            text.setColor(Color.DARK_GRAY);
+            text.grow(250,200);
+            text.draw();
         }
     }
 }
