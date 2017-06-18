@@ -35,6 +35,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     private KeyboardEvent lastKey;
     private KeyboardEvent previousKey;
     private boolean isKeyPressed = false;
+    private Keyboard k;
 
     /**
      *
@@ -105,7 +106,7 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         xReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
         //Inicialize Keyboard
-        Keyboard k = new Keyboard(this);
+        k = new Keyboard(this);
 
         //Movement Keys event Add
         k.addEventListener(w);
@@ -395,6 +396,10 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
         image.draw();
         sideMoveSkinSetter();
+    }
+
+    public void deleteHandlers(){
+
     }
 
     //Setters

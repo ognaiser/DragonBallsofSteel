@@ -1,10 +1,8 @@
 package org.academia.dragonballsofsteel;
 
-import org.academia.dragonballsofsteel.players.MouseHandlerTest;
 import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerColissionChecker;
 import org.academia.dragonballsofsteel.players.PlayerType;
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -15,9 +13,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     //TODO: Fix attack BUGS!!!! (WHAT HAVE YOU DONE RUBEN!!!) (They are not taking damage or you delete the souts) **
+    //TODO: Delete handlers when exiting and all the pictures
     //TODO: fix bug when going up skin doesn't t Change Direction (not sure if it was working before may be YOUR FAULT THO!)
     //TODO: get thing when you go down or up you go to the side
     //TODO: get a health Display
+
 
     //** After some bug testing i think the bg only hapens when players are on the ground
 
@@ -39,9 +39,6 @@ public class Game {
 
         //BackGround
         back.draw();
-
-        MouseHandlerTest m = new MouseHandlerTest();
-
 
         //Game Start
         start();
@@ -129,6 +126,7 @@ public class Game {
             } catch (InterruptedException e) {
             }
         }
+
 
 
 
