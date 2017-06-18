@@ -2,6 +2,7 @@ package org.academia.main;
 
 import org.academia.dragonballsofsteel.Game;
 import org.academia.main.Tests.MouseTest;
+import org.academia.sniper.SniperGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -26,6 +27,10 @@ public class Main {
                         handler.menuScreenInit();
                         break;
                     case 1:
+                        handler.removeListners();
+                        SniperGame sniperGame = new SniperGame();
+                        sniperGame.init();
+                        handler.menuScreenInit();
                         break;
                     case 2:
                         break;

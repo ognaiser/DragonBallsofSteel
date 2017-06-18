@@ -11,9 +11,10 @@ public class MouseController implements MouseHandler{
     private Picture controler;
     private GameObject[] enemies;
     private Player player;
+    private Mouse m;
 
     public MouseController(GameObject[] enemies, Player player) {
-        Mouse m = new Mouse(this);
+        m = new Mouse(this);
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
         controler = new Picture(0,0,"Resources/enemy.png");
         this.enemies = enemies;
@@ -98,6 +99,10 @@ public class MouseController implements MouseHandler{
             }
         }
 
+    }
+
+    public void removeListners(){
+        m.removeEventListener(MouseEventType.MOUSE_CLICKED);
     }
 
     @Override

@@ -50,6 +50,7 @@ public class SniperGame {
             checkGameOver();
 
         }
+
     }
 
     private void checkRound(){
@@ -69,6 +70,7 @@ public class SniperGame {
         if (gameTime == 0) {
             isGameOver = true;
             System.out.println("Game Over! Score: " + player.getScore());
+            mouse.removeListners();
         }
     }
 }
