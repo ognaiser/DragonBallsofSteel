@@ -393,8 +393,8 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     public void setPos(int x, int y){
         image.delete();
         image = new Picture(x, y, SkinTypeVegeta.VegetaFlyLeft.getPath());
-        sideMoveSkinSetter();
         image.draw();
+        sideMoveSkinSetter();
     }
 
     //Setters
