@@ -122,7 +122,7 @@ public class Game {
                         player.setPos(player1.getPosx() + player1.getWidth() + 5, player1.getPosy(), player1.facingRight());
                     }
                 }
-                if(player1.teleport() && player.getPosx() > player1.getPosx()){
+                if(player.teleport() && player.getPosx() > player1.getPosx()){
                     if(player1.getPosx() - 5 - player.getWidth() >= leftBonderi) {
                         player.setPos(player1.getPosx() - player.getWidth() - 5, player1.getPosy(), player1.facingRight());
                     }

@@ -448,6 +448,12 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
             if (dir) {
                 while (x < xMove) {
                     x++;
+                    if(x > 1118){
+                        image.delete();
+                        image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
+                        image.draw();
+                        break;
+                    }
                     image.delete();
                     image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
                     image.draw();
@@ -457,6 +463,12 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
             } else {
                 while (x > xLess) {
                     x--;
+                    if(x < 143){
+                        image.delete();
+                        image = new Picture(x, y, SkinTypeVegeta.VegetaFallRight.getPath());
+                        image.draw();
+                        break;
+                    }
                     image.delete();
                     image = new Picture(x, y, SkinTypeVegeta.VegetaFallRight.getPath());
                     image.draw();

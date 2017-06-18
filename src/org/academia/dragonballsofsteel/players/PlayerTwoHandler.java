@@ -333,6 +333,10 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         return lastKey;
     }
 
+    public KeyboardEvent getPreviousKey() {
+        return previousKey;
+    }
+
     @Override
     public boolean isKeyPressed() {
         return isKeyPressed;
@@ -346,10 +350,6 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     @Override
     public boolean facingRight(){
         return isRight;
-    }
-
-    public KeyboardEvent getPreviousKey() {
-        return previousKey;
     }
 
     @Override
@@ -373,6 +373,12 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
             if (dir) {
                 while (x < xMove) {
                     x++;
+                    if(x > 1118){
+                        image.delete();
+                        image = new Picture(x, y, SkinTypeGoku.GokuFallLeft.getPath());
+                        image.draw();
+                        break;
+                    }
                     image.delete();
                     image = new Picture(x, y, SkinTypeGoku.GokuFallLeft.getPath());
                     image.draw();
@@ -382,6 +388,12 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
             } else {
                 while (x > xLess) {
                     x--;
+                    if(x < 143){
+                        image.delete();
+                        image = new Picture(x, y, SkinTypeGoku.GokuFallRight.getPath());
+                        image.draw();
+                        break;
+                    }
                     image.delete();
                     image = new Picture(x, y, SkinTypeGoku.GokuFallRight.getPath());
                     image.draw();
