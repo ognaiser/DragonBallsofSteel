@@ -78,7 +78,7 @@ public class SniperGame {
         if (gameTime == 0) {
             isGameOver = true;
             mouse.removeListners();
-            
+
             text.delete(); // Delete score from left side
             text = new Text(640, 390, "Final score: " + player.getScore());
             text.setColor(Color.DARK_GRAY);
