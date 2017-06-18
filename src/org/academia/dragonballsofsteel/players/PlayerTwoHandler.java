@@ -395,6 +395,7 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     }
 
     public void clean(){
+
         image.delete();
         k.removeEventListener(w);
         k.removeEventListener(a);
