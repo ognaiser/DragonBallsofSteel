@@ -24,7 +24,7 @@ public class Game {
     protected static boolean foward = false;
 
 
-    public void init(){
+    public void init() throws InterruptedException {
 
         //BackGround
         back.draw();
@@ -59,7 +59,7 @@ public class Game {
         start();
     }
 
-    public void start(){
+    public void start() throws InterruptedException {
         //Player1
         Player player = new Player(PlayerType.PLAYERONE);
 
@@ -80,7 +80,7 @@ public class Game {
                     if((player.getPosx() > player1.getPosx() && player.facingRight()) ||
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
-                        player1.moveInDirection(player1.takingDamage(player.punch()));
+                        player1.moveInDirection(player.getPosx(), player1.takingDamage(player.punch()));
                         player1.setSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
@@ -100,7 +100,7 @@ public class Game {
                     if((player.getPosx() > player1.getPosx() && player.facingRight()) ||
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
-                        player1.takingDamage(player.kick());
+                        player1.moveInDirection(player.getPosx(), player1.takingDamage(player.kick()));
                         player1.setSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
@@ -145,7 +145,7 @@ public class Game {
                     if((player1.getPosx() > player.getPosx() && player1.facingRight()) ||
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
-                        player.takingDamage(player1.punch());
+                        player.moveInDirection(player1.getPosx(), player.takingDamage(player1.punch()));
                         player.setSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();
@@ -160,7 +160,7 @@ public class Game {
                     if((player1.getPosx() > player.getPosx() && player1.facingRight()) ||
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
-                        player.takingDamage(player1.kick());
+                        player.moveInDirection(player1.getPosx(), player.takingDamage(player1.kick()));
                         player.setSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();

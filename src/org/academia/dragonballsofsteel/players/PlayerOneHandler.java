@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academia.dragonballsofsteel.Game;
+import org.academia.dragonballsofsteel.SkinTypeGoku;
 import org.academia.dragonballsofsteel.SkinTypeVegeta;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -436,19 +437,34 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
     }
 
     @Override
-    public void moveInDirection(boolean direction){
-        image.delete();
-        int x = image.getX();
-        int y = image.getY();
+    public void moveInDirection(int xPos, boolean direction) throws InterruptedException {
         if(direction) {
-            image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
-            image.draw();
-        } else{
-            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyRight.getPath());
-            image.draw();
+            boolean dir = (xPos < image.getX()) ? true : false;
+            image.delete();
+            int x = image.getX();
+            int xMove = x + 100;
+            int xLess = x - 100;
+            int y = image.getY();
+            if (dir) {
+                while (x < xMove) {
+                    x++;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+
+            } else {
+                while (x > xLess) {
+                    x--;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeVegeta.VegetaFallRight.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+            }
         }
-        sideMoveSkinSetter();
-        image.draw();
+
     }
 
     public void clean(){
