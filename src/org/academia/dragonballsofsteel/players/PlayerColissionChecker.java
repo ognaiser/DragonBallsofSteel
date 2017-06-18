@@ -4,8 +4,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 public class PlayerColissionChecker {
 
-    //todo get a timer
-
 
     private Player playerOne;
     private Player playerTwo;

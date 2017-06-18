@@ -14,6 +14,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     //TODO: get a health Display
+    //TODO: get a timer for end game
 
     protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
@@ -205,12 +206,38 @@ public class Game {
             }
 
             if(player.isDefeated() || player1.isDefeated()){
-                back.draw();
+
                 isGameOver = true;
 
+                player.clean();
+                player1.clean();
 
+                foward = false;
+
+                MainScreenKeboardHandler handler = new MainScreenKeboardHandler();
+                Picture victory;
+
+                if(player.isDefeated()){
+                    victory = new Picture(0,0,SkinTypeExtra.Goku_Wins.getPath());
+                    victory.draw();
+                }else {
+                    victory = new Picture(0,0,SkinTypeExtra.Vegeta_Wins.getPath());
+                    victory.draw();
+                }
+
+                while (!foward) {
+
+                    Thread.sleep(800);
+
+                }
+
+                victory.delete();
+
+                handler.removeListners();
 
             }
+
+
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -220,13 +247,7 @@ public class Game {
 
 
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-        }
 
-        player.clean();
-        player1.clean();
         back.delete();
     }
 

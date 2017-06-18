@@ -61,6 +61,7 @@ public class Main {
         back.fill();
         handler.menu.draw();
 
+
         Text text = new Text(239,307,"Hacking <Academia de Codigo_>");
         text.setColor(Color.GREEN);
         text.draw();
@@ -68,6 +69,7 @@ public class Main {
         Text text1 = new Text(239,327,"Trying to steal CarCrash2!");
         text1.setColor(Color.GREEN);
         text1.draw();
+
 
         try {
             Thread.sleep(2000);

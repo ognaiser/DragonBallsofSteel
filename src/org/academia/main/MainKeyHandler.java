@@ -31,8 +31,8 @@ public class MainKeyHandler implements KeyboardHandler {
         Picture screenOne = new Picture(188, 255, SkinMenus.DragonBalls.getPath());
         screenOne.draw();
         Picture screenTwo = new Picture(188, 256, SkinMenus.SnipeMenu.getPath());
-        Picture screenThree = new Picture(300, 300, SkinTypeVegeta.VegetaFallLeft.getPath());
-        Picture screenFour = new Picture(185,265, SkinTypeVegeta.VegetaGroundLeft.getPath());
+        Picture screenThree = new Picture(185, 255, SkinMenus.galo_main.getPath());
+        Picture screenFour = new Picture(185,265, SkinMenus.car_menu.getPath());
 
         //BackGround Picture
         menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
@@ -236,9 +236,6 @@ public class MainKeyHandler implements KeyboardHandler {
 
     }
 
-    public void drawCurrent(){
-        sel[i].draw();
-    }
 
     public int getCount() {
         return count;
