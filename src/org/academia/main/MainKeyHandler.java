@@ -15,13 +15,14 @@ public class MainKeyHandler implements KeyboardHandler {
 
     private boolean isGameStarted;
     private int i = 0;
-    private Picture[] sel = new Picture[4];
-    private Picture menu;
+    protected Picture[] sel = new Picture[4];
+    protected Picture menu;
     private Keyboard k = new Keyboard(this);
     private KeyboardEvent space = new KeyboardEvent();
     private KeyboardEvent left = new KeyboardEvent();
     private KeyboardEvent right = new KeyboardEvent();
     private int count = 0;
+    protected boolean unlocked = false;
 
     public MainKeyHandler() {
 
@@ -224,11 +225,10 @@ public class MainKeyHandler implements KeyboardHandler {
             System.out.println("9");
         }else if(count == 9 && keyboardEvent.getKey() == KeyboardEvent.KEY_N){
             count ++;
-            System.out.println("1");
+            System.out.println("10");
         }else if(count == 10 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
             count ++;
-            System.out.println("1");
-            easterUnlock();
+            System.out.println("11");
         }else if (count != 11) {
             count = 0;
         }
@@ -236,84 +236,8 @@ public class MainKeyHandler implements KeyboardHandler {
 
     }
 
-    private void easterUnlock(){
-        Rectangle back = new Rectangle(188,255,188+510,255+312);
-        back.setColor(Color.BLACK);
-        back.fill();
-        menu.draw();
-        Text text = new Text(239,307,"Hacking <Academia de Codigo_>");
-        text.setColor(Color.GREEN);
-        text.draw();
-        Text text1 = new Text(259,307,"Trying to steal CarCrash2!");
-        text.setColor(Color.GREEN);
-        text.draw();
-        try {
-            Thread.sleep(600);
-        } catch (InterruptedException e) {
-        }
 
-        back.delete();
-        text.delete();
-        text1.delete();
-
-        Picture hacking = new Picture(188,255,SkinMenus.hacking_1.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_2.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_3.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_4.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_5.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_end.getPath());
-        hacking.draw();
-        menu.draw();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-        }
-
-        menu.draw();
-        sel[i].draw();
-
-        System.out.println("unlocked");
+    public int getCount() {
+        return count;
     }
-
 }
