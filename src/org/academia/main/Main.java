@@ -60,9 +60,9 @@ public class Main {
         text.setColor(Color.GREEN);
         text.draw();
 
-        Text text1 = new Text(259,307,"Trying to steal CarCrash2!");
-        text.setColor(Color.GREEN);
-        text.draw();
+        Text text1 = new Text(239,327,"Trying to steal CarCrash2!");
+        text1.setColor(Color.GREEN);
+        text1.draw();
 
         try {
             Thread.sleep(1000);
@@ -127,12 +127,14 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
 
-        handler.menu.draw();
+        hacking.delete();
+
         handler.sel[handler.getI()].draw();
+        handler.menu.draw();
 
 
 

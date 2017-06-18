@@ -236,6 +236,9 @@ public class MainKeyHandler implements KeyboardHandler {
 
     }
 
+    public void drawCurrent(){
+        sel[i].draw();
+    }
 
     public int getCount() {
         return count;
