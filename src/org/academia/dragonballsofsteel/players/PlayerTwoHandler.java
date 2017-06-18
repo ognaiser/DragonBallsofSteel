@@ -362,19 +362,33 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
     }
 
     @Override
-    public void moveInDirection(boolean direction){
-        image.delete();
-        int x = image.getX();
-        int y = image.getY();
+    public void moveInDirection(int xPos, boolean direction) throws InterruptedException {
         if(direction) {
-            image = new Picture(x, y, SkinTypeGoku.GokuFallLeft.getPath());
-            image.draw();
-        } else{
-            image = new Picture(x, y, SkinTypeGoku.GokuFallRight.getPath());
-            image.draw();
+            boolean dir = (xPos < image.getX()) ? true : false;
+            image.delete();
+            int x = image.getX();
+            int xMove = x + 100;
+            int xLess = x - 100;
+            int y = image.getY();
+            if (dir) {
+                while (x < xMove) {
+                    x++;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeGoku.GokuFallLeft.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+
+            } else {
+                while (x > xLess) {
+                    x--;
+                    image.delete();
+                    image = new Picture(x, y, SkinTypeGoku.GokuFallRight.getPath());
+                    image.draw();
+                    Thread.sleep(2);
+                }
+            }
         }
-        sideMoveSkinSetter();
-        image.draw();
     }
 
     public void setPos(int x, int y, boolean direction){

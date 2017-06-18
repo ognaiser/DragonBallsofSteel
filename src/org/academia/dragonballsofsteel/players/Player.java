@@ -241,8 +241,8 @@ public class Player {
         handler.setPos(x, y, direction);
     }
 
-    public void moveInDirection(boolean direction){
-        handler.moveInDirection(direction);
+    public void moveInDirection(int xPox, boolean direction) throws InterruptedException {
+        handler.moveInDirection(xPox, direction);
     }
 
     public boolean isKeyPressed(){
