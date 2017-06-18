@@ -65,7 +65,7 @@ public class Game {
                     if((player.getPosx() > player1.getPosx() && player.facingRight()) ||
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
-                        player1.takingDamage(player.punch());
+                        player1.moveInDirection(player1.takingDamage(player.punch()));
                         player1.setSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
@@ -210,7 +210,8 @@ public class Game {
         } catch (InterruptedException e) {
         }
 
-
+        player.clean();
+        player1.clean();
         back.delete();
     }
 

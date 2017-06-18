@@ -435,6 +435,22 @@ public class PlayerOneHandler implements KeyboardHandler, PlayerHandler {
         image.draw();
     }
 
+    @Override
+    public void moveInDirection(boolean direction){
+        image.delete();
+        int x = image.getX();
+        int y = image.getY();
+        if(direction) {
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFallLeft.getPath());
+            image.draw();
+        } else{
+            image = new Picture(x, y, SkinTypeVegeta.VegetaFlyRight.getPath());
+            image.draw();
+        }
+        sideMoveSkinSetter();
+        image.draw();
+    }
+
     public void clean(){
         image.delete();
         k.removeEventListener(w);

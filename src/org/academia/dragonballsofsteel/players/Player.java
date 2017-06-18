@@ -42,6 +42,7 @@ public class Player {
     public boolean takingDamage(int damage) {
         if(hitCounter > 2){
             hitCounter = 0;
+            health = health - damage;
             return true;
         }
         if (health - damage < 0) {
@@ -50,7 +51,8 @@ public class Player {
             return false;
         }
         health = health - damage;
-        return
+        hitCounter++;
+        return false;
     }
 
     /**
@@ -237,6 +239,10 @@ public class Player {
 
     public void setPos(int x, int y, boolean direction){
         handler.setPos(x, y, direction);
+    }
+
+    public void moveInDirection(boolean direction){
+        handler.moveInDirection(direction);
     }
 
     public boolean isKeyPressed(){

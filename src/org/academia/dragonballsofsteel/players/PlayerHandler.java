@@ -24,6 +24,8 @@ public interface PlayerHandler {
 
     boolean facingRight();
 
+    void moveInDirection(boolean direction);
+
     void setSkin(boolean direction);
 
     void setPos(int x, int y, boolean direction);
