@@ -2,6 +2,7 @@ package org.academia.main;
 
 import org.academia.dragonballsofsteel.Game;
 import org.academia.main.Tests.MouseTest;
+import org.academia.noughtsandcrosses.NoughtsAndCrosses;
 import org.academia.sniper.SniperGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -33,6 +34,10 @@ public class Main {
                         handler.menuScreenInit();
                         break;
                     case 2:
+                        handler.removeListners();
+                        NoughtsAndCrosses noughtsAndCrosses = new NoughtsAndCrosses();
+                        noughtsAndCrosses.init();
+                        handler.menuScreenInit();
                         break;
                     default:
                         break;
@@ -53,6 +58,7 @@ public class Main {
 
 
         handler.unlocked = true;
+        handler.sel[handler.getI()].delete();
 
         //1 part
 
@@ -76,7 +82,6 @@ public class Main {
         } catch (InterruptedException e) {
         }
 
-        back.delete();
         text.delete();
         text1.delete();
 
@@ -138,7 +143,11 @@ public class Main {
         } catch (InterruptedException e) {
         }
 
+
+        back.delete();
+
         hacking.delete();
+
 
         handler.sel[handler.getI()].draw();
         handler.menu.draw();

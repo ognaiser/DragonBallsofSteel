@@ -1,22 +1,27 @@
 package org.academia.noughtsandcrosses;
 
+import org.academia.main.SkinMenus;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class NoughtsAndCrosses {
 
-    protected int[] game = new int[9];
+    private int[] game = new int[9];
     private boolean isGameOver = false;
     private MouseListner mouseHandler;
     protected static int turn = 1;
+    private Picture back;
 
     public void init(){
 
-        mouseHandler = new MouseListner();
+        back = new Picture(0,0, SkinMenus.galo_back.getPath());
+        back.draw();
+
+        mouseHandler = new MouseListner(game);
 
         for (int i = 0; i < game.length; i++) {
             game[i] = 0;
         }
-
 
         start();
 
@@ -36,7 +41,17 @@ public class NoughtsAndCrosses {
         }
 
         mouseHandler.m.removeEventListener(MouseEventType.MOUSE_CLICKED);
+        removeImages();
 
+    }
+
+    private void removeImages(){
+        back.delete();
+        for (int i = 0; i < mouseHandler.pictures.length; i++) {
+            if (mouseHandler.pictures[i] != null) {
+                mouseHandler.pictures[i].delete();
+            }
+        }
     }
 
     private void checkEndgame(){

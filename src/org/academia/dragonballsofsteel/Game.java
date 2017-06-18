@@ -13,7 +13,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     //TODO: get a health Display
-    //TODO: get a timer for end game
 
     protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
