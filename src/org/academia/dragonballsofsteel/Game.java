@@ -3,6 +3,7 @@ package org.academia.dragonballsofsteel;
 import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerColissionChecker;
 import org.academia.dragonballsofsteel.players.PlayerType;
+import org.academia.main.SkinMenus;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -12,18 +13,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
-    //TODO: Fix attack BUGS!!!! (WHAT HAVE YOU DONE RUBEN!!!) (They are not taking damage or you delete the souts) **
-    //TODO: Delete handlers when exiting and all the pictures
-    //TODO: fix bug when going up skin doesn't t Change Direction (not sure if it was working before may be YOUR FAULT THO!)
-    //TODO: get thing when you go down or up you go to the side
     //TODO: get a health Display
-
-
-    //** After some bug testing i think the bg only hapens when players are on the ground
-
-    //I fix start skins and you have new skins on all of the enums including start and ending screens and kick and charge animations both directions and you have hit animations if you want!
-    //I also got you kamehameha skins!
-    //Did some changes to backgorund image
 
     protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
@@ -31,14 +21,39 @@ public class Game {
     public static final int topBonderi = 146;
     public static final int leftBonderi = 143;
     Picture back = new Picture(0,0, SkinTypeExtra.Back.getPath());
+    protected static boolean foward = false;
 
 
     public void init() throws InterruptedException {
 
-        //Todo: Get Instruction Screen
-
         //BackGround
         back.draw();
+
+        int i = 0;
+        MainScreenKeboardHandler handler = new MainScreenKeboardHandler();
+        Picture instructionScreen = new Picture(0,0, SkinTypeExtra.Start_Screen.getPath());
+        instructionScreen.draw();
+
+        while (!foward){
+
+            if (i==0){
+                instructionScreen.load(SkinTypeExtra.Start_Screen.getPath());
+                instructionScreen.draw();
+                i++;
+            }else {
+                instructionScreen.load(SkinTypeExtra.Start_Screen_2.getPath());
+                instructionScreen.draw();
+                i--;
+            }
+
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        handler.removeListners();
+        instructionScreen.delete();
 
         //Game Start
         start();
