@@ -205,9 +205,9 @@ public class Game {
             }
 
             if(player.isDefeated() || player1.isDefeated()){
+
                 back.draw();
                 isGameOver = true;
-
 
 
             }
