@@ -127,7 +127,7 @@ public class Game {
                 player.setKeyPressed();
             }
 
-            if (player.getKey().getKey() == KeyboardEvent.KEY_W && player.isKeyPressed() && (player.getPosy() - player1.getPosy() - player1.getHeight() <= 10) && Math.abs(player.getPosx() - player1.getPosx()) < 10) {
+            if (player.getKey().getKey() == KeyboardEvent.KEY_W && player.isKeyPressed() && (player.getPosy() - player1.getPosy() - player1.getHeight() <= 10) && Math.abs(player.getPosx() - player1.getPosx()) < 20) {
                 if (player1.facingRight()) {
                     player.setPos(player1.getPosx() - player.getWidth() - 5, player1.getPosy(), player1.facingRight());
                 } else {
@@ -203,7 +203,7 @@ public class Game {
                 player1.setKeyPressed();
             }
 
-            if (player1.getKey().getKey() == KeyboardEvent.KEY_W && player1.isKeyPressed() && (player1.getPosy() - player.getPosy() - player.getHeight() <= 10) && Math.abs(player1.getPosx() - player.getPosx()) < 10) {
+            if (player1.getKey().getKey() == KeyboardEvent.KEY_UP && player1.isKeyPressed() && (player1.getPosy() - player.getPosy() - player.getHeight() <= 10) && Math.abs(player1.getPosx() - player.getPosx()) < 20) {
                 if (player.facingRight()) {
                     player1.setPos(player.getPosx() - player1.getWidth() - 5, player.getPosy(), true);
                 } else {
