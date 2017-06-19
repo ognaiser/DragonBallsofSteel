@@ -124,7 +124,7 @@ public class Main {
         //2 Part
         for (int i = 0; i < 5; i++) {
 
-            hacking = new Picture(185, 255, SkinMenus.hacking_1.getPath());
+            hacking.load(SkinMenus.hacking_1.getPath());
             hacking.draw();
             handler.menu.draw();
 

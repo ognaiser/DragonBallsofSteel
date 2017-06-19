@@ -1,9 +1,5 @@
 package org.academia.main;
 
-import org.academia.dragonballsofsteel.SkinTypeVegeta;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -13,16 +9,17 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class MainKeyHandler implements KeyboardHandler {
 
-    private boolean isGameStarted;
-    private int i = 0;
     protected Picture[] sel = new Picture[4];
     protected Picture menu;
+    protected boolean unlocked = false;
+    private boolean isGameStarted;
+    private int i = 0;
     private Keyboard k = new Keyboard(this);
     private KeyboardEvent space = new KeyboardEvent();
     private KeyboardEvent left = new KeyboardEvent();
     private KeyboardEvent right = new KeyboardEvent();
+    private KeyboardEvent kill = new KeyboardEvent();
     private int count = 0;
-    protected boolean unlocked = false;
 
     public MainKeyHandler() {
 
@@ -32,7 +29,7 @@ public class MainKeyHandler implements KeyboardHandler {
         screenOne.draw();
         Picture screenTwo = new Picture(188, 256, SkinMenus.SnipeMenu.getPath());
         Picture screenThree = new Picture(185, 255, SkinMenus.galo_main.getPath());
-        Picture screenFour = new Picture(185,265, SkinMenus.car_menu.getPath());
+        Picture screenFour = new Picture(185, 265, SkinMenus.car_menu.getPath());
 
         //BackGround Picture
         menu = new Picture(0, 0, SkinMenus.ArcadeMenu.getPath());
@@ -58,6 +55,11 @@ public class MainKeyHandler implements KeyboardHandler {
         k.addEventListener(right);
         k.addEventListener(left);
         k.addEventListener(space);
+
+        kill.setKey(KeyboardEvent.KEY_K);
+        kill.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        k.addEventListener(kill);
 
         //Easter Eggs Listener
 
@@ -114,17 +116,18 @@ public class MainKeyHandler implements KeyboardHandler {
         k.removeEventListener(left);
         k.removeEventListener(right);
         k.removeEventListener(space);
+        k.removeEventListener(kill);
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
-                if(count != 11){
+                if (count != 11) {
                     if (i < sel.length - 2) {
                         desingMenu();
                     }
-                }else {
+                } else {
                     if (i < sel.length - 1) {
                         desingMenu();
                     }
@@ -168,16 +171,19 @@ public class MainKeyHandler implements KeyboardHandler {
             case KeyboardEvent.KEY_N:
                 checkEasterEgg(keyboardEvent);
                 break;
+            case KeyboardEvent.KEY_K:
+                System.exit(1);
+                break;
 
         }
     }
 
-    private void desingMenu(){
-                i++;
-                sel[i - 1].delete();
-                sel[i].draw();
-                menu.delete();
-                menu.draw();
+    private void desingMenu() {
+        i++;
+        sel[i - 1].delete();
+        sel[i].draw();
+        menu.delete();
+        menu.draw();
     }
 
     @Override
@@ -194,31 +200,31 @@ public class MainKeyHandler implements KeyboardHandler {
     }
 
 
-    private void checkEasterEgg(KeyboardEvent keyboardEvent){
+    private void checkEasterEgg(KeyboardEvent keyboardEvent) {
 
-        if(count == 0 && keyboardEvent.getKey() == KeyboardEvent.KEY_C){
-            count ++;
-        }else if(count == 1 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
-            count ++;
-        }else if(count == 2 && keyboardEvent.getKey() == KeyboardEvent.KEY_R){
-            count ++;
-        }else if(count == 3 && keyboardEvent.getKey() == KeyboardEvent.KEY_B){
-            count ++;
-        }else if(count == 4 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
-            count ++;
-        }else if(count == 5 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
-            count ++;
-        }else if(count == 6 && keyboardEvent.getKey() == KeyboardEvent.KEY_H){
-            count ++;
-        }else if(count == 7 && keyboardEvent.getKey() == KeyboardEvent.KEY_I){
-            count ++;
-        }else if(count == 8 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
-            count ++;
-        }else if(count == 9 && keyboardEvent.getKey() == KeyboardEvent.KEY_N){
-            count ++;
-        }else if(count == 10 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
-            count ++;
-        }else if (count != 11) {
+        if (count == 0 && keyboardEvent.getKey() == KeyboardEvent.KEY_C) {
+            count++;
+        } else if (count == 1 && keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+            count++;
+        } else if (count == 2 && keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
+            count++;
+        } else if (count == 3 && keyboardEvent.getKey() == KeyboardEvent.KEY_B) {
+            count++;
+        } else if (count == 4 && keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+            count++;
+        } else if (count == 5 && keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+            count++;
+        } else if (count == 6 && keyboardEvent.getKey() == KeyboardEvent.KEY_H) {
+            count++;
+        } else if (count == 7 && keyboardEvent.getKey() == KeyboardEvent.KEY_I) {
+            count++;
+        } else if (count == 8 && keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+            count++;
+        } else if (count == 9 && keyboardEvent.getKey() == KeyboardEvent.KEY_N) {
+            count++;
+        } else if (count == 10 && keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+            count++;
+        } else if (count != 11) {
             count = 0;
         }
 
