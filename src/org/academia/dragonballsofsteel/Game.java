@@ -80,7 +80,7 @@ public class Game {
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
                         player1.moveInDirection(player.getPosx(), player1.takingDamage(player.punch()));
-                        player1.setSkin(player1.facingRight());
+                        player1.setSideSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
                     }
@@ -100,7 +100,7 @@ public class Game {
                             (player.getPosx() < player1.getPosx() && !player.facingRight())) {
 
                         player1.moveInDirection(player.getPosx(), player1.takingDamage(player.kick()));
-                        player1.setSkin(player1.facingRight());
+                        player1.setSideSkin(player1.facingRight());
                         System.out.println("Goku : " + player1.getHealth());
                         player.setKeyPressed();
                     }
@@ -157,7 +157,7 @@ public class Game {
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
                         player.moveInDirection(player1.getPosx(), player.takingDamage(player1.punch()));
-                        player.setSkin(player.facingRight());
+                        player.setSideSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();
                     }
@@ -172,7 +172,7 @@ public class Game {
                             (player1.getPosx() < player.getPosx() && !player1.facingRight())) {
 
                         player.moveInDirection(player1.getPosx(), player.takingDamage(player1.kick()));
-                        player.setSkin(player.facingRight());
+                        player.setSideSkin(player.facingRight());
                         System.out.println("Vegeta : " + player.getHealth());
                         player1.setKeyPressed();
                     }
@@ -240,8 +240,8 @@ public class Game {
 
                 isGameOver = true;
 
-                player.clean();
-                player1.clean();
+
+
 
                 foward = false;
 
@@ -249,9 +249,25 @@ public class Game {
                 Picture victory;
 
                 if (player.isDefeated()) {
+                    Picture vegeta = new Picture(player1.getPosx(), player1.getPosy(), SkinTypeVegeta.VegetaDeadLeft.getPath());
+                    player.setSkin(vegeta, player1.getPosy());
+
+                    Thread.sleep(800);
+
+                    vegeta.delete();
+                    player.clean();
+                    player1.clean();
                     victory = new Picture(0, 0, SkinTypeExtra.Goku_Wins.getPath());
                     victory.draw();
                 } else {
+                    Picture goku = new Picture(player.getPosx(), player.getPosy(), SkinTypeGoku.GokuDeadRigh.getPath());
+                    player1.setSkin(goku, player.getPosy());
+
+                    Thread.sleep(800);
+
+                    goku.delete();
+                    player.clean();
+                    player1.clean();
                     victory = new Picture(0, 0, SkinTypeExtra.Vegeta_Wins.getPath());
                     victory.draw();
                 }

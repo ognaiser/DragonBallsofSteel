@@ -296,56 +296,13 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
 
         return true;
     }
-    public int getPosx() {
-        return image.getX();
-    }
 
-
-    public int getPosy() {
-        return image.getY();
-    }
-
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
-    public int getWidth() {
-        return image.getWidth();
-    }
-
-    @Override
-    public int getHeight() {
-        return image.getHeight();
-    }
-
-    @Override
-    public int getSpeed() {
-        return speed;
-    }
-
-    @Override
-    public KeyboardEvent getLastKey() {
-        return lastKey;
-    }
-
-    public KeyboardEvent getPreviousKey() {
-        return previousKey;
-    }
-
-    @Override
-    public boolean isKeyPressed() {
-        return isKeyPressed;
-    }
-
-    @Override
-    public void setKeyPressed() {
-        isKeyPressed = false;
-    }
-
-    @Override
-    public boolean facingRight(){
-        return isRight;
-    }
-
-    @Override
-    public void setSkin(boolean direction){
+    public void setSideSkin(boolean direction){
         if(direction) {
             image.load(SkinTypeGoku.GokuHitRight.getPath());
         } else {
@@ -353,6 +310,32 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         }
     }
 
+    /**
+     * moves a image from the desired Y to the max Y of the Canvas
+     *
+     * @param pic set a new image
+     * @param y where the pic will appear
+     * @throws InterruptedException
+     */
+    public void setSkin(Picture pic, int y) throws InterruptedException {
+        image.delete();
+        image = pic;
+        image.draw();
+
+        while (y < 581) {
+            y++;
+            image.delete();
+            image = new Picture(image.getX(), y, SkinTypeGoku.GokuDeadRigh.getPath());
+            image.draw();
+            Thread.sleep(2);
+        }
+        image.delete();
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void moveInDirection(int xPos, boolean direction) throws InterruptedException {
         if(direction) {
@@ -395,6 +378,10 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         }
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     public void setPos(int x, int y, boolean direction){
         image.delete();
         if(direction) {
@@ -407,6 +394,10 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         image.draw();
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void setSpeed(int amount){
         if(amount == 0){
@@ -419,11 +410,106 @@ public class PlayerTwoHandler implements KeyboardHandler, PlayerHandler{
         speed = speed + amount;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    public int getPosx() {
+        return image.getX();
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    public int getPosy() {
+        return image.getY();
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public int getWidth() {
+        return image.getWidth();
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public int getHeight() {
+        return image.getHeight();
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public KeyboardEvent getLastKey() {
+        return lastKey;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    public KeyboardEvent getPreviousKey() {
+        return previousKey;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public boolean isKeyPressed() {
+        return isKeyPressed;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public void setKeyPressed() {
+        isKeyPressed = false;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
+    @Override
+    public boolean facingRight(){
+        return isRight;
+    }
+
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     @Override
     public void setColisonCheker(PlayerColissionChecker cheker) {
         this.checker = cheker;
     }
 
+    /**
+     * Description on the Interface
+     * @see PlayerHandler
+     */
     public void clean(){
 
         image.delete();

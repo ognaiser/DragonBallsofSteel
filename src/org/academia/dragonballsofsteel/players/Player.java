@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Game object to be inicializied by the game
@@ -238,8 +239,8 @@ public class Player {
         return handler.facingRight();
     }
 
-    public void setSkin(boolean direction){
-        handler.setSkin(direction);
+    public void setSideSkin(boolean direction){
+        handler.setSideSkin(direction);
     }
 
     public void setPos(int x, int y, boolean direction){
@@ -260,6 +261,10 @@ public class Player {
 
     public void setKeyPressed(){
         handler.setKeyPressed();
+    }
+
+    public void setSkin(Picture pic, int y) throws InterruptedException {
+        handler.setSkin(pic, y);
     }
 
     public void clean(){
