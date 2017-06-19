@@ -1,5 +1,6 @@
 package org.academia.main;
 
+import org.academia.carcrash.CarCrashX;
 import org.academia.dragonballsofsteel.Game;
 import org.academia.main.Tests.MouseTest;
 import org.academia.noughtsandcrosses.NoughtsAndCrosses;
@@ -39,6 +40,12 @@ public class Main {
                         noughtsAndCrosses.init();
                         handler.menuScreenInit();
                         break;
+                    case 3:
+                        handler.removeListners();
+                        CarCrashX carCrashX = new CarCrashX();
+                        carCrashX.init();
+                        handler.menuScreenInit();
+                        break;
                     default:
                         break;
                 }
@@ -56,6 +63,7 @@ public class Main {
 
     private static void easterUnlock(){
 
+        handler.removeListners();
 
         handler.unlocked = true;
         handler.sel[handler.getI()].delete();
@@ -92,7 +100,7 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
         }
 
@@ -101,7 +109,7 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
         }
 
@@ -110,7 +118,7 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
         }
 
@@ -119,7 +127,7 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
         }
 
@@ -128,7 +136,7 @@ public class Main {
         handler.menu.draw();
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
         }
 
@@ -153,7 +161,7 @@ public class Main {
         handler.menu.draw();
 
 
-
+        handler.menuScreenInit();
         System.out.println("unlocked");
     }
 

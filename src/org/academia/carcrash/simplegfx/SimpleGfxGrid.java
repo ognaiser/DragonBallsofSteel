@@ -6,7 +6,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class SimpleGfxGrid implements Grid {
 
-    public static final int PADDING = 10;
+    public static final int PADDING = 0;
     private int cols ;
     private int rows ;
     private static final int CELL = 20;

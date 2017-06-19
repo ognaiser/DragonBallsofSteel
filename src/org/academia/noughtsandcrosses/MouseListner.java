@@ -78,12 +78,12 @@ public class MouseListner implements MouseHandler {
             if (mouseEvent.getX() >= 397 && mouseEvent.getX() <= 540) {
                 if (checkIfClean(3)) {
                     if (NoughtsAndCrosses.turn == 1) {
-                        pictures[3] = new Picture(367, 293, skins.been.getPath());
+                        pictures[3] = new Picture(367, 303, skins.been.getPath());
                         pictures[3].draw();
                         game[3] = 1;
                         NoughtsAndCrosses.turn = 2;
                     } else {
-                        pictures[3] = new Picture(367, 293, skins.kardashian.getPath());
+                        pictures[3] = new Picture(367, 301, skins.kardashian.getPath());
                         pictures[3].draw();
                         game[3] = 2;
                         NoughtsAndCrosses.turn = 1;
@@ -94,12 +94,12 @@ public class MouseListner implements MouseHandler {
             if (mouseEvent.getX() >= 597 && mouseEvent.getX() <= 717) {
                 if (checkIfClean(4)) {
                     if (NoughtsAndCrosses.turn == 1) {
-                        pictures[4] = new Picture(567, 293, skins.been.getPath());
+                        pictures[4] = new Picture(567, 303, skins.been.getPath());
                         pictures[4].draw();
                         game[4] = 1;
                         NoughtsAndCrosses.turn = 2;
                     } else {
-                        pictures[4] = new Picture(567, 293, skins.kardashian.getPath());
+                        pictures[4] = new Picture(567, 303, skins.kardashian.getPath());
                         pictures[4].draw();
                         game[4] = 2;
                         NoughtsAndCrosses.turn = 1;
@@ -111,12 +111,12 @@ public class MouseListner implements MouseHandler {
             if (mouseEvent.getX() >= 738 && mouseEvent.getX() <= 893) {
                 if (checkIfClean(5)) {
                     if (NoughtsAndCrosses.turn == 1) {
-                        pictures[5] = new Picture(738, 293, skins.been.getPath());
+                        pictures[5] = new Picture(738, 303, skins.been.getPath());
                         pictures[5].draw();
                         game[5] = 1;
                         NoughtsAndCrosses.turn = 2;
                     } else {
-                        pictures[5] = new Picture(738, 293, skins.kardashian.getPath());
+                        pictures[5] = new Picture(738, 303, skins.kardashian.getPath());
                         pictures[5].draw();
                         game[5] = 2;
                         NoughtsAndCrosses.turn = 1;
