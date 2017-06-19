@@ -5,6 +5,13 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainKeyHandler implements KeyboardHandler {
@@ -122,20 +129,37 @@ public class MainKeyHandler implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        InputStream in = null;
+
+        try {
+            in = new FileInputStream("Resources/changeSound.wav");
+        } catch (FileNotFoundException e) {
+        }
+
+        // create an audiostream from the inputstream
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+        }
+
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
                 if (count != 11) {
                     if (i < sel.length - 2) {
+                        AudioPlayer.player.start(audioStream);
                         desingMenu();
                     }
                 } else {
                     if (i < sel.length - 1) {
+                        AudioPlayer.player.start(audioStream);
                         desingMenu();
                     }
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 if (i > 0) {
+                    AudioPlayer.player.start(audioStream);
                     i--;
                     sel[i + 1].delete();
                     sel[i].draw();
