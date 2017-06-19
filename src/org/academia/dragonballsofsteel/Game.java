@@ -14,7 +14,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     //TODO: get a health Display
-
+    /**
+     * Sets the Canvas limits
+     */
     public static final int bottomBounderi = 581;
     public static final int rightBounderi = 1118;
     public static final int topBonderi = 146;
@@ -28,6 +30,10 @@ public class Game {
     private Player player;
 
 
+    /**
+     * Set the background
+     * @throws InterruptedException
+     */
     public void init() throws InterruptedException {
 
         //BackGround
