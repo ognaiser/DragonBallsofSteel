@@ -9,7 +9,7 @@ public class SniperGame {
 
     private Picture background;
     private boolean isGameOver = false;
-    private int gameTime = 0000;
+    private int gameTime = 60000;
     private Player player;
     private GameObjectFactory factory;
     private GameObject[] enemies;
@@ -81,7 +81,7 @@ public class SniperGame {
     }
 
     private void checkGameOver() {
-        if (gameTime == 0) {
+        if (gameTime <= 0) {
             isGameOver = true;
             mouse.removeListners();
 
