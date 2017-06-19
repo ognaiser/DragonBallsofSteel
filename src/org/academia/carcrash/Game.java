@@ -142,7 +142,7 @@ public class Game {
         if (count == cars.length - 1) {
             gameOver = true;
 
-            win = new Text(660, 390, "YOU WIN");
+            win = new Text(660, 390, "YOU WI");
             win.grow(70, 70);
             win.draw();
 

@@ -1,6 +1,7 @@
 package org.academia.noughtsandcrosses;
 
 import org.academia.main.SkinMenus;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -11,6 +12,7 @@ public class NoughtsAndCrosses {
     private MouseListner mouseHandler;
     protected static int turn = 1;
     private Picture back;
+    private Text win;
 
     public void init(){
 
@@ -42,6 +44,14 @@ public class NoughtsAndCrosses {
 
         mouseHandler.m.removeEventListener(MouseEventType.MOUSE_CLICKED);
         removeImages();
+        win.draw();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+        }
+
+        win.delete();
 
     }
 
@@ -58,12 +68,22 @@ public class NoughtsAndCrosses {
 
         if (checkPlayerOne()) {
             isGameOver = true;
+            win = new Text(660, 390, "MR. BEAN WINS!");
+            win.grow(70, 70);
+
         }
 
         if(checkPlayerTwo()){
             isGameOver = true;
+            win = new Text(660, 390, "KARDASHIAN WINS!");
+            win.grow(70, 70);
         }
 
+        if (checkDraw()){
+            isGameOver= true;
+            win = new Text(660, 390, "ITS A DRAW!");
+            win.grow(70, 70);
+        }
 
     }
 
@@ -81,6 +101,7 @@ public class NoughtsAndCrosses {
 
         if (game[6] == 1 && game[7] == 1 && game[8] == 1){
             //P1 Wins
+
             return true;
         }
 
@@ -117,13 +138,21 @@ public class NoughtsAndCrosses {
 
         if (game[0] == 2 && game[4] == 2 && game[8] == 2){
             //P2 Wins
+
             return true;
         }
 
         if (game[6] == 2 && game[4] == 2 && game[2] == 2){
             //P2 Wins
+
             return true;
         }
+
+        return false;
+
+    }
+
+    private boolean checkDraw(){
 
         int count = 0;
 
