@@ -8,7 +8,9 @@ import org.academia.carcrash.grid.GridColor;
 public enum CarType {
 
     FIAT(GridColor.BLUE),
-    MUSTANG(GridColor.GREEN);
+    MUSTANG(GridColor.GREEN),
+    Special(GridColor.MAGENTA);
+
 
     private GridColor color;
 

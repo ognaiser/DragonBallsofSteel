@@ -2,6 +2,7 @@ package org.academia.carcrash;
 
 import org.academia.carcrash.car.Car;
 import org.academia.carcrash.car.CarFactory;
+import org.academia.carcrash.car.SpecialCar;
 import org.academia.carcrash.grid.Grid;
 import org.academia.carcrash.grid.GridFactory;
 import org.academia.carcrash.grid.GridType;
@@ -35,7 +36,8 @@ public class Game {
     /**
      * Number of cars to manufacture
      */
-    private int manufacturedCars = 20;
+    private int manufacturedCars = 30;
+
 
 
     /**
@@ -62,7 +64,12 @@ public class Game {
         cars = new Car[manufacturedCars];
         collisionDetector = new CollisionDetector(cars);
 
-        for (int i = 0; i < manufacturedCars; i++) {
+
+            cars[0] = new SpecialCar(grid.makeGridPosition());
+            cars[0].setCollisionDetector(collisionDetector);
+            cars[0].setGrid(grid);
+
+        for (int i = 1; i < manufacturedCars; i++) {
 
             cars[i] = CarFactory.getNewCar(grid);
             cars[i].setCollisionDetector(collisionDetector);
