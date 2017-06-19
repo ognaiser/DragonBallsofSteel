@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public interface PlayerHandler {
 
@@ -24,9 +25,13 @@ public interface PlayerHandler {
 
     boolean facingRight();
 
+    void setSpeed(int amount);
+
     void moveInDirection(int xPos, boolean direction) throws InterruptedException;
 
-    void setSkin(boolean direction);
+    void setSideSkin(boolean direction);
+
+    void setSkin(Picture pic, int y) throws InterruptedException;
 
     void setPos(int x, int y, boolean direction);
 

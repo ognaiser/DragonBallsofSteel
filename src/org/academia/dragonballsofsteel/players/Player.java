@@ -1,6 +1,7 @@
 package org.academia.dragonballsofsteel.players;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Game object to be inicializied by the game
@@ -89,7 +90,7 @@ public class Player {
      * Recharge energy. It will improve punch and kick power
      */
     public void burstOfEnergy() {
-        energy += 2;
+        energy += 5;
         if (energy > 150) {
             punchPower = 30;
             kickPower = 30;
@@ -105,6 +106,11 @@ public class Player {
      * @return
      */
     public int attackCombo() {
+        if (energy < 10) {
+            return 0;
+        }
+        energy -= 10;
+
         return punchPower + kickPower;
     }
 
@@ -233,8 +239,8 @@ public class Player {
         return handler.facingRight();
     }
 
-    public void setSkin(boolean direction){
-        handler.setSkin(direction);
+    public void setSideSkin(boolean direction){
+        handler.setSideSkin(direction);
     }
 
     public void setPos(int x, int y, boolean direction){
@@ -245,12 +251,20 @@ public class Player {
         handler.moveInDirection(xPox, direction);
     }
 
+    public void setSpeed(int amount){
+        handler.setSpeed(amount);
+    }
+
     public boolean isKeyPressed(){
         return handler.isKeyPressed();
     }
 
     public void setKeyPressed(){
         handler.setKeyPressed();
+    }
+
+    public void setSkin(Picture pic, int y) throws InterruptedException {
+        handler.setSkin(pic, y);
     }
 
     public void clean(){
