@@ -26,6 +26,8 @@ public class Game {
     private Picture back = new Picture(0, 0, SkinTypeExtra.Back.getPath());
     private Text gokuHealth;
     private Text vegetaHealth;
+    private Text gokeEnergy;
+    private Text vegetaEnergey;
     private Player player1;
     private Player player;
 
@@ -81,12 +83,18 @@ public class Game {
         player.setColisionChecker(checker);
         player1.setColisionChecker(checker);
 
-        gokuHealth = new Text(200,100,"Goku Health: " + player1.getHealth());
-        vegetaHealth = new Text(900,100,"Vegeta Health: " + player.getHealth());
-        gokuHealth.draw();
-        vegetaHealth.draw();
+        gokuHealth = new Text(900,100,"Goku Health: " + player1.getHealth());
+        vegetaHealth = new Text(200,100,"Vegeta Health: " + player.getHealth());
+        gokeEnergy = new Text(900,140,"Goku Energy: " + player1.getEnergy());
+        vegetaEnergey = new Text(200, 140,"Vegeta Energy: " + player.getEnergy());
         gokuHealth.grow(10,10);
         vegetaHealth.grow(10,10);
+        gokeEnergy.grow(10,10);
+        vegetaEnergey.grow(10,10);
+        gokuHealth.draw();
+        vegetaHealth.draw();
+        vegetaEnergey.draw();
+        gokeEnergy.draw();
 
         while (!isGameOver) {
 
@@ -255,6 +263,10 @@ public class Game {
 
                 isGameOver = true;
 
+                gokuHealth.delete();
+                vegetaHealth.delete();
+                gokeEnergy.delete();
+                vegetaEnergey.delete();
 
                 foward = false;
 
@@ -314,6 +326,8 @@ public class Game {
     private void updateUI() {
         gokuHealth.setText("Goku Health: " + player1.getHealth());
         vegetaHealth.setText("Vegeta Health: " + player.getHealth());
+        vegetaEnergey.setText("Vegeta Energy: "+ player.getEnergy());
+        gokeEnergy.setText("Goku Energy: "+ player1.getEnergy());
     }
 
 }

@@ -198,37 +198,26 @@ public class MainKeyHandler implements KeyboardHandler {
 
         if(count == 0 && keyboardEvent.getKey() == KeyboardEvent.KEY_C){
             count ++;
-            System.out.println("1");
         }else if(count == 1 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
             count ++;
-            System.out.println("2");
         }else if(count == 2 && keyboardEvent.getKey() == KeyboardEvent.KEY_R){
             count ++;
-            System.out.println("3");
         }else if(count == 3 && keyboardEvent.getKey() == KeyboardEvent.KEY_B){
             count ++;
-            System.out.println("4");
         }else if(count == 4 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
             count ++;
-            System.out.println("5");
         }else if(count == 5 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
             count ++;
-            System.out.println("6");
         }else if(count == 6 && keyboardEvent.getKey() == KeyboardEvent.KEY_H){
             count ++;
-            System.out.println("7");
         }else if(count == 7 && keyboardEvent.getKey() == KeyboardEvent.KEY_I){
             count ++;
-            System.out.println("8");
         }else if(count == 8 && keyboardEvent.getKey() == KeyboardEvent.KEY_A){
             count ++;
-            System.out.println("9");
         }else if(count == 9 && keyboardEvent.getKey() == KeyboardEvent.KEY_N){
             count ++;
-            System.out.println("10");
         }else if(count == 10 && keyboardEvent.getKey() == KeyboardEvent.KEY_S){
             count ++;
-            System.out.println("11");
         }else if (count != 11) {
             count = 0;
         }

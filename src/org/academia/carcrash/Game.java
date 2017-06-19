@@ -6,6 +6,8 @@ import org.academia.carcrash.car.SpecialCar;
 import org.academia.carcrash.grid.Grid;
 import org.academia.carcrash.grid.GridFactory;
 import org.academia.carcrash.grid.GridType;
+import org.academiadecodigo.simplegraphics.graphics.Text;
+
 
 /**
  * The game logic
@@ -40,14 +42,15 @@ public class Game {
 
     private boolean gameOver = false;
 
-
+    private Text win;
 
     /**
      * Constructs a new game
+     *
      * @param gridType which grid type to use
-     * @param cols number of columns in the grid
-     * @param rows number of rows in the grid
-     * @param delay animation delay
+     * @param cols     number of columns in the grid
+     * @param rows     number of rows in the grid
+     * @param delay    animation delay
      */
     Game(GridType gridType, int cols, int rows, int delay) {
 
@@ -67,9 +70,9 @@ public class Game {
         collisionDetector = new CollisionDetector(cars);
 
 
-            cars[0] = new SpecialCar(grid.makeGridPosition());
-            cars[0].setCollisionDetector(collisionDetector);
-            cars[0].setGrid(grid);
+        cars[0] = new SpecialCar(grid.makeGridPosition());
+        cars[0].setCollisionDetector(collisionDetector);
+        cars[0].setGrid(grid);
 
         for (int i = 1; i < manufacturedCars; i++) {
 
@@ -99,6 +102,9 @@ public class Game {
 
         }
 
+        Thread.sleep(3000);
+
+        win.delete();
     }
 
     /**
@@ -113,22 +119,34 @@ public class Game {
 
     }
 
-    private void checkEndgame(){
+    private void checkEndgame() {
 
-        if(cars[0].isCrashed()){
+        if (cars[0].isCrashed()) {
             gameOver = true;
+
+            win = new Text(660, 390, "YOU LOSE");
+            win.grow(70, 70);
+            win.draw();
+
+
         }
 
-        int count = 0 ;
+        int count = 0;
 
-        for (int i = 1; i < cars.length ; i++) {
-            if (cars[i].isCrashed()){
+        for (int i = 1; i < cars.length; i++) {
+            if (cars[i].isCrashed()) {
                 count++;
             }
         }
 
-        if(count == cars.length -1){
+        if (count == cars.length - 1) {
             gameOver = true;
+
+            win = new Text(660, 390, "YOU WI");
+            win.grow(70, 70);
+            win.draw();
+
+
         }
 
     }
