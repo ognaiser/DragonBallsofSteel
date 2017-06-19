@@ -9,6 +9,13 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Main {
 
@@ -63,6 +70,24 @@ public class Main {
 
     private static void easterUnlock(){
 
+        InputStream in = null;
+
+        try {
+            in = new FileInputStream("Resources/dial-up-modem-02.wav");
+        } catch (FileNotFoundException e) {
+        }
+
+        // create an audiostream from the inputstream
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+        }
+
+        // play the audio clip with the audioplayer class
+        AudioPlayer.player.start(audioStream);
+
+
         handler.removeListners();
 
         handler.unlocked = true;
@@ -93,53 +118,57 @@ public class Main {
         text.delete();
         text1.delete();
 
+        Picture hacking;
+        hacking = new Picture(185, 255, SkinMenus.hacking_1.getPath());
+
         //2 Part
+        for (int i = 0; i < 5; i++) {
 
-        Picture hacking = new Picture(185,255,SkinMenus.hacking_1.getPath());
-        hacking.draw();
-        handler.menu.draw();
+            hacking = new Picture(185, 255, SkinMenus.hacking_1.getPath());
+            hacking.draw();
+            handler.menu.draw();
 
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+            }
+
+            hacking.load(SkinMenus.hacking_2.getPath());
+            hacking.draw();
+            handler.menu.draw();
+
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+            }
+
+            hacking.load(SkinMenus.hacking_3.getPath());
+            hacking.draw();
+            handler.menu.draw();
+
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+            }
+
+            hacking.load(SkinMenus.hacking_4.getPath());
+            hacking.draw();
+            handler.menu.draw();
+
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+            }
+
+            hacking.load(SkinMenus.hacking_5.getPath());
+            hacking.draw();
+            handler.menu.draw();
+
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+            }
         }
-
-        hacking.load(SkinMenus.hacking_2.getPath());
-        hacking.draw();
-        handler.menu.draw();
-
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_3.getPath());
-        hacking.draw();
-        handler.menu.draw();
-
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_4.getPath());
-        hacking.draw();
-        handler.menu.draw();
-
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-        }
-
-        hacking.load(SkinMenus.hacking_5.getPath());
-        hacking.draw();
-        handler.menu.draw();
-
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-        }
-
         //Last Part
 
         hacking.load(SkinMenus.hacking_end.getPath());
@@ -162,7 +191,6 @@ public class Main {
 
 
         handler.menuScreenInit();
-        System.out.println("unlocked");
     }
 
 }
