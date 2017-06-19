@@ -115,6 +115,21 @@ public class NoughtsAndCrosses {
             return true;
         }
 
+        if (game[0] == 1 && game[3] == 1 && game[6] == 1){
+            //P1 Wins
+            return true;
+        }
+
+        if (game[1] == 1 && game[4] == 1 && game[7] == 1){
+            //P1 Wins
+            return true;
+        }
+
+        if (game[2] == 1 && game[5] == 1 && game[8] == 1){
+            //P1 Wins
+            return true;
+        }
+
         return false;
 
     }
@@ -143,6 +158,24 @@ public class NoughtsAndCrosses {
         }
 
         if (game[6] == 2 && game[4] == 2 && game[2] == 2){
+            //P2 Wins
+
+            return true;
+        }
+
+        if (game[0] == 2 && game[3] == 2 && game[6] == 2){
+            //P2 Wins
+
+            return true;
+        }
+
+        if (game[1] == 2 && game[4] == 2 && game[7] == 2){
+            //P2 Wins
+
+            return true;
+        }
+
+        if (game[2] == 2 && game[5] == 2 && game[8] == 2){
             //P2 Wins
 
             return true;
