@@ -36,7 +36,9 @@ public class Game {
     /**
      * Number of cars to manufacture
      */
-    private int manufacturedCars = 30;
+    private int manufacturedCars = 40;
+
+    private boolean gameOver = false;
 
 
 
@@ -86,12 +88,14 @@ public class Game {
      */
     public void start() throws InterruptedException {
 
-        while (true) {
+        while (!gameOver) {
 
             // Pause for a while
             Thread.sleep(delay);
 
             moveAllCars();
+
+            checkEndgame();
 
         }
 
@@ -105,6 +109,26 @@ public class Game {
         for (Car c : cars) {
             c.move();
             collisionDetector.check(c);
+        }
+
+    }
+
+    private void checkEndgame(){
+
+        if(cars[0].isCrashed()){
+            gameOver = true;
+        }
+
+        int count = 0 ;
+
+        for (int i = 1; i < cars.length ; i++) {
+            if (cars[i].isCrashed()){
+                count++;
+            }
+        }
+
+        if(count == cars.length -1){
+            gameOver = true;
         }
 
     }
