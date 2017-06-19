@@ -17,6 +17,10 @@ public class SniperGame {
     private MouseController mouse;
     private Text text;
 
+    /**
+     * Initialize Background Img, PLayer, GameFactory and GameObject
+     */
+
     public void init() {
 
         round = 0;
@@ -32,6 +36,10 @@ public class SniperGame {
 
         start();
     }
+
+    /**
+     * Starts the game
+     */
 
     private void start() {
 

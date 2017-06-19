@@ -21,6 +21,12 @@ public class MouseController implements MouseHandler{
         this.player = player;
     }
 
+
+    /**
+     * Create a clickable Enemy area
+     * @param mouseEvent
+     */
+
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 

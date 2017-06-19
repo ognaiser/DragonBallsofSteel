@@ -5,6 +5,12 @@ public class GameObjectFactory {
     private WindowPos[] pos = new WindowPos[4];
     private GameObject[] enemies = new GameObject[4];
 
+    /**
+     *
+     * @param round
+     * @return Game Object of Enemies
+     */
+
     public GameObject[] createObject(int round) {
 
         int chance;
@@ -28,6 +34,10 @@ public class GameObjectFactory {
 
         return enemies;
     }
+
+    /**
+     *  Generate position in Windows Pos
+     */
 
     private void generatePos() {
 

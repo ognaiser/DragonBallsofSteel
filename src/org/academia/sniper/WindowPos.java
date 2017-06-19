@@ -1,5 +1,9 @@
 package org.academia.sniper;
 
+
+/**
+ *  11 window positions in Enum
+ */
 public enum WindowPos {
     WINDOW_LEFT_1(296, 153),
     WINDOW_LEFT_2(188, 220),
