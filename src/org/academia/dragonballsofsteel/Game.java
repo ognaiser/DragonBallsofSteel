@@ -14,7 +14,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     //TODO: get a health Display
-
+    /**
+     * Sets the Canvas limits
+     */
     public static final int bottomBounderi = 581;
     public static final int rightBounderi = 1118;
     public static final int topBonderi = 146;
@@ -30,6 +32,10 @@ public class Game {
     private Player player;
 
 
+    /**
+     * Loads the background and the instructions menu. When Space key is pressed starts the game
+     * @throws InterruptedException
+     */
     public void init() throws InterruptedException {
 
         //BackGround
@@ -65,6 +71,10 @@ public class Game {
         start();
     }
 
+    /**
+     * initializes the Players, the Collision checker and runs the game until one player loses
+     * @throws InterruptedException
+     */
     public void start() throws InterruptedException {
         //Player1
         player = new Player(PlayerType.PLAYERONE);
@@ -90,8 +100,11 @@ public class Game {
         vegetaEnergey.draw();
         gokeEnergy.draw();
 
+
+         //The game runs until one player loses is health
         while (!isGameOver) {
 
+            //Player 1 punch if the Player 2 dont blocks
             if (player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed()) {
 
                 if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
@@ -107,11 +120,13 @@ public class Game {
                 }
             }
 
+            //Player 1 blocking damage
             if (player.getKey().getKey() == KeyboardEvent.KEY_E && player.isKeyPressed()) {
                 player.blockAttack(checker.fightingRange());
                 player.setKeyPressed();
             }
 
+            //Player 1 kick if Player 2 dont blocks
             if (player.getKey().getKey() == KeyboardEvent.KEY_X && player.isKeyPressed()) {
 
                 if (checker.fightingRange() && (player1.getKey().getKey() != KeyboardEvent.KEY_L)) {
@@ -127,11 +142,13 @@ public class Game {
                 }
             }
 
+            //Player 1 recharging energy
             if (player.getKey().getKey() == KeyboardEvent.KEY_F && player.isKeyPressed()) {
                 player.burstOfEnergy();
                 player.setKeyPressed();
             }
 
+            //Player 1 teleports to Player 2
             if (player.getKey().getKey() == KeyboardEvent.KEY_A && player.getPreviousKey().getKey() == KeyboardEvent.KEY_F &&
                     player.isKeyPressed()) {
                 if (player.teleport() && player.getPosx() < player1.getPosx()) {
@@ -147,6 +164,7 @@ public class Game {
                 player.setKeyPressed();
             }
 
+            //Player 1 teleports to Player 2 if moving up below Player 2
             if (player.getKey().getKey() == KeyboardEvent.KEY_W && player.isKeyPressed() && (player.getPosy() - player1.getPosy() - player1.getHeight() <= 10) && Math.abs(player.getPosx() - player1.getPosx()) < 20) {
                 if (player1.facingRight()) {
                     player.setPos(player1.getPosx() - player.getWidth() - 5, player1.getPosy(), player1.facingRight());
@@ -155,6 +173,7 @@ public class Game {
                 }
             }
 
+            //Player 1 does combo attack pushing Player 2 and teleports
             if (player.getKey().getKey() == KeyboardEvent.KEY_Q && player.isKeyPressed() && player.getPreviousKey().getKey() == KeyboardEvent.KEY_X && player.getEnergy() > 100) {
                 System.out.println(player.getEnergy());
                 if (player1.getPosx() + player1.getWidth() + 5 + player.getWidth() <= rightBounderi) {
@@ -168,7 +187,7 @@ public class Game {
                 player.setKeyPressed();
             }
 
-
+            //Player 2 punch if Player 1 dont blocks
             if (player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()) {
                 if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
 
@@ -183,6 +202,7 @@ public class Game {
                 }
             }
 
+            //Player 2 kick if Player 1 dont blocks
             if (player1.getKey().getKey() == KeyboardEvent.KEY_P && player1.isKeyPressed()) {
 
                 if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
@@ -198,16 +218,19 @@ public class Game {
                 }
             }
 
+            //Player 2 recharges energy
             if (player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.isKeyPressed()) {
                 player1.burstOfEnergy();
                 player1.setKeyPressed();
             }
 
+            //Player 2 blocks damage
             if (player1.getKey().getKey() == KeyboardEvent.KEY_L && player1.isKeyPressed()) {
                 player1.blockAttack(checker.fightingRange());
                 player1.setKeyPressed();
             }
 
+            //Player 2 teleports to Player 1 position
             if (player1.getKey().getKey() == KeyboardEvent.KEY_O && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_RIGHT) {
                 if (player1.teleport() && player1.getPosx() < player.getPosx()) {
                     if (player.getPosx() + player.getWidth() + 5 + player1.getWidth() <= rightBounderi) {
@@ -222,6 +245,7 @@ public class Game {
                 player1.setKeyPressed();
             }
 
+            //Player 2 teleports to Player 1 if moving up below Player 1
             if (player1.getKey().getKey() == KeyboardEvent.KEY_UP && player1.isKeyPressed() && (player1.getPosy() - player.getPosy() - player.getHeight() <= 10) && Math.abs(player1.getPosx() - player.getPosx()) < 20) {
                 if (player.facingRight()) {
                     player1.setPos(player.getPosx() - player1.getWidth() - 5, player.getPosy(), true);
@@ -230,6 +254,7 @@ public class Game {
                 }
             }
 
+            //Player 2 does attack combo pushing Player 1 and teleports
             if (player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed() && player1.getPreviousKey().getKey() == KeyboardEvent.KEY_P && player1.getEnergy() > 100) {
                 if (player.getPosx() + player.getWidth() + 5 + player1.getWidth() <= rightBounderi) {
                     player.moveInDirection(player1.getPosx(), player.takingDamage(player1.attackCombo()));
@@ -242,17 +267,21 @@ public class Game {
                 player1.setKeyPressed();
             }
 
+            //Increases speed of Player 1 when energy increases
             if (player.getEnergy() > 120) {
                 player.setSpeed(player.getEnergy() / 10);
             } else {
                 player.setSpeed(0);
             }
+
+            //Increases speed of Player 2 when energy increases
             if (player1.getEnergy() > 120) {
                 player1.setSpeed(player1.getEnergy() / 10);
             } else {
                 player1.setSpeed(0);
             }
 
+            //End Game condition
             if (player.isDefeated() || player1.isDefeated()) {
 
                 isGameOver = true;

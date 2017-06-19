@@ -223,50 +223,101 @@ public class Player {
         return handler.getSpeed();
     }
 
+    /**
+     * Set a collision checker to the Player
+     * @param checker
+     */
     public void setColisionChecker(PlayerColissionChecker checker){
         handler.setColisonCheker(checker);
     }
 
+    /**
+     *
+     * @return the last key pressed
+     */
     public KeyboardEvent getKey(){
         return handler.getLastKey();
     }
 
+    /**
+     *
+     * @return the previous key pressed
+     */
     public KeyboardEvent getPreviousKey() {
         return handler.getPreviousKey();
     }
 
+    /**
+     *
+     * @return is the image is facing right
+     */
     public boolean facingRight(){
         return handler.facingRight();
     }
 
+    /**
+     * moves the player image to the side of the second player image
+     * @param direction
+     */
     public void setSideSkin(boolean direction){
         handler.setSideSkin(direction);
     }
 
+    /**
+     * Places the image on a desired x and y and if is facing right
+     * @param x
+     * @param y
+     * @param direction
+     */
     public void setPos(int x, int y, boolean direction){
         handler.setPos(x, y, direction);
     }
 
+    /**
+     * Makes the player image sequentially move on X Axis and if is facing right
+     * @param xPox
+     * @param direction
+     * @throws InterruptedException
+     */
     public void moveInDirection(int xPox, boolean direction) throws InterruptedException {
         handler.moveInDirection(xPox, direction);
     }
 
+    /**
+     * Set a different amount of pixels that the image can move
+     * @param amount
+     */
     public void setSpeed(int amount){
         handler.setSpeed(amount);
     }
 
+    /**
+     * @return if a key is being pressed
+     */
     public boolean isKeyPressed(){
         return handler.isKeyPressed();
     }
 
+    /**
+     * Key pressed changes to false
+     */
     public void setKeyPressed(){
         handler.setKeyPressed();
     }
 
+    /**
+     * Make an image move on Y Axis to the Y max
+     * @param pic
+     * @param y
+     * @throws InterruptedException
+     */
     public void setSkin(Picture pic, int y) throws InterruptedException {
         handler.setSkin(pic, y);
     }
 
+    /**
+     * removes the handler keys and deletes the image
+     */
     public void clean(){
         handler.clean();
     }
