@@ -3,6 +3,7 @@ package org.academia.dragonballsofsteel;
 import org.academia.dragonballsofsteel.players.Player;
 import org.academia.dragonballsofsteel.players.PlayerColissionChecker;
 import org.academia.dragonballsofsteel.players.PlayerType;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -14,13 +15,17 @@ public class Game {
 
     //TODO: get a health Display
 
-    protected boolean isGameOver = false;
     public static final int bottomBounderi = 581;
     public static final int rightBounderi = 1118;
     public static final int topBonderi = 146;
     public static final int leftBonderi = 143;
-    Picture back = new Picture(0, 0, SkinTypeExtra.Back.getPath());
     protected static boolean foward = false;
+    protected boolean isGameOver = false;
+    private Picture back = new Picture(0, 0, SkinTypeExtra.Back.getPath());
+    private Text gokuHealth;
+    private Text vegetaHealth;
+    private Player player1;
+    private Player player;
 
 
     public void init() throws InterruptedException {
@@ -60,15 +65,22 @@ public class Game {
 
     public void start() throws InterruptedException {
         //Player1
-        Player player = new Player(PlayerType.PLAYERONE);
+        player = new Player(PlayerType.PLAYERONE);
 
         //Player2
-        Player player1 = new Player(PlayerType.PLAYERTWO);
+        player1 = new Player(PlayerType.PLAYERTWO);
 
         //Colision Cheker
         PlayerColissionChecker checker = new PlayerColissionChecker(player, player1);
         player.setColisionChecker(checker);
         player1.setColisionChecker(checker);
+
+        gokuHealth = new Text(200,100,"Goku Health: " + player1.getHealth());
+        vegetaHealth = new Text(900,100,"Vegeta Health: " + player.getHealth());
+        gokuHealth.draw();
+        vegetaHealth.draw();
+        gokuHealth.grow(10,10);
+        vegetaHealth.grow(10,10);
 
         while (!isGameOver) {
 
@@ -149,7 +161,6 @@ public class Game {
             }
 
 
-
             if (player1.getKey().getKey() == KeyboardEvent.KEY_K && player1.isKeyPressed()) {
                 if (checker.fightingRange() && (player.getKey().getKey() != KeyboardEvent.KEY_E)) {
 
@@ -223,24 +234,20 @@ public class Game {
                 player1.setKeyPressed();
             }
 
-            if(player.getEnergy() > 120) {
+            if (player.getEnergy() > 120) {
                 player.setSpeed(player.getEnergy() / 10);
-            }
-            else {
+            } else {
                 player.setSpeed(0);
             }
-            if(player1.getEnergy() > 120) {
+            if (player1.getEnergy() > 120) {
                 player1.setSpeed(player1.getEnergy() / 10);
-            }
-            else {
+            } else {
                 player1.setSpeed(0);
             }
 
             if (player.isDefeated() || player1.isDefeated()) {
 
                 isGameOver = true;
-
-
 
 
                 foward = false;
@@ -284,15 +291,23 @@ public class Game {
 
             }
 
+            updateUI();
+
 
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
             }
+
         }
 
 
         back.delete();
+    }
+
+    private void updateUI() {
+        gokuHealth.setText("Goku Health: " + player1.getHealth());
+        vegetaHealth.setText("Vegeta Health: " + player.getHealth());
     }
 
 }
