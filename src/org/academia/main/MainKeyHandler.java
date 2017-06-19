@@ -109,6 +109,7 @@ public class MainKeyHandler implements KeyboardHandler {
         k.addEventListener(right);
         k.addEventListener(left);
         k.addEventListener(space);
+        k.addEventListener(kill);
 
     }
 
