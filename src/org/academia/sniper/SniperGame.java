@@ -9,7 +9,7 @@ public class SniperGame {
 
     private Picture background;
     private boolean isGameOver = false;
-    private int gameTime = 60000;
+    private int gameTime = 0000;
     private Player player;
     private GameObjectFactory factory;
     private GameObject[] enemies;
@@ -59,6 +59,12 @@ public class SniperGame {
 
         }
 
+        //Delete everything
+        background.delete();
+        for (int i = 0; i < enemies.length; i++) {
+            enemies[i].setCliked();
+        }
+
     }
 
     private void checkRound(){
@@ -84,6 +90,11 @@ public class SniperGame {
             text.setColor(Color.DARK_GRAY);
             text.grow(250,200);
             text.draw();
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            }
         }
     }
 }
